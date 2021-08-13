@@ -28,6 +28,11 @@
 !/log/.keep
 !/tmp/.keep
 
+/spec/dummy/log/*
+/spec/dummy/tmp/*
+!/spec/dummy/log/.keep
+!/spec/dummy/tmp/.keep
+
 # Ignore uploaded files in development
 /storage/*
 
@@ -57,7 +62,6 @@
 /spec/examples.txt
 /test/tmp/
 /test/version_tmp/
-/tmp/
 
 # Used by dotenv library to load environment variables.
 # .env
@@ -117,6 +121,7 @@ capybara-*.html
 /public/system
 /coverage/
 /spec/tmp
+/spec/dummy/tmp
 *.orig
 rerun.txt
 pickle-email-*.html
