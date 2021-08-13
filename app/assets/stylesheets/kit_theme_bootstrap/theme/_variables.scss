@@ -1,0 +1,41 @@
+//$blue: #008aff;
+
+$font-family-sans-serif: 'Source Sans Pro', #{ $font-family-sans-serif };
+$font-family-monospace:  'Source Code Pro', #{ $font-family-monospace };
+
+// Colors: https://codepen.io/rodriguesmarcos/pen/CapmI
+
+$color_grass:             #8CC152;
+$color_grass_light:       #A0D468;
+
+$color_sunflower:         #FCBB42;
+$color_sunflower_light:   #FFCE54;
+
+$color_aqua:              #3BAFDA;
+$color_aqua_light:        #4FC1E9;
+
+$color_bluejeans:         #4A89DC;
+$color_bluejeans_light:   #5D9CEC;
+
+$color_grapefruit:        #DA4453;
+$color_grapefruit_light:  #ED5565;
+
+$color_bittersweet:       #E9573F;
+$color_bittersweet_light: #FC6E51;
+
+$primary: #1565C0;
+
+$theme-colors-custom: (
+  "primary": $primary,
+  "success": $color_grass,
+  "warning": $color_sunflower_light,
+  "danger":  $color_grapefruit,
+  "info":    $color_aqua,
+);
+
+$theme-colors: map-merge($theme-colors, $theme-colors-custom);
+
+
+// Alerts ----------------------------------------------------------------------
+$alert-padding-y: .75rem;
+$alert-padding-x: 1.25rem;
