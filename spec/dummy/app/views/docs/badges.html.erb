@@ -12,7 +12,7 @@
       <li>
         <a href="#examples">Examples</a>
         <ul>
-          <li><a href="#outline">Outline</a></li>
+          <li><a href="#outline">Outline badges</a></li>
         </ul>
       </li>
     </ul>
@@ -26,17 +26,11 @@
   <h3 id="outline">Outline badges</h3>
 
 <% code = theme_colors.map do |color|
-%{<span class="badge badge-outline-#{ color } text-cap rounded-pill">
+%{<span class="badge badge-outline-#{ color } text-cap rounded-pill me-2">
   #{ color }
 </span>
 }
 end.join("\n") %>
+  <%= render partial: 'partials/example', locals: { id: 'outline', code: code } %>
 
-  <div class="bd-example">
-    <%= raw code %>
-  </div>
-
-  <div class="highlight">
-    <pre tabindex="0"><code class="language-html m-0 p-0" data-lang="html" style='background: transparent;'><%= h code %></code></pre>
-  </div>
 </div>

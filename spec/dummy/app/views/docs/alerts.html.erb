@@ -30,12 +30,6 @@
 </div>
 }
 end.join("\n") %>
+  <%= render partial: 'partials/example', locals: { id: 'soft-colors', code: code } %>
 
-  <div class="bd-example">
-    <%= raw code %>
-  </div>
-
-  <div class="highlight">
-    <pre tabindex="0"><code class="language-html m-0 p-0" data-lang="html" style='background: transparent;'><%= h code %></code></pre>
-  </div>
 </div>

@@ -51,18 +51,10 @@
 
 <% code = (1..7).map do |idx|
 %{<div class="sp-#{ idx } #{ (idx % 2 == 0) ? 'bg-info' : 'bg-warning' } text-white px-3">
-  Content #{ idx }
+  <code>.sp-#{ idx }</code>
 </div>
 }
 end.join("\n") %>
-
-  <div class="bd-example">
-    <%= raw code %>
-  </div>
-
-  <div class="highlight">
-    <pre tabindex="0"><code class="language-html m-0 p-0" data-lang="html" style='background: transparent;'><%= h code %></code></pre>
-  </div>
-
+  <%= render partial: 'partials/example', locals: { id: 'examples', code: code } %>
 
 </div>
