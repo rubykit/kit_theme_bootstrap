@@ -20,16 +20,13 @@
 </div>
 
 <div class="bd-content ps-lg-4">
-  <h2 id="examples">Examples<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="#" href="#examples" style="padding-left: 0.375em;"></a></h2>
+  <h2 id="examples">Examples</h2>
 
-  <h3 id="soft-colors">
-    Soft Colors
-    <a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="#" href="#soft-colors" style="padding-left: 0.375em;"></a>
-  </h3>
+  <h3 id="soft-colors">Soft Colors</h3>
 
 <% code = theme_colors.map do |color|
 %{<div class="alert alert-soft-#{ color }" role="alert">
-  A simple soft #{ color } alert —check it out!
+  <strong>#{ color.capitalize }!</strong> This is a soft-#{ color } alert —check it out!
 </div>
 }
 end.join("\n") %>
@@ -38,7 +35,6 @@ end.join("\n") %>
     <%= raw code %>
   </div>
 
-  <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</button></div>
   <div class="highlight">
     <pre tabindex="0"><code class="language-html m-0 p-0" data-lang="html" style='background: transparent;'><%= h code %></code></pre>
   </div>

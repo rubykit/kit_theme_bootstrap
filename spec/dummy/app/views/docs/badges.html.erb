@@ -20,15 +20,13 @@
 </div>
 
 <div class="bd-content ps-lg-4">
-  <h2 id="examples">Examples<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="#" href="#examples" style="padding-left: 0.375em;"></a></h2>
 
-  <h3 id="outline">
-    Outline badges
-    <a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="#" href="#outline" style="padding-left: 0.375em;"></a>
-  </h3>
+  <h2 id="examples">Examples</h2>
+
+  <h3 id="outline">Outline badges</h3>
 
 <% code = theme_colors.map do |color|
-%{<span class="badge badge-outline-#{ color }">
+%{<span class="badge badge-outline-#{ color } text-cap rounded-pill">
   #{ color }
 </span>
 }
@@ -38,7 +36,6 @@ end.join("\n") %>
     <%= raw code %>
   </div>
 
-  <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</button></div>
   <div class="highlight">
     <pre tabindex="0"><code class="language-html m-0 p-0" data-lang="html" style='background: transparent;'><%= h code %></code></pre>
   </div>

@@ -13,6 +13,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 
 Rails.application.config.assets.precompile += %w[kit_theme_bootstrap_dummy_application.js kit_theme_bootstrap_dummy_application.css]
+Rails.application.config.assets.precompile += %w[kit_theme_bootstrap_dummy_vendor.js      kit_theme_bootstrap_dummy_vendor.css]
 
 # Handle the double manifest issue with dummy container. Adding the absolute path of the manifest doesn't work.
 Rails.application.config.assets.paths << File.expand_path('../../app/assets/config', __dir__)

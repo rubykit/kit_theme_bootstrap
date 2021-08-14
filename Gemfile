@@ -5,6 +5,7 @@ gemspec
 
 # Note: somehow having it in the gemspec is not enough?
 gem 'bootstrap', '~> 5.1'
+gem 'jquery-rails'
 
 gem 'puma', '~> 5.0'
 gem 'bootsnap', '>= 1.4.4', require: false
