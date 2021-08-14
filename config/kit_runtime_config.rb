@@ -11,6 +11,7 @@ KIT_APP_PATHS['GEM_ASSETS']      = [
   File.expand_path('../spec/dummy/app/assets/stylesheets', __dir__),
   File.expand_path('../spec/dummy/app/assets/javascripts', __dir__),
   File.expand_path('../spec/dummy/app/assets/images', __dir__),
+  File.expand_path('../spec/dummy/app/assets/vendor', __dir__),
 ]
 KIT_APP_PATHS['GEM_MIGRATIONS']  = File.expand_path('../db/migrate', __dir__)
 
