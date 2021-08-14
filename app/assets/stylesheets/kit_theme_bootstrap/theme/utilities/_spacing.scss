@@ -1,0 +1,16 @@
+// Extra spacers helpers for content
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $size, $length in $kit-spacers-content {
+      .sp#{$infix}-#{$size}, .spt#{$infix}-#{$size}    {
+        padding-top:    $length !important;
+      }
+      .sp#{$infix}-#{$size}, .spb#{$infix}-#{$size} {
+        padding-bottom: $length !important;
+      }
+    }
+  }
+}

@@ -2,14 +2,22 @@
   <ul class="list-unstyled mb-0 py-3 pt-md-1">
 
    <li class="mb-1">
-      <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#components-collapse" aria-expanded="true">
-        Components
-      </button>
+      <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#components-collapse" aria-expanded="true">Components</button>
 
       <div class="collapse show" id="components-collapse" style="">
         <ul class="list-unstyled fw-normal pb-1 small">
           <li><%= active_link_to 'Alerts', '/docs/alerts', class: 'd-inline-flex align-items-center rounded' %></li>
           <li><%= active_link_to 'Badges', '/docs/badges', class: 'd-inline-flex align-items-center rounded' %></li>
+        </ul>
+      </div>
+    </li>
+
+   <li class="mb-1">
+      <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#utilities-collapse" aria-expanded="true">Utilities</button>
+
+      <div class="collapse show" id="utilities-collapse" style="">
+        <ul class="list-unstyled fw-normal pb-1 small">
+          <li><%= active_link_to 'Spacing', '/docs/spacing', class: 'd-inline-flex align-items-center rounded' %></li>
         </ul>
       </div>
     </li>
