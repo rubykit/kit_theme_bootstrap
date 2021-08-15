@@ -16,6 +16,11 @@
  *= require kit_theme_bootstrap/theme
  */
 
-.bd-content > h3 {
-  margin-bottom: 1.5rem;
+.card-tabs {
+  margin-top: 1.5rem;
+}
+
+hr.h3-separator {
+  margin-top: 2.5rem;
+  background-color: #e2e2e2;
 }

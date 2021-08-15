@@ -1,7 +1,7 @@
 <div class="bd-intro ps-lg-4">
   <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-    <a class="btn btn-sm btn-bd-light mb-2 mb-md-0" href="https://getbootstrap.com/docs/5.1/components/badge/" target="_blank">View Bootstrap doc</a>
-    <h1 class="bd-title" id="content">Badges</h1>
+    <a class="btn btn-sm btn-bd-light mb-2 mb-md-0" href="https://getbootstrap.com/docs/5.1/components/buttons/" target="_blank">View Bootstrap doc</a>
+    <h1 class="bd-title" id="content">Buttons</h1>
   </div>
 </div>
 
@@ -13,7 +13,7 @@
         <a href="#examples">Examples</a>
         <ul>
           <li><a href="#overview">Overview</a></li>
-          <li><a href="#soft">Soft badges</a></li>
+          <li><a href="#soft">Soft buttons</a></li>
         </ul>
       </li>
     </ul>
@@ -26,9 +26,9 @@
 
   <h3 id="overview">Overview</h3>
 
-<% code = ['bg-primary', 'badge-soft-primary', 'badge-soft-primary bg-transparent', 'badge-soft-primary border-transparent'].map.with_index do |type, idx|
+<% code = ['btn-primary', 'btn-outline-primary', 'btn-soft-primary', 'btn-soft-primary border-transparent', 'btn-ghost-primary', 'btn-link link-primary'].map.with_index do |type, idx|
 %{<div class='#{ idx > 0 ? 'mt-3' : '' }'>
-  <span class="badge #{ type } text-cap rounded-pill">Example</span>
+  <button type='button' class="btn #{ type }">Example button</button>
   <span class='ms-2 font-monospace'>#{ type.split(' ').map { |t| ".#{ t }" }.join(' ') }</span>
 </div>
 }
@@ -37,14 +37,16 @@ end.join("\n") %>
 
   <hr class="h3-separator"> <!-- ------------------------------------------- -->
 
-  <h3 id="soft">Soft badges</h3>
+  <h3 id="soft">Soft buttons</h3>
 
-<% code = ['', 'bg-transparent', 'border-transparent'].map.with_index do |type, idx|
+  <p>Note: unlike <a href="docs/alerts">alerts</a> or <a href="docs/alerts">badges</a> where the <code>outline</code> effect ban be achieved with <code>.soft-* .border-transparent</code> classes, <code>.btn-outline</code> is it's own class since the active (hover) behaviour is different. <code>.btn-outline-*</code> classes are default Bootstrap anyway.</p>
+
+<% code = ['', 'border-transparent'].map.with_index do |type, idx|
   ["<div class=\"#{ (idx > 0) ? 'mt-3' : '' }\">",
   theme_colors.map do |color|
-%{<span class="badge badge-soft-#{ color } #{ type } text-cap rounded-pill me-2">
-  #{ color }
-</span>
+%{<button type='button' class="btn btn-soft-#{ color } #{ type } me-2">
+  #{ color.capitalize }
+</button>
 }
   end.join("\n"),
   '</div>'].join("\n")

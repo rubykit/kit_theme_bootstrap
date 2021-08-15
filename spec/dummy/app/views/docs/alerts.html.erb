@@ -12,7 +12,10 @@
       <li>
         <a href="#examples">Examples</a>
         <ul>
+          <li><a href="#overview">Overview</a></li>
           <li><a href="#soft-colors">Soft colors</a></li>
+          <li><a href="#soft-colors-borderless">Soft colors (borderless)</a></li>
+          <li><a href="#soft-colors-backgroundless">Soft colors (backgroundless)</a></li>
         </ul>
       </li>
     </ul>
@@ -22,7 +25,19 @@
 <div class="bd-content ps-lg-4">
   <h2 id="examples">Examples</h2>
 
-  <h3 id="soft-colors">Soft Colors</h3>
+  <h3 id="overview">Overview</h3>
+
+<% code = ['alert-primary', 'alert-soft-primary', 'alert-soft-primary border-transparent', 'alert-soft-primary bg-transparent'].map.with_index do |type, idx|
+%{<div class="alert #{ type }" role="alert">
+  <strong>Alert!</strong> <span class='ms-2 font-monospace'>#{ type.split(' ').map { |t| ".#{ t }" }.join(' ') }</span>
+</div>
+}
+end.join("\n") %>
+  <%= render partial: 'partials/example', locals: { id: 'overview', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="soft-colors">Soft colors</h3>
 
 <% code = theme_colors.map do |color|
 %{<div class="alert alert-soft-#{ color }" role="alert">
@@ -31,5 +46,29 @@
 }
 end.join("\n") %>
   <%= render partial: 'partials/example', locals: { id: 'soft-colors', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="soft-colors-borderless">Soft colors (borderless)</h3>
+
+<% code = theme_colors.map do |color|
+%{<div class="alert alert-soft-#{ color } border-0" role="alert">
+  <strong>#{ color.capitalize }!</strong> This is a soft-#{ color } alert —check it out!
+</div>
+}
+end.join("\n") %>
+  <%= render partial: 'partials/example', locals: { id: 'soft-colors', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="soft-colors-backgroundless">Soft colors (backgroundless)</h3>
+
+<% code = theme_colors.map do |color|
+%{<div class="alert alert-soft-#{ color } bg-transparent" role="alert">
+  <strong>#{ color.capitalize }!</strong> This is a soft-#{ color } alert —check it out!
+</div>
+}
+end.join("\n") %>
+  <%= render partial: 'partials/example', locals: { id: 'soft-colors-backgroundless', code: code } %>
 
 </div>

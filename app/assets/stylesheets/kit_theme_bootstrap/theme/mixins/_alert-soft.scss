@@ -1,7 +1,5 @@
 @mixin alert-soft($color) {
-  color:            $color;
-  border-color:     $color;
-  background-color: rgba($color, 0.1);
+  @include soft($color);
 
   .alert-link {
     color: $color;

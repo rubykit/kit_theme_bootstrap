@@ -1,0 +1,7 @@
+@each $name, $color in $theme-colors {
+
+  .btn-ghost-#{ $name } {
+    @include btn-ghost($color);
+  }
+
+}
