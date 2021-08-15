@@ -1,0 +1,70 @@
+<div class="bd-intro ps-lg-4">
+  <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+    <a class="btn btn-sm btn-bd-light mb-2 mb-md-0" href="https://getbootstrap.com/docs/5.1/components/avatar/" target="_blank">View Bootstrap doc</a>
+    <h1 class="bd-title" id="content">Avatars</h1>
+  </div>
+</div>
+
+<div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
+  <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
+  <nav id="TableOfContents">
+    <ul>
+      <li>
+        <a href="#examples">Examples</a>
+        <ul>
+          <li><a href="#sizing">Sizing</a></li>
+          <li><a href="#shape">Shape</a></li>
+          <li><a href="#group">Group</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="bd-content ps-lg-4">
+
+  <h2 id="examples">Examples</h2>
+
+  <h3 id="sizing">Sizing</h3>
+
+<% code = breakpoints.reverse.map.with_index do |bp, idx|
+%{<span class="avatar avatar-#{ bp } rounded-circle d-inline-block me-3">
+  <img src="../#{ image_people[idx] }">
+</span>
+}
+end.join("\n") %>
+  <%= render partial: 'partials/example', locals: { id: 'sizing', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="shape">Shape</h3>
+
+<% code = ['', 'rounded-circle'].map.with_index do |type, idx|
+%{<span class="avatar avatar-xl #{ type } d-inline-block me-3">
+  <img src="../#{ image_people[idx + 5] }">
+</span>
+}
+end.join("\n") %>
+  <%= render partial: 'partials/example', locals: { id: 'shape', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="group">Group</h3>
+
+<% code = [
+  '<div class="avatar-group">',
+  (0..3).map do |idx|
+  %{<span class="avatar avatar-lg rounded-circle d-inline-block">
+    <img src="../#{ image_people[image_people.size - 1 - idx] }">
+  </span>
+  }
+  end.join("\n"),
+  '</div>',
+].join("\n") %>
+
+  <%= render partial: 'partials/example', locals: { id: 'group', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+
+</div>

@@ -41,6 +41,17 @@ $theme-colors: map-merge($theme-colors, $kit-theme-colors);
 $alert-padding-y: 0.75rem;
 $alert-padding-x: 1rem;
 
+// Avatar ----------------------------------------------------------------------
+
+$kit-avatar-sizes: (
+  xs:   24px,
+  sm:   36px,
+  md:   48px,
+  lg:   58px,
+  xl:   74px,
+  xxl: 100px
+) !default;
+
 // Buttons ---------------------------------------------------------------------
 
 $kit-btn-box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);

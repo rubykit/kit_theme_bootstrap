@@ -1,0 +1,62 @@
+// Source:  https://github.com/creativetimofficial/argon-design-system/blob/master/assets/scss/argon-design-system/avatar.scss
+// License: MIT https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md
+
+.avatar {
+  display:          inline-flex;
+  align-items:      center;
+  justify-content:  center;
+
+  font-size:        1rem;
+
+  color:            $white;
+  background-color: $gray-500;
+
+  border-radius:    $border-radius;
+
+  height:           map-get($kit-avatar-sizes, md);
+  width:            map-get($kit-avatar-sizes, md);
+
+  img {
+    max-width:     100%;
+    height:        100%;
+    object-fit:    cover;
+    border-radius: $border-radius;
+  }
+
+  &.rounded-circle {
+    img {
+      @extend .rounded-circle;
+    }
+  }
+
+  + .avatar-content {
+    display:     inline-block;
+    margin-left: .75rem;
+  }
+}
+
+// Avatar size variations
+
+@each $breakpoint-name, $size in $kit-avatar-sizes {
+  .avatar-#{ $breakpoint-name } {
+    width:  $size;
+    height: $size;
+  }
+}
+
+
+.avatar-group {
+  .avatar {
+    position: relative;
+    z-index:  2;
+    border:   2px solid $card-bg;
+
+    &:hover {
+      z-index: 3;
+    }
+  }
+
+  .avatar + .avatar {
+    margin-left: -1rem;
+  }
+}
