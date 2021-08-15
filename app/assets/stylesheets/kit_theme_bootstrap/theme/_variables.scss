@@ -52,6 +52,10 @@ $kit-avatar-sizes: (
   xxl: 100px
 ) !default;
 
+$kit-avatar-border-width: map-get($border-widths, 4);
+$kit-avatar-border-type:  solid !default;
+$kit-avatar-border-color: $white !default;
+
 // Buttons ---------------------------------------------------------------------
 
 $kit-btn-box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);

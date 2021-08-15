@@ -13,7 +13,7 @@
 
   <div class="card-body tab-content">
     <div class="tab-pane fade show active" id="<%= id %>-tabs-content-preview" role="tabpanel" aria-labelledby="<%= id %>-tabs-link-preview">
-      <div class="bd-example mt-0 border-0">
+      <div class="bd-example mt-0 border-0 <%= local_assigns.fetch(:preview_class, nil) %>">
         <%= raw code %>
       </div>
     </div>

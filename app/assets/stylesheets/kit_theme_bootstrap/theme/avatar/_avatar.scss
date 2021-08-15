@@ -44,6 +44,7 @@
   }
 }
 
+// Avatar group
 
 .avatar-group {
   .avatar {
@@ -59,4 +60,10 @@
   .avatar + .avatar {
     margin-left: -1rem;
   }
+}
+
+// Avatar border
+
+.avatar-border {
+  border: $kit-avatar-border-width $kit-avatar-border-type $kit-avatar-border-color;
 }
