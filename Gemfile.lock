@@ -8,25 +8,24 @@ GIT
 
 GIT
   remote: https://github.com/rubykit/kit
-  revision: 0b389dea2fcfeda8b49a5358f58de850b5e0cdec
+  revision: f7af7ad34d93d734a1625ca81d33f8e2bb745558
   glob: libraries/kit-dummy-app-container/*.gemspec
   specs:
     kit-dummy-app-container (0.1.0)
       rails (~> 6.1)
-
-GIT
-  remote: https://github.com/rubykit/kit
-  revision: 0b389dea2fcfeda8b49a5358f58de850b5e0cdec
-  glob: libraries/kit-app-container/*.gemspec
-  specs:
-    kit-app-container (0.1.0)
-      activerecord-nulldb-adapter
-      rails_event_store
       sidekiq
 
 GIT
   remote: https://github.com/rubykit/kit
-  revision: 0b389dea2fcfeda8b49a5358f58de850b5e0cdec
+  revision: f7af7ad34d93d734a1625ca81d33f8e2bb745558
+  glob: libraries/kit-app-container/*.gemspec
+  specs:
+    kit-app-container (0.1.0)
+      activerecord-nulldb-adapter
+
+GIT
+  remote: https://github.com/rubykit/kit
+  revision: f7af7ad34d93d734a1625ca81d33f8e2bb745558
   glob: libraries/kit-active-admin/*.gemspec
   specs:
     kit-active-admin (0.1.0)
@@ -35,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/rubykit/kit
-  revision: 0b389dea2fcfeda8b49a5358f58de850b5e0cdec
+  revision: f7af7ad34d93d734a1625ca81d33f8e2bb745558
   glob: libraries/kit-dotenv/*.gemspec
   specs:
     kit-dotenv (0.1.0)
@@ -131,8 +130,6 @@ GEM
     activerecord (6.1.4)
       activemodel (= 6.1.4)
       activesupport (= 6.1.4)
-    activerecord-import (1.2.0)
-      activerecord (>= 3.2)
     activerecord-nulldb-adapter (0.7.0)
       activerecord (>= 5.2.0, < 6.3)
     activestorage (6.1.4)
@@ -150,14 +147,9 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    aggregate_root (2.2.0)
-      ruby2_keywords
-      ruby_event_store (= 2.2.0)
     arbre (1.4.0)
       activesupport (>= 3.0.0, < 6.2)
       ruby2_keywords (>= 0.0.2, < 1.0)
-    arkency-command_bus (0.4.0)
-      thread_safe
     ast (2.4.2)
     autoprefixer-rails (10.3.1.0)
       execjs (~> 2)
@@ -231,8 +223,6 @@ GEM
     mini_mime (1.1.0)
     minitest (5.14.4)
     msgpack (1.4.2)
-    mustermann (1.1.1)
-      ruby2_keywords (~> 0.0.1)
     nio4r (2.5.8)
     nokogiri (1.12.3-arm64-darwin)
       racc (~> 1.4)
@@ -253,8 +243,6 @@ GEM
     rack (2.2.3)
     rack-mini-profiler (2.3.2)
       rack (>= 1.2.0)
-    rack-protection (2.1.0)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.1.4)
@@ -277,19 +265,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
-    rails_event_store (2.2.0)
-      activejob (>= 3.0)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      aggregate_root (= 2.2.0)
-      arkency-command_bus (>= 0.4)
-      rails_event_store_active_record (= 2.2.0)
-      ruby_event_store (= 2.2.0)
-      ruby_event_store-browser (= 2.2.0)
-    rails_event_store_active_record (2.2.0)
-      activerecord (>= 5.0)
-      activerecord-import (>= 1.0.2)
-      ruby_event_store (= 2.2.0)
     railties (6.1.4)
       actionpack (= 6.1.4)
       activesupport (= 6.1.4)
@@ -325,11 +300,6 @@ GEM
       parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
-    ruby_event_store (2.2.0)
-      concurrent-ruby (~> 1.0, >= 1.1.6)
-    ruby_event_store-browser (2.2.0)
-      ruby_event_store (= 2.2.0)
-      sinatra
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -350,11 +320,6 @@ GEM
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
-    sinatra (2.1.0)
-      mustermann (~> 1.0)
-      rack (~> 2.2)
-      rack-protection (= 2.1.0)
-      tilt (~> 2.0)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -371,7 +336,6 @@ GEM
       sprockets (>= 3.0.0)
     temple (0.8.2)
     thor (1.1.0)
-    thread_safe (0.3.6)
     tilt (2.0.10)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
