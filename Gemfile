@@ -10,6 +10,7 @@ gemspec
 # Note: somehow having it in the gemspec is not enough?
 gem 'bootstrap', '~> 5.1'
 gem 'jquery-rails'
+gem 'active_link_to'
 
 gem 'puma', '~> 5.0'
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -22,6 +23,8 @@ gem 'kit-dotenv-rails',        git: 'https://github.com/rubykit/kit', glob: 'lib
 gem 'kit-app-container',       git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-app-container/*.gemspec'
 gem 'kit-dummy-app-container', git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-dummy-app-container/*.gemspec'
 
+gem 'view_component',          require: 'view_component/engine'
+
 group :development, :test do
   gem 'awesome_print', github: 'rubykit/awesome_print', branch: 'feature/custom-nesting'
 
@@ -31,8 +34,6 @@ group :development, :test do
 
   gem 'better_errors'
   gem 'binding_of_caller'
-
-  gem 'active_link_to'
 end
 
 group :development do

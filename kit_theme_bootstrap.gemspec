@@ -28,5 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'slim-rails'
   s.add_dependency 'bootstrap', '~> 5.1'
   s.add_dependency 'jquery-rails'
+  s.add_dependency 'view_component'
+  s.add_dependency 'active_link_to'
 
 end
