@@ -13,7 +13,6 @@ KIT_APP_PATHS['GEM_ASSETS']      = [
   File.expand_path('../spec/dummy/app/assets/images', __dir__),
   File.expand_path('../spec/dummy/app/assets/vendor', __dir__),
 ]
-KIT_APP_PATHS['GEM_MIGRATIONS']  = File.expand_path('../db/migrate', __dir__)
 
 KIT_APP_PATHS['GEM_SPEC_ROOT']   = File.expand_path('../spec/dummy', __dir__)
 KIT_APP_PATHS['GEM_SPEC_APP']    = File.expand_path('../spec/dummy/app', __dir__)
@@ -23,4 +22,13 @@ KIT_APP_PATHS['GEM_SPEC_VIEWS']  = File.expand_path('../spec/dummy/app/views', _
 
 KIT_APP_PATHS['GEM_SPEC_INITIALIZERS'] = [
   File.expand_path('../spec/dummy/config/initializers/assets.rb', __dir__),
+]
+
+KIT_APP_PATHS['RAILS_DEPENDENCIES'] = %w[
+  action_controller/railtie
+  action_view/railtie
+  active_job/railtie
+  action_text/engine
+  rails/test_unit/railtie
+  sprockets/railtie
 ]
