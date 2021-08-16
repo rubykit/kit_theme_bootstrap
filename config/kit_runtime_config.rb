@@ -28,7 +28,6 @@ KIT_APP_PATHS['RAILS_DEPENDENCIES'] = %w[
   action_controller/railtie
   action_view/railtie
   active_job/railtie
-  action_text/engine
   rails/test_unit/railtie
   sprockets/railtie
 ]
