@@ -35,7 +35,6 @@ $kit-theme-colors: (
 
 $theme-colors: map-merge($theme-colors, $kit-theme-colors);
 
-
 // Alerts ----------------------------------------------------------------------
 
 $alert-padding-y: 0.75rem;
@@ -100,3 +99,7 @@ $h6-font-size: $font-size-base * .875;
 // Typography ------------------------------------------------------------------
 
 $kit-letter-spacing: .03125rem;
+
+// FontAwesome -----------------------------------------------------------------
+
+$fa-font-path: 'kit_theme_bootstrap/vendor/fontawesome/5.15.4/webfonts';
