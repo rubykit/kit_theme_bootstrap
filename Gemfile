@@ -19,7 +19,6 @@ gem 'kit_rubocop_style',       git: 'https://github.com/rubykit/kit_rubocop_styl
 gem 'kit-dotenv',              git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-dotenv/*.gemspec'
 gem 'kit-dotenv-rails',        git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-dotenv/*.gemspec', require: 'kit/dotenv/rails-now'
 
-gem 'kit-active-admin',        git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-active-admin/*.gemspec', require: 'kit/active_admin' # DEV MODE
 gem 'kit-app-container',       git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-app-container/*.gemspec'
 gem 'kit-dummy-app-container', git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-dummy-app-container/*.gemspec'
 
