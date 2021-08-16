@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{ repo }.git" }
 
+
+if (version_ruby = (File.readlines(File.expand_path('.tool-versions', __dir__)).select { |el| el.start_with?('ruby') }[0] || '')&.split('ruby')[1]&.strip)
+  ruby version_ruby
+end
+
 gemspec
 
 # Note: somehow having it in the gemspec is not enough?
