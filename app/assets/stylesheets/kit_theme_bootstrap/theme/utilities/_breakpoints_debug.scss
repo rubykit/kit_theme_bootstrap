@@ -1,0 +1,28 @@
+// Display the current breakpoint when .debug is set on body.
+
+body.debug {
+  &::before {
+    position:         fixed;
+    top:              20px;
+    right:            0px;
+    z-index:          9999999;
+
+    content:          'xs';
+
+    background-color: $black;
+    color:            $white;
+
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    body.debug {
+      &::before {
+        content: "#{ $infix }";
+      }
+    }
+  }
+}
