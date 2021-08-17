@@ -11,7 +11,10 @@
       <li>
         <a href="#examples">Flagkit</a>
         <ul>
-          <li><a href="#flagkit-styles">Styles</a></li>
+          <li><a href="#flagkit-overview">Overview</a></li>
+          <li><a href="#flagkit-shapes">Shapes</a></li>
+          <li><a href="#flagkit-sizes">Sizes</a></li>
+          <li><a href="#flagkit-gradients">Gradients</a></li>
           <li><a href="#flagkit-flags">All flags</a></li>
         </ul>
       </li>
@@ -23,11 +26,11 @@
 
   <h2 id="flagkit">Flagkit</h2>
 
-  <p>Uses <a href="https://github.com/madebybowtie/FlagKit" target="_blank">FlagKit icons</a>. (<a href="https://flagpack.xyz/" target="_blank">FlagPack</a> is also a solid choice.)</p>
+  <p>Uses <a href="https://github.com/madebybowtie/FlagKit" target="_blank">FlagKit icons</a>. (<a href="https://flagpack.xyz/" target="_blank">FlagPack</a> is also a solid choice, some of the css effects come from there.)</p>
 
-  <h3 id="flagkit-styles">Styles</h3>
+  <h3 id="flagkit-overview">Overview</h3>
 
-<% code = join(['', 'fk-md', 'fk-lg'].map.with_index do |size, idx|
+<% code = join(['', 'fk-md', 'fk-lg', 'fk-xl'].map.with_index do |size, idx|
   [
     %{<div class='#{ idx > 0 ? 'mt-3' : '' }'>},
     ['', 'fk-rounded', 'fk-shadow', 'fk-rounded fk-shadow', 'fk-square', 'fk-square fk-rounded', 'fk-square fk-shadow', 'fk-square fk-rounded fk-shadow', 'fk-circle', 'fk-circle fk-shadow'].map do |type|
@@ -37,7 +40,46 @@
   ]
 end)
 %>
-  <%= render partial: 'partials/example', locals: { id: 'flagkit-styles', code: code } %>
+  <%= render partial: 'partials/example', locals: { id: 'flagkit-overview', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="flagkit-sizes">Sizes</h3>
+
+<% code = join(['', 'fk-md', 'fk-lg', 'fk-xl'].map.with_index do |size, idx|
+  %{<div class='#{ idx > 0 ? 'mt-3' : '' }'>
+  <span class="fk fk-country-is #{ size } fk-rounded fk-shadow"></span>
+  <span class="ms-2 font-monospace">.#{ size }</span>
+</div>}
+end)
+%>
+  <%= render partial: 'partials/example', locals: { id: 'flagkit-sizes', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="flagkit-shapes">Shapes</h3>
+
+<% code = join(['', 'fk-square', 'fk-circle'].map.with_index do |shape, idx|
+  %{<div class='#{ idx > 0 ? 'mt-3' : '' }'>
+  <span class="fk fk-country-is #{ shape } fk-lg fk-shadow"></span>
+  <span class="ms-2 font-monospace">.#{ shape }</span>
+</div>}
+end)
+%>
+  <%= render partial: 'partials/example', locals: { id: 'flagkit-shapes', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="flagkit-gradients">Gradients</h3>
+
+<% code = join(['', 'fk-linear-gradient', 'fk-diagonal-ripple', 'fk-circular-ripple'].map.with_index do |gradient, idx|
+  %{<div class='#{ idx > 0 ? 'mt-3' : '' }'>
+  <span class="fk fk-country-is #{ gradient } fk-xl fk-shadow fk-rounded"></span>
+  <span class="ms-2 font-monospace">.#{ gradient }</span>
+</div>}
+end)
+%>
+  <%= render partial: 'partials/example', locals: { id: 'flagkit-gradients', code: code } %>
 
   <hr class="h3-separator"> <!-- ------------------------------------------- -->
 
