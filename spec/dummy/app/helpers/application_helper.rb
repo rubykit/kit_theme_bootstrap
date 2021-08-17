@@ -158,7 +158,6 @@ module ApplicationHelper
       LA | Laos
       LB | Lebanon
       LC | St. Lucia
-      LGBT | Pride
       LI | Liechtenstein
       LK | Sri Lanka
       LR | Liberia
@@ -282,6 +281,7 @@ module ApplicationHelper
       ZA | South Africa
       ZM | Zambia
       ZW | Zimbabwe
+      PRIDE | Pride
     }.strip.split("\n").map { |el| el.strip.split(' | ') }.map { |(a, b)| [a.downcase, b]}
   end
 

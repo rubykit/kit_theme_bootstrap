@@ -22,7 +22,7 @@ $flagkit-countries: "ac", "ad", "ae", "af", "ag", "ai", "al", "am", "ao", "ar", 
   "gg", "gh", "gi", "gl", "gm", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gw",
   "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "im", "in", "io",
   "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km",
-  "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "lgbt", "li", "lk", "lr",
+  "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr",
   "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "me", "mf", "mg", "mh", "mk",
   "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mv", "mw", "mx",
   "my", "mz", "na", "nc", "ne", "nf", "ng", "ni", "nl", "no", "np", "nr", "nu",
@@ -88,12 +88,20 @@ $flagkit-countries: "ac", "ad", "ae", "af", "ag", "ai", "al", "am", "ao", "ar", 
   }
 }
 
+@mixin flag($name) {
+  background-image: asset-url("#{ $flagkit-asset-path }/4x3/#{ $name }.svg");
+
+  &.fk-square, &.fk-circle {
+    background-image: asset-url("#{ $flagkit-asset-path }/1x1/#{ $name }.svg");
+  }
+}
+
 @each $country in $flagkit-countries {
   .fk.fk-country-#{ $country } {
-    background-image: asset-url("#{ $flagkit-asset-path }/4x3/#{ $country }.svg");
-
-    &.fk-square, &.fk-circle {
-      background-image: asset-url("#{ $flagkit-asset-path }/1x1/#{ $country }.svg");
-    }
+    @include flag($country);
   }
+}
+
+.fk.fk-pride {
+  @include flag('lgbt');
 }
