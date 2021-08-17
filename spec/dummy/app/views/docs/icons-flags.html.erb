@@ -1,0 +1,57 @@
+<div class="bd-intro ps-lg-4">
+  <div class="d-md-flex align-items-center justify-content-between">
+    <h1 class="bd-title" id="content">Flags icons</h1>
+  </div>
+</div>
+
+<div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
+  <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
+  <nav id="TableOfContents">
+    <ul>
+      <li>
+        <a href="#examples">Flagkit</a>
+        <ul>
+          <li><a href="#flagkit-styles">Styles</a></li>
+          <li><a href="#flagkit-flags">All flags</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="bd-content ps-lg-4">
+
+  <h2 id="flagkit">Flagkit</h2>
+
+  <p>From <a href="https://github.com/madebybowtie/FlagKit" target="_blank">FlagKit icons</a></p>
+
+  <h3 id="flagkit-styles">Styles</h3>
+
+<% code = join(['', 'fk-md', 'fk-lg'].map.with_index do |size, idx|
+  [
+    %{<div class='#{ idx > 0 ? 'mt-3' : '' }'>},
+    ['', 'fk-rounded', 'fk-shadow', 'fk-rounded fk-shadow', 'fk-square', 'fk-square fk-rounded', 'fk-square fk-shadow', 'fk-square fk-rounded fk-shadow', 'fk-circle', 'fk-circle fk-shadow'].map do |type|
+      %{  <span class="fk fk-country-is #{ size } #{ type } me-2"></span>}
+    end,
+    "</div>",
+  ]
+end)
+%>
+  <%= render partial: 'partials/example', locals: { id: 'flagkit-flags', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="flagkit-flags">All flags</h3>
+
+<% code = join(flagkit_countries.map.with_index do |(code, name), idx|
+  %{<div class='d-flex #{ idx > 0 ? 'mt-3' : '' }'>
+  <span class="fk fk-country-#{ code } fk-md fk-rounded fk-shadow mb-1"></span>
+  <span class="ms-2 font-monospace">.fk-country-#{ code.downcase }</span>
+  <span class="flex-grow-1 text-end font-monospace">#{ name }</span>
+</div>}
+end) %>
+  <%= render partial: 'partials/example', locals: { id: 'flagkit-flags', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+</div>

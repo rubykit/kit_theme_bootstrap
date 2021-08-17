@@ -1,0 +1,99 @@
+// Inspired from https://github.com/jackiboy/flagpack
+
+@mixin flagkit-size($size, $type: '4x3') {
+  line-height: $size;
+  @if $type == '1x1' {
+    width: $size;
+  } @else {
+    width: (4 / 3) * $size;
+  }
+}
+
+$flagkit-size: 1em !default;
+$flagkit-shadow: 0 10px 10px -5px rgba(14, 16, 20, 0.1) !default;
+
+$flagkit-countries: "ac", "ad", "ae", "af", "ag", "ai", "al", "am", "ao", "ar", "as",
+  "at", "au", "aw", "ax", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi",
+  "bj", "bl", "bm", "bn", "bo", "bq", "br", "bs", "bt", "bv", "bw", "by", "bz",
+  "ca", "cc", "cd", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr",
+  "cu", "cv", "cw", "cx", "cy", "cz", "de", "dj", "dk", "dm", "do", "dz", "ec",
+  "ee", "eg", "eh", "er", "es", "et", "eu", "fi", "fj", "fk", "fm", "fo", "fr",
+  "ga", "gb-eng", "gb-nir", "gb-sct", "gb-wls", "gb-zet", "gb", "gd", "ge", "gf",
+  "gg", "gh", "gi", "gl", "gm", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gw",
+  "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "im", "in", "io",
+  "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km",
+  "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "lgbt", "li", "lk", "lr",
+  "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "me", "mf", "mg", "mh", "mk",
+  "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mv", "mw", "mx",
+  "my", "mz", "na", "nc", "ne", "nf", "ng", "ni", "nl", "no", "np", "nr", "nu",
+  "nz", "om", "pa", "pe", "pf", "pg", "ph", "pk", "pl", "pm", "pn", "pr", "ps",
+  "pt", "pw", "py", "qa", "re", "ro", "rs", "ru", "rw", "sa", "sb", "sc", "sd",
+  "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "ss", "st",
+  "sv", "sx", "sy", "sz", "ta", "tc", "td", "tf", "tg", "th", "tj", "tk", "tl",
+  "tm", "tn", "to", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "um", "us", "uy",
+  "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "xk", "ye", "yt",
+  "za", "zm", "zw" !default;
+
+
+.fk {
+  position: relative;
+  display: inline-block;
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  &:before {
+    content: "\00a0";
+  }
+
+  @include flagkit-size($flagkit-size);
+
+  &.fk-square, &.fk-circle {
+    @include flagkit-size($flagkit-size, "1x1");
+  }
+
+  &.fk-rounded {
+    border-radius: ($flagkit-size / 6);
+  }
+
+  &.fk-md {
+    @include flagkit-size($flagkit-size * 1.5);
+
+    &.fk-square, &.fk-circle {
+      @include flagkit-size($flagkit-size * 1.5, "1x1");
+    }
+
+    &.fk-rounded {
+      border-radius: ($flagkit-size / 4);
+    }
+  }
+
+  &.fk-lg {
+    @include flagkit-size($flagkit-size * 2);
+
+    &.fk-square, &.fk-circle {
+      @include flagkit-size($flagkit-size * 2, "1x1");
+    }
+
+    &.fk-rounded {
+      border-radius: ($flagkit-size / 4);
+    }
+  }
+
+  &.fk-shadow {
+    box-shadow: $flagkit-shadow;
+  }
+
+  &.fk-circle {
+    border-radius: 50%;
+  }
+}
+
+@each $country in $flagkit-countries {
+  .fk.fk-country-#{ $country } {
+    background-image: asset-url("#{ $flagkit-asset-path }/4x3/#{ $country }.svg");
+
+    &.fk-square, &.fk-circle {
+      background-image: asset-url("#{ $flagkit-asset-path }/1x1/#{ $country }.svg");
+    }
+  }
+}
