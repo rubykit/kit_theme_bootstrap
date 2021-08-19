@@ -1,0 +1,36 @@
+@mixin flagkit-flag-size($size, $type: '4x3') {
+  line-height: $size;
+  @if $type == '1x1' {
+    width: $size;
+  } @else {
+    width: (4 / 3) * $size;
+  }
+}
+
+@mixin flagkit-size($size) {
+  @include flagkit-flag-size($size);
+
+  &.fk-square, &.fk-circle {
+    @include flagkit-flag-size($size, "1x1");
+  }
+}
+
+@mixin flagkit-background($name) {
+  background-image: asset-url("#{ $flagkit-asset-path }/4x3/#{ $name }.svg");
+
+  &.fk-square, &.fk-circle {
+    background-image: asset-url("#{ $flagkit-asset-path }/1x1/#{ $name }.svg");
+  }
+}
+
+@mixin flagkit-gradient {
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+    mix-blend-mode: overlay;
+    box-sizing: border-box;
+  }
+}

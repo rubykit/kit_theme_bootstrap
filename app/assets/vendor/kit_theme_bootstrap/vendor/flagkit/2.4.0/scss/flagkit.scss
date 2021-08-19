@@ -1,52 +1,7 @@
-// Inspired from https://github.com/jackiboy/flagpack
+// Ref: inspired from https://github.com/jackiboy/flagpack
 
-@mixin flagkit-size($size, $type: '4x3') {
-  line-height: $size;
-  @if $type == '1x1' {
-    width: $size;
-  } @else {
-    width: (4 / 3) * $size;
-  }
-}
-
-@mixin flagkit-gradient {
-  &::before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display: block;
-    mix-blend-mode: overlay;
-    box-sizing: border-box;
-  }
-}
-
-$flagkit-size: 1em !default;
-$flagkit-shadow: 0 10px 10px -5px rgba(14, 16, 20, 0.1) !default;
-$flagkit-border-radius: $flagkit-size / 4;
-
-$flagkit-countries: "ac", "ad", "ae", "af", "ag", "ai", "al", "am", "ao", "ar", "as",
-  "at", "au", "aw", "ax", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi",
-  "bj", "bl", "bm", "bn", "bo", "bq", "br", "bs", "bt", "bv", "bw", "by", "bz",
-  "ca", "cc", "cd", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr",
-  "cu", "cv", "cw", "cx", "cy", "cz", "de", "dj", "dk", "dm", "do", "dz", "ec",
-  "ee", "eg", "eh", "er", "es", "et", "eu", "fi", "fj", "fk", "fm", "fo", "fr",
-  "ga", "gb-eng", "gb-nir", "gb-sct", "gb-wls", "gb-zet", "gb", "gd", "ge", "gf",
-  "gg", "gh", "gi", "gl", "gm", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gw",
-  "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "im", "in", "io",
-  "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km",
-  "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr",
-  "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "me", "mf", "mg", "mh", "mk",
-  "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mv", "mw", "mx",
-  "my", "mz", "na", "nc", "ne", "nf", "ng", "ni", "nl", "no", "np", "nr", "nu",
-  "nz", "om", "pa", "pe", "pf", "pg", "ph", "pk", "pl", "pm", "pn", "pr", "ps",
-  "pt", "pw", "py", "qa", "re", "ro", "rs", "ru", "rw", "sa", "sb", "sc", "sd",
-  "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "ss", "st",
-  "sv", "sx", "sy", "sz", "ta", "tc", "td", "tf", "tg", "th", "tj", "tk", "tl",
-  "tm", "tn", "to", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "um", "us", "uy",
-  "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "xk", "ye", "yt",
-  "za", "zm", "zw" !default;
-
+@import "./variables";
+@import "./mixins";
 
 .fk {
   position: relative;
@@ -60,36 +15,8 @@ $flagkit-countries: "ac", "ad", "ae", "af", "ag", "ai", "al", "am", "ao", "ar", 
 
   @include flagkit-size($flagkit-size);
 
-  &.fk-square, &.fk-circle {
-    @include flagkit-size($flagkit-size, "1x1");
-  }
-
   &.fk-rounded {
     border-radius: $flagkit-border-radius;
-  }
-
-  &.fk-md {
-    @include flagkit-size($flagkit-size * 1.5);
-
-    &.fk-square, &.fk-circle {
-      @include flagkit-size($flagkit-size * 1.5, "1x1");
-    }
-  }
-
-  &.fk-lg {
-    @include flagkit-size($flagkit-size * 2);
-
-    &.fk-square, &.fk-circle {
-      @include flagkit-size($flagkit-size * 2, "1x1");
-    }
-  }
-
-  &.fk-xl {
-    @include flagkit-size($flagkit-size * 3);
-
-    &.fk-square, &.fk-circle {
-      @include flagkit-size($flagkit-size * 3, "1x1");
-    }
   }
 
   &.fk-shadow {
@@ -122,20 +49,18 @@ $flagkit-countries: "ac", "ad", "ae", "af", "ag", "ai", "al", "am", "ao", "ar", 
   }
 }
 
-@mixin flag($name) {
-  background-image: asset-url("#{ $flagkit-asset-path }/4x3/#{ $name }.svg");
-
-  &.fk-square, &.fk-circle {
-    background-image: asset-url("#{ $flagkit-asset-path }/1x1/#{ $name }.svg");
+@each $name, $value in $flagkit-sizes {
+  .fk.fk-#{ $name } {
+    @include flagkit-size($value);
   }
 }
 
-@each $country in $flagkit-countries {
+@each $country in $flagkit-countries-list {
   .fk.fk-country-#{ $country } {
-    @include flag($country);
+    @include flagkit-background($country);
   }
 }
 
 .fk.fk-pride {
-  @include flag('lgbt');
+  @include flagkit-background('lgbt');
 }
