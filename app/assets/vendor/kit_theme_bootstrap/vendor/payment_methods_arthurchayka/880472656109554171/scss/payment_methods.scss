@@ -1,0 +1,44 @@
+// Ref: https://www.figma.com/community/file/880472656109554171
+// Ref: https://dribbble.com/shots/14578218-Payment-Methods-Figma-Community-File
+
+@import "./variables";
+@import "./mixins";
+
+.pm-ac {
+  position: relative;
+  display: inline-block;
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  &:after {
+    content: "\00a0";
+  }
+
+  @include pm-ac-size($pm-ac-size);
+
+  &.pm-ac-shadow {
+    box-shadow: $pm-ac-shadow;
+  }
+
+  &.pm-ac-card {
+    border-radius:    $pm-ac-radius;
+    background-color: #fafafa;
+    border:           1px solid #d9d9d9;
+  }
+}
+
+@each $name, $value in $pm-ac-sizes {
+  .pm-ac.pm-ac-#{ $name } {
+    @include pm-ac-size($value);
+  }
+}
+
+@each $pm-name in $pm-ac-list {
+  .pm-ac.pm-ac-name-#{ to-lower-case($pm-name) } {
+    background-image: asset-url("#{ $pm-ac-asset-path }/#{ $pm-name }.png");
+  }
+
+  .pm-ac.pm-ac-card.pm-ac-name-#{ to-lower-case($pm-name) } {
+    background-image: asset-url("#{ $pm-ac-asset-path }/#{ $pm-name }.png"), linear-gradient(#fefefe, #fafafa);
+  }
+}

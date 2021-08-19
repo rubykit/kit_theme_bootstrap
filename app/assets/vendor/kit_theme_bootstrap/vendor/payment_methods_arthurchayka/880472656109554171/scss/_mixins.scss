@@ -1,0 +1,4 @@
+@mixin pm-ac-size($size, $ratio: (35 / 24)) {
+  line-height: $size;
+  width:       $ratio * $size;
+}

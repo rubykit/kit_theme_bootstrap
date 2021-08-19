@@ -1,0 +1,68 @@
+<div class="bd-intro ps-lg-4">
+  <div class="d-md-flex align-items-center justify-content-between">
+    <h1 class="bd-title" id="content">Payment icons</h1>
+  </div>
+</div>
+
+<div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
+  <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
+  <nav id="TableOfContents">
+    <ul>
+      <li>
+        <a href="#payment-methods-icons">Payment methods</a>
+        <ul>
+          <li><a href="#payment-methods-icons-sizes">Sizes</a></li>
+          <li><a href="#payment-methods-icons-credit-cards">All icons</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="bd-content ps-lg-4">
+
+  <h2 id="payment-methods-icons">Payment Methods icons</h2>
+
+  <p>Uses exported <a href="https://dribbble.com/shots/14578218-Payment-Methods-Figma-Community-File" target="_blank">Payment methods icons</a> by <a href="https://dribbble.com/arthurchayka" target="_blank">Arthur Chayka</a>.</p>
+
+  <p>Note: payment icons sets are not that great. <a href="https://github.com/activemerchant/payment_icons" target="_blank">ActiveMerchant</a> has one of most complete collection if you are missing some particular icon.</p>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="payment-methods-icons-sizes">Sizes</h3>
+
+<% code = join(['pm-ac-xs', 'pm-ac-sm', 'pm-ac-md', 'pm-ac-lg', 'pm-ac-xl'].map.with_index do |size, idx|
+  %{<div class='#{ idx > 0 ? 'mt-3' : '' }'>
+  <span class="pm-ac pm-ac-name-visa #{ size }"></span>
+  <span class="ms-2 font-monospace">.#{ size }</span>
+</div>}
+end)
+%>
+  <%= render partial: 'partials/example', locals: { id: 'payment-methods-icons-sizes', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="payment-methods-icons-styles">Styles</h3>
+<% code = join(['', 'pm-ac-card', 'pm-ac-card pm-ac-shadow'].map.with_index do |style, idx|
+  %{<div class='#{ idx > 0 ? 'mt-3' : '' }'>
+  <span class="pm-ac pm-ac-name-visa pm-ac-lg #{ style }"></span>
+  <span class="ms-2 font-monospace">.#{ style }</span>
+</div>}
+end) %>
+  <%= render partial: 'partials/example', locals: { id: 'payment-methods-icons-shapes', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+  <h3 id="payment-methods-icons-credit-cards">All icons</h3>
+
+<% code = join(payment_methods_arthurchayka.map.with_index do |code, idx|
+  %{<div class='d-flex #{ idx > 0 ? 'mt-3' : '' }'>
+  <span class="pm-ac pm-ac-name-#{ code } pm-ac-lg pm-ac-card"></span>
+  <span class="ms-2 font-monospace align-self-center">.#{ code }</span>
+</div>}
+end) %>
+  <%= render partial: 'partials/example', locals: { id: 'payment-methods-icons-credit-cards', code: code } %>
+
+  <hr class="h3-separator"> <!-- ------------------------------------------- -->
+
+</div>

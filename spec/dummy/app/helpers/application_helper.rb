@@ -285,6 +285,50 @@ module ApplicationHelper
     }.strip.split("\n").map { |el| el.strip.split(' | ') }.map { |(a, b)| [a.downcase, b]}
   end
 
+  def payment_methods_arthurchayka
+    @payment_methods_arthurchayka ||= %{
+      Affirm
+      Alipay
+      AmazonPay
+      Amex
+      ApplePay
+      Bancontact
+      Bitcoin
+      BitcoinCash
+      Bitpay
+      Citadele
+      DinersClub
+      Discover
+      Elo
+      Etherium
+      Forbrugsforeningen
+      Giropay
+      GooglePay
+      Ideal
+      Interac
+      JCB
+      Klarna
+      Lightcoin
+      Maestro
+      Mastercard
+      PayPal
+      Payoneer
+      Paysafe
+      Qiwi
+      SEPA
+      ShopPay
+      Skrill
+      Sofort
+      Stripe
+      UnionPay
+      Verifone
+      Visa
+      WeChat
+      Webmoney
+      Yandex
+    }.strip.split("\n").map { |el| el.strip.downcase }
+  end
+
   def join(el)
     if el.is_a?(Array)
       el.map { |sub_el| join(sub_el) }.join("\n")

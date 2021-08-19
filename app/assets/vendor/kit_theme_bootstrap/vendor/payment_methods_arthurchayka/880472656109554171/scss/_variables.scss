@@ -1,0 +1,54 @@
+$pm-ac-size: 1em !default;
+
+$pm-ac-sizes: (
+  xs: $pm-ac-size * 0.8,
+  sm: $pm-ac-size,
+  md: $pm-ac-size * 2,
+  lg: $pm-ac-size * 3,
+  xl: $pm-ac-size * 4
+) !default;
+
+$pm-ac-shadow: 0 10px 5px -5px rgba(14, 16, 20, 0.05) !default;
+
+$pm-ac-radius: $pm-ac-size / 2 !default;
+
+$pm-ac-list:
+  "Affirm",
+  "Alipay",
+  "AmazonPay",
+  "Amex",
+  "ApplePay",
+  "Bancontact",
+  "Bitcoin",
+  "BitcoinCash",
+  "Bitpay",
+  "Citadele",
+  "DinersClub",
+  "Discover",
+  "Elo",
+  "Etherium",
+  "Forbrugsforeningen",
+  "Giropay",
+  "GooglePay",
+  "Ideal",
+  "Interac",
+  "JCB",
+  "Klarna",
+  "Lightcoin",
+  "Maestro",
+  "Mastercard",
+  "PayPal",
+  "Payoneer",
+  "Paysafe",
+  "Qiwi",
+  "SEPA",
+  "ShopPay",
+  "Skrill",
+  "Sofort",
+  "Stripe",
+  "UnionPay",
+  "Verifone",
+  "Visa",
+  "WeChat",
+  "Webmoney",
+  "Yandex" !default;
