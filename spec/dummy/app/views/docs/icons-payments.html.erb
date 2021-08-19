@@ -58,7 +58,7 @@ end) %>
 <% code = join(payment_methods_arthurchayka.map.with_index do |code, idx|
   %{<div class='d-flex #{ idx > 0 ? 'mt-3' : '' }'>
   <span class="pm-ac pm-ac-name-#{ code } pm-ac-lg pm-ac-card"></span>
-  <span class="ms-2 font-monospace align-self-center">.#{ code }</span>
+  <span class="ms-2 font-monospace align-self-center">.pm-ac-name-#{ code }</span>
 </div>}
 end) %>
   <%= render partial: 'partials/example', locals: { id: 'payment-methods-icons-credit-cards', code: code } %>
