@@ -15,6 +15,8 @@ gem 'active_link_to'
 gem 'puma', '~> 5.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 
+gem 'slim'
+
 gem 'kit_rubocop_style',       git: 'https://github.com/rubykit/kit_rubocop_style', branch: 'main'
 
 gem 'kit-dotenv',              git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-dotenv/*.gemspec'
@@ -24,6 +26,8 @@ gem 'kit-app-container',       git: 'https://github.com/rubykit/kit', glob: 'lib
 gem 'kit-dummy-app-container', git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-dummy-app-container/*.gemspec'
 
 gem 'view_component',          require: 'view_component/engine'
+
+gem 'faker'
 
 group :development, :test do
   gem 'awesome_print', github: 'rubykit/awesome_print', branch: 'feature/custom-nesting'

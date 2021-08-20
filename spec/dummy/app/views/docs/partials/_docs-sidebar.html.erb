@@ -25,6 +25,16 @@
     </li>
 
    <li class="mb-1">
+      <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#libraries-collapse" aria-expanded="true">Libraries</button>
+
+      <div class="collapse show" id="libraries-collapse" style="">
+        <ul class="list-unstyled fw-normal pb-1 small">
+          <li><%= active_link_to 'Select2', '/docs/select2', class: 'd-inline-flex align-items-center rounded' %></li>
+        </ul>
+      </div>
+    </li>
+
+   <li class="mb-1">
       <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#content-collapse" aria-expanded="true">Content</button>
 
       <div class="collapse show" id="content-collapse" style="">

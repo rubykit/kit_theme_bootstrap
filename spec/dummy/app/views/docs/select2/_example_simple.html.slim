@@ -1,0 +1,8 @@
+ruby:
+  names = 10.times.map { Faker::Name.name }
+
+select.form-control data-control="select2" data-placeholder="Select member"
+  <option label="empty"></option>
+  - names.each.with_index do |name, idx|
+    option value=idx
+      = name
