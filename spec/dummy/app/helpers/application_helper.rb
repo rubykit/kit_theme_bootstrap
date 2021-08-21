@@ -18,7 +18,8 @@ module ApplicationHelper
     str.split(' ').map { |t| ".#{ t }" }.join(' ')
   end
 
-  def theme_colors
+  # Bootstrap theme colors
+  def theme_colors_bootstrap
     %w(primary secondary success danger warning info light dark)
   end
 
