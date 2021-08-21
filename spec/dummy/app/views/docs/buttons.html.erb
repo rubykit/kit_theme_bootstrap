@@ -43,7 +43,7 @@ end.join("\n") %>
 
 <% code = ['', 'border-transparent'].map.with_index do |type, idx|
   ["<div class=\"#{ (idx > 0) ? 'mt-3' : '' }\">",
-  theme_colors_bootstrap.map do |color|
+  bootstrap_theme_colors.map do |color|
 %{<button type='button' class="btn btn-soft-#{ color } #{ type } me-2">
   #{ color.capitalize }
 </button>

@@ -41,7 +41,7 @@ end.join("\n") %>
 
 <% code = ['', 'bg-transparent', 'border-transparent'].map.with_index do |type, idx|
   ["<div class=\"#{ (idx > 0) ? 'mt-3' : '' }\">",
-  theme_colors_bootstrap.map do |color|
+  bootstrap_theme_colors.map do |color|
 %{<span class="badge badge-soft-#{ color } #{ type } text-cap rounded-pill me-2">
   #{ color }
 </span>

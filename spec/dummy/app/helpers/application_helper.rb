@@ -19,15 +19,16 @@ module ApplicationHelper
   end
 
   # Bootstrap theme colors
-  def theme_colors_bootstrap
+  def bootstrap_theme_colors
     %w(primary secondary success danger warning info light dark)
   end
 
-  def breakpoints
+  # Bootstrap breakpoints
+  def bootstrap_breakpoints
     %w(xs sm md lg xl xxl)
   end
 
-
+  # Some example avatars assets
   def image_people
     @image_people ||= %w(
       1-pexels-brett-sayles-3118694.jpg
