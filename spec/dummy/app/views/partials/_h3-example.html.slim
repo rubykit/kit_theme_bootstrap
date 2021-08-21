@@ -4,6 +4,6 @@ h3 id=h3_id
   = name
 
 - code = render partial: file
-= render partial: 'partials/example', locals: { id: h3_id, code: code }
+= render partial: 'partials/example', locals: { id: h3_id, code: code, preview_class: (defined?(preview_class) ? preview_class : nil) }
 
 hr.h3-separator

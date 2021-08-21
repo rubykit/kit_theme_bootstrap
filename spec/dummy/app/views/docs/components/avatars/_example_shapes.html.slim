@@ -1,0 +1,5 @@
+- types = ['', 'rounded-circle']
+
+- types.each.with_index do |type, idx|
+  span.avatar.d-inline-block.me-3 class="avatar-xl #{ type }"
+    img src="../../#{ image_people[idx] }"

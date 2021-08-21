@@ -1,0 +1,11 @@
+= render partial: 'partials/doc-header', locals: { name: 'Avatars', description: 'Styling for avatars.' }
+
+.bd-content.ps-lg-4
+
+  h2#examples
+    | Examples
+
+  = render partial: 'partials/h3-example', locals: { name: 'Sizing', file: 'docs/components/avatars/example_sizing' }
+  = render partial: 'partials/h3-example', locals: { name: 'Shapes', file: 'docs/components/avatars/example_shapes' }
+  = render partial: 'partials/h3-example', locals: { name: 'Group',  file: 'docs/components/avatars/example_group' }
+  = render partial: 'partials/h3-example', locals: { name: 'Border', file: 'docs/components/avatars/example_border', preview_class: 'bg-dark' }
