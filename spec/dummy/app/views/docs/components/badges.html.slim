@@ -1,54 +1,9 @@
-<div class="bd-intro ps-lg-4">
-  <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-    <a class="btn btn-sm btn-bd-light mb-2 mb-md-0" href="https://getbootstrap.com/docs/5.1/components/badge/" target="_blank">View Bootstrap doc</a>
-    <h1 class="bd-title" id="content">Badges</h1>
-  </div>
-</div>
+= render partial: 'partials/doc-header', locals: { name: 'Badges', description: 'Extra styling for bootstrap badges.', link: { name: 'View Bootstrap doc', url: 'https://getbootstrap.com/docs/5.1/components/badge' } }
 
-<div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
-  <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
-  <nav id="TableOfContents">
-    <ul>
-      <li>
-        <a href="#examples">Examples</a>
-        <ul>
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#soft">Soft badges</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-</div>
+.bd-content.ps-lg-4
 
-<div class="bd-content ps-lg-4">
+  h2#examples
+    | Examples
 
-  <h2 id="examples">Examples</h2>
-
-  <h3 id="overview">Overview</h3>
-
-<% code = ['bg-primary', 'badge-soft-primary', 'badge-soft-primary bg-transparent', 'badge-soft-primary border-transparent'].map.with_index do |type, idx|
-%{<div class='#{ idx > 0 ? 'mt-3' : '' }'>
-  <span class="badge #{ type } text-cap rounded-pill">Example</span>
-  <span class='ms-2 font-monospace'>#{ type.split(' ').map { |t| ".#{ t }" }.join(' ') }</span>
-</div>
-}
-end.join("\n") %>
-  <%= render partial: 'partials/example', locals: { id: 'overview', code: code } %>
-
-  <hr class="h3-separator"> <!-- ------------------------------------------- -->
-
-  <h3 id="soft">Soft badges</h3>
-
-<% code = ['', 'bg-transparent', 'border-transparent'].map.with_index do |type, idx|
-  ["<div class=\"#{ (idx > 0) ? 'mt-3' : '' }\">",
-  bootstrap_theme_colors.map do |color|
-%{<span class="badge badge-soft-#{ color } #{ type } text-cap rounded-pill me-2">
-  #{ color }
-</span>
-}
-  end.join("\n"),
-  '</div>'].join("\n")
-end.join("\n") %>
-  <%= render partial: 'partials/example', locals: { id: 'soft', code: code } %>
-
-</div>
+  = render partial: 'partials/h3-example', locals: { name: 'Overview',    file: 'docs/components/badges/example_overview' }
+  = render partial: 'partials/h3-example', locals: { name: 'Soft colors', file: 'docs/components/badges/example_soft' }
