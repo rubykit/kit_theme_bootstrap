@@ -3,9 +3,12 @@
     h1#content.bd-title
       = name
 
-    - if defined?(link)
-      a.btn.btn-sm.btn-bd-light.mb-2.mb-md-0 href=link[:url] target="_blank"
-        = link[:name]
+    div
+      - if defined?(link)
+        - link = [link] if !link.is_a?(::Array)
+        - link.each do |data|
+          a.btn.btn-sm.btn-bd-light.mb-2.mb-md-0 href=data[:url] target="_blank"
+            = data[:name]
 
   - if defined?(description)
     p.bd-lead
