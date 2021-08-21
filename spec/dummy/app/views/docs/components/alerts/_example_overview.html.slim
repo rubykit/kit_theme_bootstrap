@@ -1,0 +1,7 @@
+- types = ['alert-primary', 'alert-soft-primary', 'alert-soft-primary border-transparent', 'alert-soft-primary bg-transparent']
+
+- types.each.with_index do |type, idx|
+  .alert class=type role="alert"
+    strong Alert!
+    span.ms-2.font-monospace
+      = to_css(type)

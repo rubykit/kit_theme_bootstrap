@@ -1,0 +1,14 @@
+= render partial: 'partials/doc-header', locals: { name: 'Alerts', description: 'Extra styling for bootstrap alerts.', link: { name: 'View Bootstrap doc', url: 'https://getbootstrap.com/docs/5.1/components/alerts' } }
+
+.bd-content.ps-lg-4
+
+  h2#examples
+    | Examples
+
+  = render partial: 'partials/h3-example', locals: { name: 'Overview', file: 'docs/components/alerts/example_overview' }
+
+  = render partial: 'partials/h3-example', locals: { name: 'Soft colors', file: 'docs/components/alerts/example_soft_colors' }
+
+  = render partial: 'partials/h3-example', locals: { name: 'Soft colors (borderless)', file: 'docs/components/alerts/example_soft_colors_borderless' }
+
+  = render partial: 'partials/h3-example', locals: { name: 'Soft colors (backgroundless)', file: 'docs/components/alerts/example_soft_colors_backgroundless' }
