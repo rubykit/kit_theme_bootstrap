@@ -1,0 +1,8 @@
+- types = ['bg-primary', 'badge-soft-primary', 'badge-soft-primary bg-transparent', 'badge-soft-primary border-transparent']
+
+- types.each.with_index do |type, idx|
+  div class=(idx > 0 ? 'mt-3' : '')
+    span.badge.text-cap.rounded-pill class=type
+      | Example
+    span.ms-2.font-monospace
+      = to_css(type)
