@@ -1,5 +1,17 @@
 module ApplicationHelper
 
+  # Element ID helper - creates ids for html elements
+  def element_id(obj, prefix = nil, suffix = nil)
+    obj = [obj] if !obj.is_a?(::Array)
+
+    name = obj
+      .map { |el| el.to_s.downcase }
+      .compact
+      .join('-')
+
+    [prefix, name, suffix].compact.join('-')
+  end
+
   def theme_colors
     %w(primary secondary success danger warning info light dark)
   end

@@ -1,0 +1,23 @@
+.card.card-tabs
+
+  .card-header
+
+    ul.nav id="#{ id }-tabs-nav" role="tablist"
+      li.nav-item
+        a.nav-link.active id="#{ id }-tabs-link-preview" aria-controls="#{ id }-tabs-content-preview" aria-selected="true" data-bs-toggle="pill" href="##{ id }-tabs-content-preview" role="tab"
+          | Preview
+      li.nav-item
+        a.nav-link id="#{ id }-tabs-link-source" aria-controls="#{ id }-tabs-content-source" aria-selected="true" data-bs-toggle="pill" href="##{ id }-tabs-content-source"  role="tab"
+          | Source
+
+  .card-body.tab-content
+
+    .tab-pane.fade.show.active aria-labelledby="#{ id }-tabs-link-preview" id="#{ id }-tabs-content-preview" role="tabpanel"
+      .bd-example.mt-0.border-0 class=local_assigns.fetch(:preview_class, nil)
+        = code
+
+    .tab-pane.fade.show aria-labelledby="#{ id }-tabs-link-source" id="#{ id }-tabs-content-source" role="tabpanel"
+      .highlight.mb-0
+        pre tabindex="0"
+          code.language-html.m-0.p-0 data-lang="html" style="background: transparent;"
+            = raw CGI.escapeHTML(code)

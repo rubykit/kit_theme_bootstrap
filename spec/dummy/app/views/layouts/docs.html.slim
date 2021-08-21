@@ -1,0 +1,15 @@
+doctype html
+
+html lang="en"
+  = render partial: 'partials/head'
+
+  body
+    = render partial: 'partials/docs-navbar'
+
+    .container-xxl.my-md-4.bd-layout
+
+      aside.bd-sidebar
+        = render partial: 'docs/partials/docs-sidebar'
+
+      main.bd-main.order-1
+        = yield

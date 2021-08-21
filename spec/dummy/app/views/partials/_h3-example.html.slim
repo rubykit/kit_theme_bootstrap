@@ -1,0 +1,9 @@
+- h3_id = defined?(id) ? id : element_id(name)
+
+h3 id=h3_id
+  = name
+
+- code = render partial: file
+= render partial: 'partials/example', locals: { id: h3_id, code: code }
+
+hr.h3-separator

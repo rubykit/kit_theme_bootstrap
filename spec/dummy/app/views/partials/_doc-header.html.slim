@@ -1,0 +1,12 @@
+.bd-intro.ps-lg-4
+  .d-md-flex.align-items-center.justify-content-between
+    h1#content.bd-title
+      = name
+
+    - if defined?(link)
+      a.btn.btn-sm.btn-bd-light.mb-2.mb-md-0 href=link[:url] target="_blank"
+        = link[:name]
+
+  - if defined?(description)
+    p.bd-lead
+      = description
