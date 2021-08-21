@@ -1,0 +1,9 @@
+- flagkit_countries.each.with_index do |(code, name), idx|
+  - code = code == 'pride' ? 'fk-pride' : "fk-country-#{ code }"
+
+  .d-flex class=(idx > 0 ? 'mt-3' : '')
+    span.fk.fk-md.fk-rounded.fk-shadow.mb-1 class=code
+    span.ms-2.font-monospace
+      = to_css(code)
+    span.flex-grow-1.text-end.font-monospace
+      = name

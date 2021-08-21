@@ -1,0 +1,7 @@
+- gradients = ['', 'fk-linear-gradient', 'fk-diagonal-ripple', 'fk-circular-ripple']
+
+- gradients.each.with_index do |gradient, idx|
+  div class=(idx > 0 ? 'mt-3' : '')
+    span.fk.fk-country-is.fk-xl.fk-shadow.fk-rounded class=gradient
+    span.ms-2.font-monospace
+      = to_css(gradient)

@@ -1,0 +1,7 @@
+- shapes = ['', 'fk-square', 'fk-circle']
+
+- shapes.each.with_index do |shape, idx|
+  div class=(idx > 0 ? 'mt-3' : '')
+    span.fk.fk-country-is.fk-lg.fk-shadow class=shape
+    span.ms-2.font-monospace
+      = to_css(shape)
