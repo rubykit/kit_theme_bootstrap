@@ -1,0 +1,30 @@
+= render partial: 'partials/doc-header', locals: { name: 'Buttons', description: 'Extra styling for bootstrap buttons.', link: { name: 'View Bootstrap doc', url: 'https://getbootstrap.com/docs/5.1/components/buttons' } }
+
+.bd-content.ps-lg-4
+
+  h2#examples
+    | Examples
+
+  = render partial: 'partials/h3-example', locals: { name: 'Overview',    file: 'docs/components/buttons/example_overview' }
+
+  = render layout:  'partials/h3-example', locals: { name: 'Soft colors', file: 'docs/components/buttons/example_soft' } do
+    p
+      ' Note: unlike
+      a href="docs/components/alerts"
+        ' alerts
+      ' or
+      a href="docs/components/buttons"
+        ' buttons
+      ' where the
+      code
+        ' outline
+      ' effect can be achieved with
+      code
+        ' .soft-* .border-transparent
+      ' classes,
+      code
+        ' .btn-outline
+      ' is it's own class since the active (hover) behaviour is different.
+      code
+        ' .btn-outline-*
+      | classes are default Bootstrap anyway.

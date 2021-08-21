@@ -1,0 +1,7 @@
+- types = ['', 'border-transparent']
+
+- types.each.with_index do |type, idx|
+  div class=(idx > 0 ? 'mt-3' : '')
+    - bootstrap_theme_colors.map do |color|
+      button.btn.me-2 class="btn-soft-#{ color } #{ type }" type='button'
+        = color.capitalize
