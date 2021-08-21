@@ -1,0 +1,5 @@
+- payment_methods_arthurchayka.each.with_index do |code, idx|
+  .d-flex class=(idx > 0 ? 'mt-3' : '')
+    span.pm-ac.pm-ac-lg.pm-ac-card class="pm-ac-name-#{ code }"
+    span.ms-2.font-monospace.align-self-center
+      | .pm-ac-name-#{ code }

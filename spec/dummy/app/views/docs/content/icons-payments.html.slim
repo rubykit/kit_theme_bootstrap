@@ -1,0 +1,14 @@
+= render partial: 'partials/doc-header', locals: { name: 'Payments icons', description: 'Visual assets for payments methods.' }
+
+.bd-content.ps-lg-4
+
+  h2#payment-methods
+    | PaymentMethods by ArthurChayka
+
+  <p>Uses exported <a href="https://dribbble.com/shots/14578218-Payment-Methods-Figma-Community-File" target="_blank">Payment methods icons</a> by <a href="https://dribbble.com/arthurchayka" target="_blank">Arthur Chayka</a>.</p>
+
+  <p>Note: available payment icons sets are not that great. <a href="https://github.com/activemerchant/payment_icons" target="_blank">ActiveMerchant</a> has one of most complete collection if you are missing some particular icon.</p>
+
+  = render partial: 'partials/h3-example', locals: { name: 'Sizes',     file: 'docs/content/icons-payments/example_sizes' }
+  = render partial: 'partials/h3-example', locals: { name: 'Styles',    file: 'docs/content/icons-payments/example_styles' }
+  = render partial: 'partials/h3-example', locals: { name: 'All icons', file: 'docs/content/icons-payments/example_icons' }
