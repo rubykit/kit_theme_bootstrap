@@ -5,11 +5,17 @@ module ApplicationHelper
     obj = [obj] if !obj.is_a?(::Array)
 
     name = obj
-      .map { |el| el.to_s.downcase }
+      .map { |el| el.to_s.downcase.gsub(/[^0-9a-z ]/i, '').gsub(' ', '-').strip }
       .compact
       .join('-')
 
     [prefix, name, suffix].compact.join('-')
+  end
+
+  # Convert class tag to the css notation.
+  # Ex: to_css("a b") == ".a .b"
+  def to_css(str)
+    str.split(' ').map { |t| ".#{ t }" }.join(' ')
   end
 
   def theme_colors
