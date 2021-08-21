@@ -1,31 +1,14 @@
-<div class="bd-intro ps-lg-4">
-  <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-    <a class="btn btn-sm btn-bd-light mb-2 mb-md-0" href="https://getbootstrap.com/docs/5.1/utilities/spacing/" target="_blank">View Bootstrap doc</a>
-    <h1 class="bd-title" id="content">Spacing</h1>
-  </div>
-</div>
+= render partial: 'partials/doc-header', locals: { name: 'Spacing', link: { name: 'View Bootstrap doc', url: 'https://getbootstrap.com/docs/5.1/utilities/spacing' } }
 
-<div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
-  <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
-  <nav id="TableOfContents">
-    <ul>
-      <li>
-        <a href="#content-spacing">Content spacing</a>
-        <ul>
-          <li><a href="#notation">Notation</a></li>
-          <li><a href="#examples">Examples</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-</div>
+.bd-content.ps-lg-4
 
-<div class="bd-content ps-lg-4">
-  <h2 id="content-spacing">Content spacing</h2>
+  h2#content-spacing
+    | Content spacing
 
   <p>On top of the <code>p-</code> and <code>m-</code> bootstrap helpers, Kit provides extra vertical spacing helpers to delimitate content blocks.</p>
 
-  <h3 id="notation">Notation</h3>
+  h3#content-spacing-notation
+    | Notation
 
   <p>The classes are named using the format <code>sp{sides}-{size}</code> for <code>xs</code> and <code>sp{sides}-{breakpoint}-{size}</code> for <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>xxl</code>.</p>
 
@@ -47,14 +30,4 @@
     <li><code>7</code> - for classes that set the <code>padding</code> to <code>$spacer * 14</code></li>
   </ul>
 
-  <h3 id="examples">Examples</h3>
-
-<% code = (1..7).map do |idx|
-%{<div class="sp-#{ idx } #{ (idx % 2 == 0) ? 'bg-info' : 'bg-warning' } text-white px-3">
-  <code>.sp-#{ idx }</code>
-</div>
-}
-end.join("\n") %>
-  <%= render partial: 'partials/example', locals: { id: 'examples', code: code } %>
-
-</div>
+  = render partial: 'partials/h3-example', locals: { name: 'Examples', file: 'docs/utilities/spacing/example_content_spacing' }
