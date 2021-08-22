@@ -2,6 +2,11 @@
 
 .bd-content.ps-lg-4
 
+  h2#usage
+    | Usage
+
+  = render partial: 'partials/source', locals: { code: render(partial: 'docs/libraries/select2/usage') }
+
   h2#examples
     | Examples
 

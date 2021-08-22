@@ -17,7 +17,4 @@
         = code
 
     .tab-pane.fade.show aria-labelledby="#{ id }-tabs-link-source" id="#{ id }-tabs-content-source" role="tabpanel"
-      .highlight.mb-0
-        pre tabindex="0"
-          code.language-html.m-0.p-0 data-lang="html" style="background: transparent;"
-            = raw CGI.escapeHTML(code)
+      = render partial: 'partials/source', locals: { code: code }
