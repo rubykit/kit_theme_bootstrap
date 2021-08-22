@@ -23,3 +23,8 @@ Rails.application.config.assets.precompile += %w[kit_theme_bootstrap_dummy_manif
 if Rails.application.config&.public_file_server&.enabled == true
   Rails.application.middleware.insert_before(::ActionDispatch::Static, ::ActionDispatch::Static, File.expand_path('../../public', __dir__))
 end
+
+# Attempting to fix sassc segfaults
+Rails.application.config.assets.configure do |env|
+  env.export_concurrent = false
+end
