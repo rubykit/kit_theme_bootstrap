@@ -2,4 +2,7 @@
 
 .bd-content.ps-lg-4
 
-  = render partial: 'partials/h3-example', locals: { name: 'Examples', file: 'docs/utilities/text/example_text_cap' }
+  = render partial: 'partials/h3-example', locals: { name: 'Text-cap', file: 'docs/utilities/text/example_text_cap' }
+
+  = render layout: 'partials/h3-example', locals: { name: 'Font-emoji', file: 'docs/utilities/text/example_font_emoji' } do
+    p Set the font to the system emoji font.
