@@ -1,0 +1,29 @@
+ruby:
+  list = %w[
+    alipay
+    amazon-pay
+    apple-pay
+    bitcoin
+    btc
+    cc-amazon-pay
+    cc-amex
+    cc-apple-pay
+    cc-diners-club
+    cc-discover
+    cc-jcb
+    cc-mastercard
+    cc-paypal
+    cc-stripe
+    cc-visa
+    google-pay
+    google-wallet
+    paypal
+    stripe
+    stripe-s
+  ]
+
+- list.each.with_index do |name, idx|
+  .d-flex class=(idx > 0 ? 'mt-3' : '')
+    i.fab.fa-2x class="fa-#{ name }"
+    span.ms-2.font-monospace.align-self-center
+      | .fab.fa-#{ name }
