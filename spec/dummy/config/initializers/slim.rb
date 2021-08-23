@@ -21,6 +21,7 @@ Slim::Engine.set_default_options indent_tags: %w(
   hgroup
   hr
   html
+  i
   li
   link
   meta

@@ -1,0 +1,18 @@
+= render partial: 'partials/doc-header', locals: { name: 'FontAwesome', description: '1608 Free icons', link: [{ name: 'View Fontawesome doc', url: 'https://select2.org' }, { name: 'View Icons reference', url: 'https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free' }] }
+
+.bd-content.ps-lg-4
+
+  h2#usage
+    | Usage
+
+  p To use an icon you need to specify:
+  ul
+    li The style: <code>.fas</code> for solid icons, <code>.far</code> for regular icons
+    li The icon name, prefixed by <code>fa-</code>
+
+  = render partial: 'partials/source', locals: { code: render(partial: 'docs/content/icons_fontawesome/usage') }
+
+  h2#examples
+    | Examples
+
+  = render partial: 'partials/h3-example', locals: { name: 'Overview',  file: 'docs/content/icons_fontawesome/example_overview' }

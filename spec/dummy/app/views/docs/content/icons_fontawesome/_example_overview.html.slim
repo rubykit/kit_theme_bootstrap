@@ -1,0 +1,20 @@
+ruby:
+  list = [
+    'fas fa-xs  fa-thumbs-up    text-success',
+    'far fa-sm  fa-times-circle text-danger',
+    'fas fa-md  fa-tag',
+    'far fa-lg  fa-comment      text-info',
+    'fas fa-1x  fa-link         text-primary',
+    'fas fa-2x  fa-copy         text-secondary',
+    'fas fa-3x  fa-heart        text-danger',
+    'fas fa-4x  fa-search       text-primary',
+    'far fa-5x  fa-lightbulb',
+    'fas fa-6x  fa-plus-circle  text-success  ',
+    #'fas fa-7x  fa-redo         text-secondary',
+    #'fas fa-8x  fa-sort-down    ',
+    'fas fa-9x  fa-times        text-danger',
+    'far fa-10x fa-star         text-warning',
+  ]
+
+- list.reverse.each do |css_class|
+  i.me-2 class=css_class.squish
