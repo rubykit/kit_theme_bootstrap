@@ -6,7 +6,8 @@ h3 id=h3_id
 - if block_given?
   = yield
 
-- code = render partial: file
-= render partial: 'partials/example', locals: { id: h3_id, code: code, preview_class: (defined?(preview_class) ? preview_class : nil) }
+- if defined?(file)
+  - code = render partial: file
+  = render partial: 'partials/example', locals: { id: h3_id, code: code, preview_class: (defined?(preview_class) ? preview_class : nil) }
 
 hr.h3-separator

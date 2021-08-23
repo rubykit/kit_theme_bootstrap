@@ -3,7 +3,7 @@ doctype html
 html lang="en"
   = render partial: 'partials/head'
 
-  body
+  body class=content_for(:body_class)
     = render partial: 'partials/docs-navbar'
 
     .container-xxl.my-md-4.bd-layout

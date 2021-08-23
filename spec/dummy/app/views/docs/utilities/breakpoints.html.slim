@@ -1,0 +1,11 @@
+= render partial: 'partials/doc-header', locals: { name: 'Breakpoints', description: 'Extra breakpoints helpers.', link: { name: 'View Bootstrap doc', url: 'https://getbootstrap.com/docs/5.0/layout/breakpoints' } }
+
+.bd-content.ps-lg-4
+  ruby:
+    content_for :body_class do
+      'debug'
+    end
+
+  = render layout: 'partials/h3-example', locals: { name: 'Breakpoints debug' } do
+    <p>When adding <code>.debug</code> to the page <code>body</code>, the current breakpoint is displayed on the top right corner of the page.</p>
+    <p>It is currently set on this page.</p>
