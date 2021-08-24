@@ -31,6 +31,8 @@ $(function () {
     e.trigger.setAttribute('data-bs-original-title', 'Copied!')
     tooltipBtn.show()
 
+    console.log("HERE", e.trigger, e.trigger.getAttribute('data-bs-original-title'));
+
     e.trigger.setAttribute('data-bs-original-title', 'Copy to clipboard')
     e.clearSelection()
   })

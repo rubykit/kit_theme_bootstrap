@@ -1,0 +1,16 @@
+= render partial: 'partials/doc-header', locals: { name: 'Clipboard', description: 'Copy text to clipboard', link: { name: 'View clipboard.js doc', url: 'https://clipboardjs.com/' } }
+
+.bd-content.ps-lg-4
+
+  h2#usage
+    | Usage
+
+  = render partial: 'partials/source', locals: { code: render(partial: 'docs/libraries/clipboard/usage') }
+
+  h2#examples
+    | Examples
+
+  = render layout: 'partials/h3-example', locals: { name: 'Overview', file: 'docs/libraries/clipboard/example_simple' } do
+    p The content of the attribute <code>data-clipboard-text</code> get copied.
+
+
