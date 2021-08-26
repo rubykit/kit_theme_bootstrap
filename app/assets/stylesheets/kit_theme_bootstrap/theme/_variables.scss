@@ -1,44 +1,9 @@
-//$blue: #008aff;
-
-$font-family-sans-serif: 'Source Sans Pro', #{ $font-family-sans-serif };
-$font-family-monospace:  'Source Code Pro', #{ $font-family-monospace };
-
-// Colors: https://codepen.io/rodriguesmarcos/pen/CapmI
-
-$kit_color_grass:             #8CC152;
-$kit_color_grass_light:       #A0D468;
-
-$kit_color_sunflower:         #FCBB42;
-$kit_color_sunflower_light:   #FFCE54;
-
-$kit_color_aqua:              #3BAFDA;
-$kit_color_aqua_light:        #4FC1E9;
-
-$kit_color_bluejeans:         #4A89DC;
-$kit_color_bluejeans_light:   #5D9CEC;
-
-$kit_color_grapefruit:        #DA4453;
-$kit_color_grapefruit_light:  #ED5565;
-
-$kit_color_bittersweet:       #E9573F;
-$kit_color_bittersweet_light: #FC6E51;
-
-$primary: #1565C0;
-
-$kit-theme-colors: (
-  "primary": $primary,
-  "success": $kit_color_grass,
-  "warning": $kit_color_sunflower_light,
-  "danger":  $kit_color_grapefruit,
-  "info":    $kit_color_aqua,
-);
-
-$theme-colors: map-merge($theme-colors, $kit-theme-colors);
+@import './utilities/colors';
 
 // Alerts ----------------------------------------------------------------------
 
-$alert-padding-y: 0.75rem;
-$alert-padding-x: 1rem;
+$alert-padding-y: 0.75rem !default;
+$alert-padding-x: 1rem    !default;
 
 // Avatar ----------------------------------------------------------------------
 
@@ -51,63 +16,89 @@ $kit-avatar-sizes: (
   xxl: 100px
 ) !default;
 
-$kit-avatar-border-width: map-get($border-widths, 4);
+$kit-avatar-border-width: 4px   !default; // Bootstrap's default $border-widths[4]
 $kit-avatar-border-type:  solid !default;
-$kit-avatar-border-color: $white !default;
+$kit-avatar-border-color: #fff  !default;
+
+// Border radius ---------------------------------------------------------------
+
+$border-radius:    .3rem  !default;
+$border-radius-sm: .25rem !default;
+$border-radius-lg: .75rem !default;
 
 // Buttons ---------------------------------------------------------------------
 
-$kit-btn-box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+$kit-btn-box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08) !default;
+
+// Colors
+
+$primary: #1565C0 !default;
+
+// Fonts -----------------------------------------------------------------------
+
+$font-family-sans-serif: 'Source Sans Pro', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-monospace:  'Source Code Pro', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
 // Links -----------------------------------------------------------------------
 
-$link-decoration: none;
+$link-decoration: none !default;
 
 // Spacing ---------------------------------------------------------------------
 
+$spacer: 1rem !default; // Bootstrap's default
+
+$spacers: () !default;
+
 $spacers: map-merge((
-  5:  ($spacer * 2),
-  6:  ($spacer * 2.5),
-  7:  ($spacer * 3),
-  8:  ($spacer * 3.5),
-  9:  ($spacer * 4),
-  10: ($spacer * 4.5),
-  11: ($spacer * 5),
-  12: ($spacer * 5.5),
+  0:  0,
+  1:  $spacer * .25,
+  2:  $spacer * .5,
+  3:  $spacer,
+  4:  $spacer * 1.5,
+  5:  $spacer * 2,
+  6:  $spacer * 2.5,
+  7:  $spacer * 3,
+  8:  $spacer * 3.5,
+  9:  $spacer * 4,
+  10: $spacer * 4.5,
+  11: $spacer * 5,
+  12: $spacer * 5.5,
 ), $spacers);
 
 $kit-spacers-content: (
   0: 0,
-  1: ($spacer * 2),
-  2: ($spacer * 4),
-  3: ($spacer * 6),
-  4: ($spacer * 8),
-  5: ($spacer * 10),
-  6: ($spacer * 12),
-  7: ($spacer * 14),
-);
+  1: $spacer * 2,
+  2: $spacer * 4,
+  3: $spacer * 6,
+  4: $spacer * 8,
+  5: $spacer * 10,
+  6: $spacer * 12,
+  7: $spacer * 14,
+) !default;
 
 // Text ------------------------------------------------------------------------
 
-$h1-font-size: $font-size-base * 2.5;
-$h2-font-size: $font-size-base * 1.875;
-$h3-font-size: $font-size-base * 1.3125;
-$h4-font-size: $font-size-base * 1.125;
-$h5-font-size: $font-size-base * 1;
-$h6-font-size: $font-size-base * .875;
+$font-size-base: 1rem !default; // Bootstrap's default
+
+$h1-font-size: $font-size-base * 2.5    !default;
+$h2-font-size: $font-size-base * 1.875  !default;
+$h3-font-size: $font-size-base * 1.3125 !default;
+$h4-font-size: $font-size-base * 1.125  !default;
+$h5-font-size: $font-size-base * 1      !default;
+$h6-font-size: $font-size-base * .875   !default;
 
 // Typography ------------------------------------------------------------------
 
-$kit-letter-spacing: .03125rem;
+$kit-letter-spacing: .03125rem !default;
 
 // FontAwesome -----------------------------------------------------------------
 
-$fa-font-path: 'kit_theme_bootstrap/vendor/fontawesome/5.15.4/webfonts';
+$fa-font-path: 'kit_theme_bootstrap/vendor/fontawesome/5.15.4/webfonts' !default;
 
 // Flagkit ---------------------------------------------------------------------
 
-$flagkit-asset-path: 'kit_theme_bootstrap/vendor/flagkit/2.4.0/img';
+$flagkit-asset-path: 'kit_theme_bootstrap/vendor/flagkit/2.4.0/img' !default;
 
 // Payment Methods -------------------------------------------------------------
 
-$pm-ac-asset-path: 'kit_theme_bootstrap/vendor/payment_methods_arthurchayka/880472656109554171/img';
+$pm-ac-asset-path: 'kit_theme_bootstrap/vendor/payment_methods_arthurchayka/880472656109554171/img' !default;
