@@ -28,11 +28,16 @@ $border-radius-lg: .75rem !default;
 
 // Buttons ---------------------------------------------------------------------
 
-$kit-btn-box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08) !default;
+$kit-btn-box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
+                     0 3px  6px rgba(0,   0,  0, 0.08) !default;
 
-// Colors
+// Colors ----------------------------------------------------------------------
 
-$primary: #1565C0 !default;
+$primary: $kit-colors-flattastic-bluejeans !default;
+$success: $kit-colors-flattastic_grass !default;
+$info:    $kit-colors-flattastic_aqua !default;
+$warning: $kit-colors-flattastic_sunflower_light !default;
+$danger:  $kit-colors-flattastic_grapefruit !default;
 
 // Fonts -----------------------------------------------------------------------
 
