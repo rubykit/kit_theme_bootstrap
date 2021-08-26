@@ -1,8 +1,21 @@
-- types = ['btn-primary', 'btn-outline-primary', 'btn-soft-primary', 'btn-soft-primary border-transparent', 'btn-ghost-primary', 'btn-link link-primary']
+ruby:
+  types = [
+    { css: 'btn-link link-primary', classic: true },
+    { css: 'btn-primary', classic: true },
+    { css: 'btn-outline-primary', classic: true },
+    { css: 'btn-soft-primary' },
+    { css: 'btn-soft-primary border-transparent' },
+    { css: 'btn-ghost-primary' },
+    { css: 'btn-pill btn-primary' },
+    { css: 'btn-pill btn-outline-primary' },
+    { css: 'btn-pill btn-soft-primary' },
+    { css: 'btn-pill btn-soft-primary border-transparent' },
+    { css: 'btn-pill btn-ghost-primary' },
+  ]
 
 - types.each.with_index do |type, idx|
-  div class=(idx > 0 ? 'mt-3' : '')
-    button.btn class=type type='button'
+  .example-line class=(type[:classic] ? 'classic-bootstrap' : '')
+    button.btn class=type[:css] type='button'
       | Example button
     span.ms-2.font-monospace
-      = to_css(type)
+      = to_css(type[:css])
