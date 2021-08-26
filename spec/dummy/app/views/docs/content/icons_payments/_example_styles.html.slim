@@ -1,7 +1,7 @@
 - styles = ['', 'pm-ac-card', 'pm-ac-card pm-ac-shadow']
 
-- styles.each.with_index do |style, idx|
-  div class=(idx > 0 ? 'mt-3' : '')
+- styles.each do |style|
+  .example-line
     span.pm-ac.pm-ac-name-visa.pm-ac-lg class=style
     span.ms-2.font-monospace
       = to_css(style)

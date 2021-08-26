@@ -1,7 +1,7 @@
 - sizes = ['', 'fk-md', 'fk-lg', 'fk-xl']
 - types = ['', 'fk-rounded', 'fk-shadow', 'fk-rounded fk-shadow', 'fk-square', 'fk-square fk-rounded', 'fk-square fk-shadow', 'fk-square fk-rounded fk-shadow', 'fk-circle', 'fk-circle fk-shadow']
 
-- sizes.each.with_index do |size, idx|
-  div class=(idx > 0 ? 'mt-3' : '')
+- sizes.each do |size|
+  .example-line
     - types.each do |type|
       span.fk.fk-country-is.me-2 class="#{ size } #{ type }"

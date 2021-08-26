@@ -1,7 +1,7 @@
 - sizes = ['', 'fk-md', 'fk-lg', 'fk-xl']
 
-- sizes.each.with_index do |size, idx|
-  div class=(idx > 0 ? 'mt-3' : '')
+- sizes.each do |size|
+  .example-line
     span.fk.fk-country-is.fk-rounded.fk-shadow class=size
     span.ms-2.font-monospace
       = to_css(size)

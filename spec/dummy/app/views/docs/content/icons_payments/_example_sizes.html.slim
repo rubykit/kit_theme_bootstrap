@@ -1,7 +1,7 @@
 - sizes = ['pm-ac-xs', 'pm-ac-sm', 'pm-ac-md', 'pm-ac-lg', 'pm-ac-xl']
 
-- sizes.each.with_index do |size, idx|
-  div class=(idx > 0 ? 'mt-3' : '')
+- sizes.each do |size|
+  .example-line
     span.pm-ac.pm-ac-name-visa class=size
     span.ms-2.font-monospace
       = to_css(size)
