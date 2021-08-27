@@ -16,14 +16,14 @@ $kit-avatar-sizes: (
   xxl: 100px
 ) !default;
 
-$kit-avatar-border-width: 4px   !default; // Bootstrap's default $border-widths[4]
+$kit-avatar-border-width: 3px   !default; // Bootstrap's default $border-widths[3]
 $kit-avatar-border-type:  solid !default;
 $kit-avatar-border-color: #fff  !default;
 
 // Border radius ---------------------------------------------------------------
 
-$border-radius:    .3rem  !default;
 $border-radius-sm: .25rem !default;
+$border-radius:    .40rem  !default;
 $border-radius-lg: .75rem !default;
 
 // Buttons ---------------------------------------------------------------------

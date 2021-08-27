@@ -14,7 +14,7 @@ ruby:
   ]
 
 - types.each.with_index do |type, idx|
-  .example-line class=(type[:classic] ? 'classic-bootstrap' : '')
+  .example-line class=(type[:classic] ? 'base-bootstrap' : '')
     button.btn class=type[:css] type='button'
       | Example button
     span.ms-2.font-monospace
