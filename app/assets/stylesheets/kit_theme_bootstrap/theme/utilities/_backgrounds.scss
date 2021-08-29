@@ -1,0 +1,16 @@
+$utilities-background-grays-colors: ();
+
+@each $key, $value in $grays {
+  $utilities-background-grays-colors: map-merge($utilities-background-grays-colors, (gray- + $key: $value));
+}
+
+$utility-background-grays: (
+  property: background-color,
+  class: bg,
+  local-vars: (
+    "bg-opacity": 1
+  ),
+  values: $utilities-background-grays-colors,
+);
+
+@include generate-utility($utility-background-grays, '');
