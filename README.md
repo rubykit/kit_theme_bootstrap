@@ -1,5 +1,5 @@
 <!--pp {} -->
-<img align="left" width="50" height="90" src="https://raw.githubusercontent.com/rubykit/kit/master/docs/assets/images/rubykit-framework-logo.svg">
+<img align="left" width="50" height="90" src="https://raw.githubusercontent.com/rubykit/kit_theme_bootstrap/main/app/assets/images/kit_theme_bootstrap/logo.kit_theme_bootstrap.svg">
 <!-- pp-->
 
 [KitThemeBootstrap]: https://github.com/rubykit/kit_theme_bootstrap
