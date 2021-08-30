@@ -1,0 +1,20 @@
+.nav-sm {
+  .nav-link {
+    font-size: $kit-nav-link-sm-font-size;
+    padding:   $kit-nav-link-sm-padding-y $kit-nav-link-sm-padding-x;
+  }
+}
+
+.nav-mx-0 {
+  .nav-link {
+    margin-left:  0;
+    margin-right: 0;
+  }
+}
+
+.nav-px-0 {
+  .nav-link {
+    padding-left:  0;
+    padding-right: 0;
+  }
+}
