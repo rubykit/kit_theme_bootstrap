@@ -1,3 +1,5 @@
+require_relative 'dependencies'
+
 module KitThemeBootstrap
   class Engine < ::Rails::Engine
 
