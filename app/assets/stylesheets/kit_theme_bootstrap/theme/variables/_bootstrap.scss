@@ -1,35 +1,18 @@
-@import './utilities/colors';
+// Variables to be declared BEFORE bootstrap variables (so that they take precedence.)
+// Downside: we cannot refer implictely to bootstrap default values.
+
+@import './colors';
 
 // Alerts ----------------------------------------------------------------------
 
 $alert-padding-y: 0.75rem !default;
 $alert-padding-x: 1rem    !default;
 
-// Avatar ----------------------------------------------------------------------
-
-$kit-avatar-sizes: (
-  xs:   24px,
-  sm:   36px,
-  md:   48px,
-  lg:   58px,
-  xl:   74px,
-  xxl: 100px
-) !default;
-
-$kit-avatar-border-width: 3px   !default; // Bootstrap's default $border-widths[3]
-$kit-avatar-border-type:  solid !default;
-$kit-avatar-border-color: #fff  !default;
-
 // Border radius ---------------------------------------------------------------
 
 $border-radius-sm: .25rem !default;
 $border-radius:    .40rem  !default;
 $border-radius-lg: .75rem !default;
-
-// Buttons ---------------------------------------------------------------------
-
-$kit-btn-box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
-                     0 3px  6px rgba(0,   0,  0, 0.08) !default;
 
 // Colors ----------------------------------------------------------------------
 
@@ -70,17 +53,6 @@ $spacers: map-merge((
   12: $spacer * 5.5,
 ), $spacers);
 
-$kit-spacers-content: (
-  0: 0,
-  1: $spacer * 2,
-  2: $spacer * 4,
-  3: $spacer * 6,
-  4: $spacer * 8,
-  5: $spacer * 10,
-  6: $spacer * 12,
-  7: $spacer * 14,
-) !default;
-
 // Text ------------------------------------------------------------------------
 
 $font-size-base: 1rem !default; // Bootstrap's default
@@ -91,19 +63,3 @@ $h3-font-size: $font-size-base * 1.3125 !default;
 $h4-font-size: $font-size-base * 1.125  !default;
 $h5-font-size: $font-size-base * 1      !default;
 $h6-font-size: $font-size-base * .875   !default;
-
-// Typography ------------------------------------------------------------------
-
-$kit-letter-spacing: .03125rem !default;
-
-// FontAwesome -----------------------------------------------------------------
-
-$fa-font-path: 'kit_theme_bootstrap/vendor/fontawesome/5.15.4/webfonts' !default;
-
-// Flagkit ---------------------------------------------------------------------
-
-$flagkit-asset-path: 'kit_theme_bootstrap/vendor/flagkit/2.4.0/img' !default;
-
-// Payment Methods -------------------------------------------------------------
-
-$pm-ac-asset-path: 'kit_theme_bootstrap/vendor/payment_methods_arthurchayka/880472656109554171/img' !default;

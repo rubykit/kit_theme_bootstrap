@@ -1,0 +1,61 @@
+// Kit variables go here, so that we can use bootstrap default values.
+
+// Avatar ----------------------------------------------------------------------
+
+$kit-avatar-sizes: (
+  xs:   24px,
+  sm:   36px,
+  md:   48px,
+  lg:   58px,
+  xl:   74px,
+  xxl: 100px
+) !default;
+
+$kit-avatar-border-width: 3px   !default; // Bootstrap's default $border-widths[3]
+$kit-avatar-border-type:  solid !default;
+$kit-avatar-border-color: #fff  !default;
+
+// Buttons ---------------------------------------------------------------------
+
+$kit-btn-box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
+                     0 3px  6px rgba(0,   0,  0, 0.08) !default;
+
+
+// Fonts -----------------------------------------------------------------------
+
+$kit-font-weight-semibold: 600;
+
+// Nav -------------------------------------------------------------------------
+
+$kit-nav-link-sm-font-size: $font-size-sm !default;
+$kit-nav-link-sm-padding-x: (if($navbar-padding-x == null, 0, $navbar-padding-x) / 2) !default;
+$kit-nav-link-sm-padding-y: (if($navbar-padding-y == null, 0, $navbar-padding-y) / 2) !default;
+
+// Spacing ---------------------------------------------------------------------
+
+$kit-spacers-content: (
+  0: 0,
+  1: $spacer * 2,
+  2: $spacer * 4,
+  3: $spacer * 6,
+  4: $spacer * 8,
+  5: $spacer * 10,
+  6: $spacer * 12,
+  7: $spacer * 14,
+) !default;
+
+// Typography ------------------------------------------------------------------
+
+$kit-letter-spacing: .03125rem !default;
+
+// FontAwesome -----------------------------------------------------------------
+
+$fa-font-path: 'kit_theme_bootstrap/vendor/fontawesome/5.15.4/webfonts' !default;
+
+// Flagkit ---------------------------------------------------------------------
+
+$flagkit-asset-path: 'kit_theme_bootstrap/vendor/flagkit/2.4.0/img' !default;
+
+// Payment Methods -------------------------------------------------------------
+
+$pm-ac-asset-path: 'kit_theme_bootstrap/vendor/payment_methods_arthurchayka/880472656109554171/img' !default;

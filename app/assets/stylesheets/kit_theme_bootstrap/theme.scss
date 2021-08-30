@@ -1,8 +1,9 @@
 @import 'bootstrap/functions';
 
 // Note: user variables would go here
-@import 'theme/variables';
+@import 'theme/variables/bootstrap';
 @import 'bootstrap/variables';
+@import 'theme/variables/kit';
 
 @import 'bootstrap';
 
