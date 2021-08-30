@@ -44,6 +44,18 @@ $kit-spacers-content: (
   7: $spacer * 14,
 ) !default;
 
+// Transitions -----------------------------------------------------------------
+
+$kit-transition-timing-0: 0s   !default;
+$kit-transition-timing-1: 0.1s !default;
+$kit-transition-timing-2: 0.2s !default;
+$kit-transition-timing-3: 0.3s !default;
+
+$kit-transition-function: ease-in-out !default;
+
+$kit-transition-3d-transform: translateY(2px);
+$kit-transition-zoom-scale:   1.05;
+
 // Typography ------------------------------------------------------------------
 
 $kit-letter-spacing: .03125rem !default;

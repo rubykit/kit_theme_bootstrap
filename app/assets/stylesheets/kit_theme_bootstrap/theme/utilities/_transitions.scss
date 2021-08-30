@@ -1,0 +1,22 @@
+.transition-hover-3d {
+  transition: all $kit-transition-timing-1 $kit-transition-function;
+
+  &:hover,
+  &:focus {
+    &:not(:disabled):not(.disabled) {
+      transform: $kit-transition-3d-transform;
+    }
+  }
+}
+
+.transition-hover-zoom {
+  transition: transform $kit-transition-timing-1;
+  transform:  scale(1);
+
+  &:hover,
+  &:focus {
+    &:not(:disabled):not(.disabled) {
+      transform: scale($kit-transition-zoom-scale);
+    }
+  }
+}
