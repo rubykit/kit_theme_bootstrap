@@ -1,0 +1,5 @@
+// Note: in Bootstrap 5.1 this is hardcoded in _utilities.scss so no way to override properly through a main variable map.
+
+.fw-semibold {
+  font-weight: $kit-font-weight-semibold;
+}
