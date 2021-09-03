@@ -20,11 +20,6 @@ KIT_APP_PATHS['GEM_SPEC_LIB']    = File.expand_path('../spec/dummy/lib', __dir__
 KIT_APP_PATHS['GEM_SPEC_ROUTES'] = File.expand_path('../spec/dummy/config/routes.rb', __dir__)
 KIT_APP_PATHS['GEM_SPEC_VIEWS']  = File.expand_path('../spec/dummy/app/views', __dir__)
 
-KIT_APP_PATHS['GEM_SPEC_INITIALIZERS'] = [
-  File.expand_path('../spec/dummy/config/initializers/assets.rb', __dir__),
-  File.expand_path('../spec/dummy/config/initializers/slim.rb', __dir__),
-]
-
 KIT_APP_PATHS['RAILS_DEPENDENCIES'] = %w[
   action_controller/railtie
   action_view/railtie
