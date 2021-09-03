@@ -8,7 +8,6 @@ body.debug {
     z-index:          9999999;
     padding:          2px 6px;
 
-    content:          'xs';
     font-family:      $font-family-code;
     font-size:        12px;
 
@@ -24,11 +23,17 @@ body.debug {
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    $min:  breakpoint-min($breakpoint, $grid-breakpoints);
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $max:  breakpoint-min($next, $grid-breakpoints);
+
+    $min: if($min == null, "0px", $min);
+    $max: if($max == null, "∞", $max);
 
     body.debug {
       &::before {
-        content: "#{ $infix }";
+        content: "#{ $breakpoint } | #{ $min } to #{ $max }";
       }
     }
   }
