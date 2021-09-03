@@ -1,0 +1,25 @@
+// Add pointer on labels when radio / checkboxes / select
+.form-check, .form-select {
+  &:hover, label:hover {
+    cursor: pointer;
+  }
+
+  label {
+    width: 100%;
+  }
+}
+
+// Stacked input group
+// `.input-group-vertical`         applies regardless of grid-brekpoints
+// `.input-group-vertical-md-down` applies downwards from `md` upper limit
+
+@include input-group-vertical('');
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $next: breakpoint-next($breakpoint, $grid-breakpoints);
+  $name: "-" + $breakpoint + "-down";
+
+  @include media-breakpoint-down($next) {
+    @include input-group-vertical($name);
+  }
+}

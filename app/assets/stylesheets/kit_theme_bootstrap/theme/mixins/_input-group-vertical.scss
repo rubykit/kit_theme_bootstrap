@@ -1,0 +1,27 @@
+@mixin input-group-vertical($name) {
+  .input-group-vertical#{$name} {
+    display: block;
+
+    > .form-control {
+      width: 100%;
+
+      &:first-child {
+        border-radius: $input-border-radius $input-border-radius 0 0 !important;
+      }
+
+      &:last-child {
+        border-radius: 0 0 $input-border-radius $input-border-radius !important;
+      }
+
+      &:not(:last-child):not(:first-child) {
+        border-radius: 0 !important;
+      }
+
+      + .form-control {
+        margin-top:  -$input-border-width !important;
+        margin-left: 0 !important;
+      }
+    }
+
+  }
+}
