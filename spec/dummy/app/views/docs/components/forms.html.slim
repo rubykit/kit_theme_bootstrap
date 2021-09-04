@@ -1,0 +1,19 @@
+= render partial: 'partials/doc-header', locals: { name: 'Forms', description: 'Extra styling for bootstrap forms.', link: { name: 'View Bootstrap doc', url: 'https://getbootstrap.com/docs/5.1/forms/overview/' } }
+
+ruby:
+  content_for :body_class do
+    'debug'
+  end
+
+.bd-content.ps-lg-4
+
+  h2#examples
+    | Examples
+
+  = render layout:  'partials/h3-example', locals: { name: 'Vertical input-groups', file: 'docs/components/forms/example_input_group_vertical' } do
+    p If you want the input group to always be displayed vertically no matter the screen size, use <code>input-group-vertical</code>
+
+  = render layout:  'partials/h3-example', locals: { name: nil, file: 'docs/components/forms/example_input_group_vertical_responsive' } do
+    <p>Responsive classes to only enable the behaviour up to the higher limit of any breakpoint are also provided. The format is <code>input-group-vertical-{size}-down</code> where size can be <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, or <code>xxl</code>.</p>
+
+    p Reduce the browser size to <code>lg</code> to see it in action below.
