@@ -1,0 +1,13 @@
+= render partial: 'partials/doc-header', locals: { name: 'jQuery Mask plugin', description: 'A jQuery Plugin to make masks on form fields and HTML elements.', link: { name: 'View jQuery Mask doc', url: 'https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html' } }
+
+.bd-content.ps-lg-4
+
+  h2#usage
+    | Usage
+
+  = render partial: 'partials/source', locals: { code: render(partial: 'docs/libraries/jquery_mask/usage') }
+
+  h2#examples
+    | Examples
+
+  = render partial: 'partials/h3-example', locals: { name: 'Overview', file: 'docs/libraries/jquery_mask/example_simple' }
