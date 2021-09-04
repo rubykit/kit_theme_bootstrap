@@ -32,7 +32,7 @@ nav#bd-docs-nav.collapse.bd-links aria-label="Docs navigation"
 
     - list.each do |name, sublist|
       - id = element_id([name, 'collapse'])
-      button.btn.d-inline-flex.align-items-center.rounded aria-expanded="true" data-bs-target="##{ id }" data-bs-toggle="collapse"
+      button.btn.d-flex.align-items-center.rounded aria-expanded="true" data-bs-target="##{ id }" data-bs-toggle="collapse"
         = name
       .collapse.show id=id
         ul.list-unstyled.fw-normal.pb-1.small
