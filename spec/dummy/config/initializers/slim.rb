@@ -1,6 +1,6 @@
-Slim::Engine.set_default_options pretty: true
+Slim::Engine.set_options pretty: true
 
-Slim::Engine.set_default_options indent_tags: %w(
+Slim::Engine.set_options indent_tags: %w(
   article
   aside
   audio
@@ -22,6 +22,7 @@ Slim::Engine.set_default_options indent_tags: %w(
   hr
   html
   i
+  input
   li
   link
   meta
