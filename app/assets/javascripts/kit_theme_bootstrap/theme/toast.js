@@ -1,3 +1,3 @@
 $(function () {
-  $('[data-bs-toggle="toast"]').toast('show');
+  $('.toast[data-bs-toggle="toast"]').toast('show');
 })

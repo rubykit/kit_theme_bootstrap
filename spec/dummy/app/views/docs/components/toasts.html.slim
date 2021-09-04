@@ -1,0 +1,14 @@
+= render partial: 'partials/doc-header', locals: { name: 'Toast', description: 'Extra helpers for bootstrap toasts.', link: { name: 'View Bootstrap doc', url: 'https://getbootstrap.com/docs/5.1/components/toasts' } }
+
+.bd-content.ps-lg-4
+
+  h2#usage
+    | Usage
+
+  h3#usage_page_load
+    | Trigger on page load
+
+  = render layout: 'partials/source', locals: { code: render(partial: 'docs/components/toasts/usage_page_load') } do
+    p To trigger the toasts on page load, you can add <code>data-bs-toggle='toast'</code> on the toast itself.
+
+  = render partial: 'docs/components/toasts/usage_page_load'
