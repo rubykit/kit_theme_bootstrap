@@ -1,7 +1,8 @@
 - h3_id = defined?(id) ? id : element_id(name)
 
-h3 id=h3_id
-  = name
+- if !name.blank?
+  h3 id=h3_id
+    = name
 
 - if block_given?
   = yield
