@@ -1,8 +1,14 @@
-- types = ['bg-primary', 'badge-soft-primary', 'badge-soft-primary bg-transparent', 'badge-soft-primary border-transparent']
+ruby:
+  types = [
+    { type: 'bg-primary', classic: true },
+    { type: 'badge-soft-primary' },
+    { type: 'badge-soft-primary bg-transparent' },
+    { type: 'badge-soft-primary border-transparent' },
+  ]
 
-- types.each do |type|
-  .example-line
-    span.badge.text-cap.rounded-pill class=type
+- types.each do |el|
+  .example-line class=(el[:classic] ? 'base-bootstrap' : '')
+    span.badge.text-cap.rounded-pill class=el[:type]
       | Example
     span.ms-2.font-monospace
-      = to_css(type)
+      = to_css(el[:type])

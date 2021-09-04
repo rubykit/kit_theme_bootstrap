@@ -1,7 +1,14 @@
-- types = ['alert-primary', 'alert-soft-primary', 'alert-soft-primary border-transparent', 'alert-soft-primary bg-transparent']
+ruby:
+  types = [
+    { type: 'alert-primary', classic: true },
+    { type: 'alert-soft-primary' },
+    { type: 'alert-soft-primary border-transparent' },
+    { type: 'alert-soft-primary bg-transparent' }
+  ]
 
-- types.each.with_index do |type, idx|
-  .alert class=type role="alert"
-    strong Alert!
-    span.ms-2.font-monospace
-      = to_css(type)
+- types.each do |el|
+  .example-line class=(el[:classic] ? 'base-bootstrap' : '')
+    .alert class=el[:type] role="alert"
+      strong Alert!
+      span.ms-2.font-monospace
+        = to_css(el[:type] )
