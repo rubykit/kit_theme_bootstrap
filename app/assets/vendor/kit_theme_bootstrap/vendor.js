@@ -4,10 +4,9 @@
 
 //= require rails-ujs
 
-//= require ./vendor/bs4-toast/toast.1_2_0
-//= require ./vendor/clipboard/clipboard.2_0_6
-//= require ./vendor/anchorjs/anchor.4_3_1
-
+//= require ./vendor/bs4-toast/1.2.0/toast
+//= require ./vendor/clipboard/2.0.6/clipboard
+//= require ./vendor/anchorjs/4.3.1/anchor
 //= require ./vendor/jquery_mask/1.14.16/jquery.mask
 
 //= require ./vendor/select2/4.1.0-rc.0/js/select2

@@ -5,7 +5,8 @@
   h2#usage
     | Usage
 
-  = render partial: 'partials/source', locals: { code: render(partial: 'docs/libraries/jquery_mask/usage') }
+  = render layout: 'partials/source', locals: { code: render(partial: 'docs/libraries/jquery_mask/usage') } do
+    p Add <code>data-input-mask</code> with the desired mask value to the target input.
 
   h2#examples
     | Examples
