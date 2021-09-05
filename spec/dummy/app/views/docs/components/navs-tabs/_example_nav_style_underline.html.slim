@@ -1,0 +1,15 @@
+- bootstrap_theme_colors.map do |color|
+  .example-line
+    ul.nav class="nav-style-underline-#{ color }"
+      li.nav-item
+        a.nav-link.active aria-current="page" href="#!"
+          | Active
+      li.nav-item
+        a.nav-link href="#!"
+          | Link
+      li.nav-item
+        a.nav-link href="#!"
+          | Link
+      li.nav-item
+        a.nav-link.disabled aria-disabled="true" href="#!" tabindex="-1"
+          | Disabled

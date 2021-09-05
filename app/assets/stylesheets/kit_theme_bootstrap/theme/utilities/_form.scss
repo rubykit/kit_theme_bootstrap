@@ -1,4 +1,10 @@
-// Add pointer on labels when radio / checkboxes / select
+// Form control padding
+
+.form-control {
+  padding: $input-padding-y-lg $input-padding-x-lg;
+}
+
+// Add pointer 0n labels when radio / checkboxes / select
 .form-check, .form-select {
   &:hover, label:hover {
     cursor: pointer;

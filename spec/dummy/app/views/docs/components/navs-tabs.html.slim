@@ -1,0 +1,12 @@
+= render partial: 'partials/doc-header', locals: { name: 'Nav & tabs', description: 'Extra styling for bootstrap nav & tabs.', link: { name: 'View Bootstrap doc', url: 'https://getbootstrap.com/docs/5.1/components/navs-tabs' } }
+
+.bd-content.ps-lg-4
+
+  h2#examples
+    | Examples
+
+  = render layout: 'partials/h3-example', locals: { name: 'Nav style underline', file: 'docs/components/navs-tabs/example_nav_style_underline' } do
+    p Use <code>nav-style-underline-{type}</code>.
+
+  = render layout: 'partials/h3-example', locals: { name: 'Nav style pills', file: 'docs/components/navs-tabs/example_nav_style_pills' } do
+    p Use <code>nav-style-pills</code>.

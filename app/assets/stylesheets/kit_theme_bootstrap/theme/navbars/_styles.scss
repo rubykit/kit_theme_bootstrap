@@ -1,0 +1,58 @@
+// Style: pills ----------------------------------------------------------------
+
+.nav.nav-style-pills {
+  padding:       $kit-nav-style-pills-padding-y $kit-nav-style-pills-padding-x;
+  background:    $kit-nav-style-pills-background;
+  border-radius: $kit-nav-style-pills-border-radius;
+  background:    $kit-nav-style-pills-background;
+
+  .nav-link {
+    padding:       $kit-nav-link-style-pills-padding-y $kit-nav-link-style-pills-padding-x;
+    border-radius: $kit-nav-link-style-pills-border-radius;
+    background:    $kit-nav-link-style-pills-background;
+
+    &:not(.disabled) {
+      color: $kit-nav-link-style-pills-color;
+    }
+
+    &:hover {
+      box-shadow: $kit-nav-link-style-pills-hover-box-shadow;
+      background: $kit-nav-link-style-pills-hover-background;
+      color:      $kit-nav-link-style-pills-hover-color;
+    }
+
+    &.active {
+      box-shadow: $kit-nav-link-style-pills-active-box-shadow;
+      background: $kit-nav-link-style-pills-active-background;
+      color:      $kit-nav-link-style-pills-active-color;
+    }
+  }
+}
+
+// Style: underline ------------------------------------------------------------
+
+@each $name, $color in $theme-colors {
+
+  .nav.nav-style-underline-#{ $name } {
+    border-bottom: $kit-nav-style-underline-border-width $kit-nav-style-underline-border-type $kit-nav-style-underline-border-color;
+
+    .nav-link {
+      padding:       $kit-nav-link-style-underline-padding-y $kit-nav-link-style-underline-padding-x;
+      margin-bottom: $kit-nav-link-style-underline-margin-y;
+
+      &:not(.disabled) {
+        color: $kit-nav-link-style-underline-color;
+      }
+
+      &:hover:not(.disabled) {
+        color: $color;
+      }
+
+      &.active {
+        color:         $color;
+        border-bottom: $kit-nav-link-style-underline-border-width $kit-nav-link-style-underline-border-type $color;
+      }
+    }
+  }
+
+}
