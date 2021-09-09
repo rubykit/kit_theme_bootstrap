@@ -1,0 +1,29 @@
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .col#{$infix}-hr {
+      position: relative;
+      padding:  0;
+
+      & > [class*='col']:not(:first-child) {
+        position: relative;
+
+        &::before {
+          position:         absolute;
+          top:              0;
+          left:             0;
+
+          height:           100%;
+          width:            $kit-vr-width;
+
+          color:            $kit-vr-color;
+          background-color: currentColor;
+          opacity:          $kit-vr-opacity;
+
+          content:          "";
+        }
+      }
+    }
+  }
+}

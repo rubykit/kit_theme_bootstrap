@@ -1,0 +1,15 @@
+= render partial: 'partials/doc-header', locals: { name: 'Dividers', description: '', link: { name: 'View Bootstrap doc', url: '' } }
+
+ruby:
+  content_for :body_class do
+    'debug'
+  end
+
+.bd-content.ps-lg-4
+
+  h2#examples
+    | Examples
+
+  = render layout: 'partials/h3-example', locals: { name: 'Columns divider', file: 'docs/components/dividers/example_vertical_divider' } do
+    p Add vertical divider between columns by using the <code>.col-hr</code> utility (on the <code>.row</code>). Need to display them on some viewports but not others? Use the responsive versions (e.g., <code>.col-lg-hr</code>).
+
