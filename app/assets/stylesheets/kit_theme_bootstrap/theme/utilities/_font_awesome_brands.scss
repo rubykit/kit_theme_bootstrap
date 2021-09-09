@@ -1,0 +1,5 @@
+@each $icon-name, $color in $kit-colors-fab {
+  .fa-#{$icon-name}.fab-colored {
+    color: $color;
+  }
+}

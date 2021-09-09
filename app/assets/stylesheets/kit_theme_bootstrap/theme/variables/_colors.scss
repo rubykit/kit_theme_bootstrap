@@ -1,21 +1,4 @@
-// Flattastic ------------------------------------------------------------------
+@import './colors/flattastic';
 
-// Reference: https://codepen.io/rodriguesmarcos/pen/CapmI
-
-$kit-colors-flattastic-aqua:              #3BAFDA;
-$kit-colors-flattastic-aqua_light:        #4FC1E9;
-
-$kit-colors-flattastic-bittersweet:       #E9573F;
-$kit-colors-flattastic-bittersweet_light: #FC6E51;
-
-$kit-colors-flattastic-bluejeans:         #4A89DC;
-$kit-colors-flattastic-bluejeans_light:   #5D9CEC;
-
-$kit-colors-flattastic-grapefruit:        #DA4453;
-$kit-colors-flattastic-grapefruit_light:  #ED5565;
-
-$kit-colors-flattastic-grass:             #8CC152;
-$kit-colors-flattastic-grass_light:       #A0D468;
-
-$kit-colors-flattastic-sunflower:         #FCBB42;
-$kit-colors-flattastic-sunflower_light:   #FFCE54;
+@import './colors/brands';
+@import './colors/fab';

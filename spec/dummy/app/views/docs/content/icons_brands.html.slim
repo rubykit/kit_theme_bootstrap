@@ -1,0 +1,12 @@
+= render partial: 'partials/doc-header', locals: { name: 'Brands icons', description: 'Visual assets for various brands.' }
+
+.bd-content.ps-lg-4
+
+  h2#fontawesome
+    | Fontawesome
+
+  p Have a look at <a href="https://fontawesome.com/v5.15/icons?d=gallery&p=2&s=brands&m=free" target="_blank"> FontAwesome free brands icons</a>.
+
+  = render layout: 'partials/h3-example', locals: { name: 'Colors', file: 'docs/content/icons_brands/example_fontawesome_colored' }
+    p To add the brand color to the icon, use <code>.fab-colored</code> on the icon.
+    p The colors come from the <a href="https://gitlab.com/gaycookie/Font-Awesome-Brand-Colors" target="_blank">Font-Awesome-Brand-Colors</a> project.
