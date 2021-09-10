@@ -5,3 +5,11 @@
   }
 
 }
+
+@each $name, $color in $theme-colors {
+
+  .btn-ghost-border-#{ $name } {
+    @include btn-ghost-border($color);
+  }
+
+}

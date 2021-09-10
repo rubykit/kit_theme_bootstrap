@@ -9,16 +9,3 @@
     box-shadow:       $kit-btn-box-shadow;
   }
 }
-
-@mixin btn-ghost($color) {
-  color:        $color;
-  background:   transparent;
-  border-color: transparent;
-
-  @include active {
-    color:            color-contrast($color);
-    background-color: $color;
-    box-shadow:       $kit-btn-box-shadow;
-  }
-}
-

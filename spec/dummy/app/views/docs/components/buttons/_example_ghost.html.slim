@@ -1,0 +1,7 @@
+- types = ['btn-ghost', 'btn-ghost-border']
+
+- types.each do |type|
+  .example-line
+    - bootstrap_theme_colors.map do |color|
+      button.btn.me-2 class="#{ type }-#{ color }" type='button'
+        = color.capitalize
