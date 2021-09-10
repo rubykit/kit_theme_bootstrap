@@ -105,11 +105,22 @@ $flagkit-asset-path: 'kit_theme_bootstrap/vendor/flagkit/2.4.0/img' !default;
 
 $pm-ac-asset-path: 'kit_theme_bootstrap/vendor/payment_methods_arthurchayka/880472656109554171/img' !default;
 
-// Column divider --------------------------------------------------------------
+// Dividers --------------------------------------------------------------------
 
-$kit-vr-color:   inherit !default;
-$kit-vr-width:   $border-width !default;
-$kit-vr-opacity: .25 !default;
+$hr-color:           $border-color;
+$hr-opacity:         0.8;
+
+$kit-hr-color:       $hr-color !default;
+$kit-hr-height:      $hr-height !default;
+$kit-hr-opacity:     $hr-opacity !default;
+$kit-hr-line-height: 1rem !default;
+
+$kit-hr-text-margin: 10px !default;
+$kit-hr-text-color:  inherit !default;
+
+$kit-vr-color:       $hr-color !default;
+$kit-vr-width:       $hr-height !default;
+$kit-vr-opacity:     $hr-opacity;
 
 // Social colors ---------------------------------------------------------------
 

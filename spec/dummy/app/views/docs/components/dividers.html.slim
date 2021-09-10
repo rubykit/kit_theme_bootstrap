@@ -7,9 +7,14 @@ ruby:
 
 .bd-content.ps-lg-4
 
-  h2#examples
-    | Examples
+  h2#horizontal
+    | Horizontal dividers
 
-  = render layout: 'partials/h3-example', locals: { name: 'Columns divider', file: 'docs/components/dividers/example_vertical_divider' } do
+  = render partial: 'partials/h3-example', locals: { name: 'With text', file: 'docs/components/dividers/example_hr_text' }
+
+  h2#vertical
+    | Vertical dividers
+
+  = render layout: 'partials/h3-example', locals: { name: 'Columns divider', file: 'docs/components/dividers/example_vr_columns' } do
     p Add vertical divider between columns by using the <code>.col-hr</code> utility (on the <code>.row</code>). Need to display them on some viewports but not others? Use the responsive versions (e.g., <code>.col-lg-hr</code>).
 

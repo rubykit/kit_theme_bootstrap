@@ -1,0 +1,25 @@
+.hr {
+  display:        flex;
+  flex-direction: row;
+
+  color:          $kit-hr-text-color;
+  line-height:    $kit-hr-line-height;
+
+  &::before, &::after {
+    flex:   1 1;
+    margin: auto 0;
+
+    border-bottom: $kit-hr-height solid $kit-hr-color;
+    opacity:       $kit-hr-opacity;
+
+    content: '';
+  }
+
+  &::before {
+    margin-right: $kit-hr-text-margin;
+  }
+  &::after {
+    margin-left:  $kit-hr-text-margin;
+  }
+
+}
