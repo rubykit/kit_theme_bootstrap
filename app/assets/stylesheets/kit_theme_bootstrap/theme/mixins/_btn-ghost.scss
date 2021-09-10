@@ -21,3 +21,16 @@
     box-shadow: $kit-btn-box-shadow;
   }
 }
+
+@mixin btn-ghost-soft($color) {
+  color:        $color;
+  background:   transparent;
+  border-color: transparent;
+
+  @include active {
+    color:      $color;
+    @include    bg-soft($color);
+    box-shadow: $kit-btn-box-shadow;
+    border:     $btn-border-width solid $color;
+  }
+}

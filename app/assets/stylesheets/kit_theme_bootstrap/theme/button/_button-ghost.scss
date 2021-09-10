@@ -13,3 +13,11 @@
   }
 
 }
+
+@each $name, $color in $theme-colors {
+
+  .btn-ghost-soft-#{ $name } {
+    @include btn-ghost-soft($color);
+  }
+
+}
