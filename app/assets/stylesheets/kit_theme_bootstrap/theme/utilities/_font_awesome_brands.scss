@@ -3,3 +3,15 @@
     color: $color;
   }
 }
+
+@each $icon-name, $gradient in $kit-colors-fab-gradients {
+  .fa-#{$icon-name}.fab-colored-gradient {
+    &::before {
+      background:              $gradient;
+      background-clip:         text;
+      -webkit-background-clip: text;
+      text-fill-color:         transparent;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}

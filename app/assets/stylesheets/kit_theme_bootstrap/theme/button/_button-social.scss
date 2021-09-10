@@ -1,0 +1,11 @@
+@each $name, $value in $kit-social-theme-colors {
+  .btn-social-#{$name} {
+    @include button-variant($value, $value);
+  }
+}
+
+@each $name, $value in  $kit-social-theme-colors {
+  .btn-social-outline-#{$name} {
+    @include button-outline-variant($value);
+  }
+}

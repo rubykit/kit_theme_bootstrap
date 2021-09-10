@@ -1,0 +1,9 @@
+- social.each do |type|
+  .example-line.d-flex
+
+    button.btn.me-2 class="btn-social-#{ type }" type='button'
+      i.fab.me-1 class="fa-#{ type }"
+      | Sign in with #{ type.capitalize }
+
+    .flex-grow-1.text-end.font-monospace
+      | .btn-social-#{ type }

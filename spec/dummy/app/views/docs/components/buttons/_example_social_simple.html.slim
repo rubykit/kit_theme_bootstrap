@@ -1,0 +1,9 @@
+- social.each do |type|
+  .example-line.d-flex
+
+    button.btn.me-2 class="btn-outline-secondary btn-pill" type='button'
+      i.fab.me-1 class="fa-#{ type } fab-colored fab-colored-gradient"
+      | Sign in with #{ type.capitalize }
+
+    .flex-grow-1.text-end.font-monospace
+      | .fab.fa-#{ type }.fab-colored.fab-colored-gradient

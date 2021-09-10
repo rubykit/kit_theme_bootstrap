@@ -110,3 +110,22 @@ $pm-ac-asset-path: 'kit_theme_bootstrap/vendor/payment_methods_arthurchayka/8804
 $kit-vr-color:   inherit !default;
 $kit-vr-width:   $border-width !default;
 $kit-vr-opacity: .25 !default;
+
+// Social colors ---------------------------------------------------------------
+
+$kit-social-theme-colors: (
+  "amazon": $kit-color-brand-amazon,
+  "apple": $kit-color-brand-apple,
+  "atlassian": $kit-color-brand-atlassian,
+  "discord": $kit-color-brand-discord,
+  "facebook": $kit-color-brand-facebook,
+  "github": $kit-color-brand-github,
+  "google": $kit-color-brand-google,
+  "instagram": $kit-color-brand-instagram,
+  "linkedin": $kit-color-brand-linkedin,
+  "microsoft": $kit-color-brand-microsoft,
+  "openid": $kit-color-brand-openid,
+  "slack": $kit-color-brand-slack,
+  "tiktok": $kit-color-brand-tiktok,
+  "twitter": $kit-color-brand-twitter,
+) !default;

@@ -1,5 +1,24 @@
 module BrandsHelper
 
+  def social
+    @brands ||= %w[
+      amazon
+      apple
+      atlassian
+      discord
+      facebook
+      github
+      google
+      instagram
+      linkedin
+      microsoft
+      openid
+      slack
+      tiktok
+      twitter
+    ]
+  end
+
   def brands
     @brands ||= %w[
       500px

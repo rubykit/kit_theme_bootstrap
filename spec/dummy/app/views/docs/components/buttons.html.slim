@@ -9,3 +9,10 @@
 
   = render layout:  'partials/h3-example', locals: { name: 'Soft colors', file: 'docs/components/buttons/example_soft' } do
     <p>Note: unlike <a href="docs/alerts">alerts</a> or <a href="docs/badges">badges</a> where the <code>outline</code> effect can be achieved with <code>.soft-* .border-transparent</code> classes, <code>.btn-outline</code> is it's own class since the active (hover) behaviour is different. <code>.btn-outline-*</code> classes are default Bootstrap anyway.</p>
+
+
+  h2#social
+    | Social
+
+  = render partial: 'partials/h3-example', locals: { name: 'Social plain',  file: 'docs/components/buttons/example_social' }
+  = render partial: 'partials/h3-example', locals: { name: 'Social simple', file: 'docs/components/buttons/example_social_simple' }
