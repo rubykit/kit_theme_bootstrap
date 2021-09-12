@@ -1,0 +1,34 @@
+// FontAwesome Brand like behaviour for regular SVGs.
+.fab-extra {
+  display:     inline-block;
+  line-height: 1;
+
+  height:      1em;
+  width:       auto;
+
+  &.fab-extra-lg {
+    height: (4em / 3);
+    line-height: (3em / 4);
+    vertical-align: -.0667em;
+  }
+
+  &.fab-extra-xs {
+    height: .75em;
+  }
+
+  &.fab-extra-sm {
+    height: .875em;
+  }
+
+  @for $i from 1 through 10 {
+    &.fab-extra-#{$i}x {
+      height: $i * 1em;
+    }
+  }
+
+  @each $icon-name, $asset-path in $kit-icons-brands-svg {
+    &.fab-extra-#{$icon-name} {
+      content: image-url('#{$kit-icons-brands-path}/#{$asset-path}');
+    }
+  }
+}

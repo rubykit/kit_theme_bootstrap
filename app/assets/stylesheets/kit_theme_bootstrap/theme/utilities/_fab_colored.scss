@@ -15,11 +15,3 @@
     }
   }
 }
-
-@each $icon-name, $asset-path in $kit-icons-brands-svg {
-  .fa-#{$icon-name}.fab-colored {
-    content: image-url('#{$kit-icons-brands-path}/#{$asset-path}');
-    height:  1em;
-    width:  auto;
-  }
-}
