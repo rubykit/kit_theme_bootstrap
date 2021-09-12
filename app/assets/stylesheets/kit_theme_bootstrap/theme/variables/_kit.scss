@@ -140,3 +140,13 @@ $kit-social-theme-colors: (
   "tiktok": $kit-color-brand-tiktok,
   "twitter": $kit-color-brand-twitter,
 ) !default;
+
+
+// Extra brands icons ----------------------------------------------------------
+
+$kit-icons-brands-path: 'kit_theme_bootstrap/theme/brands' !default;
+
+$kit-icons-brands-svg: (
+  "gmail": "gmail.svg",
+  "outlook": "outlook.svg",
+) !default;

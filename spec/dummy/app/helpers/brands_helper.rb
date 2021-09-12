@@ -969,4 +969,11 @@ module BrandsHelper
     ].reject(&:empty?)
   end
 
+  def fontawesome_extra_icons
+    @fontawesome_extra_icons ||= %w[
+      gmail
+      outlook
+    ]
+  end
+
 end
