@@ -1,57 +1,10 @@
 /*
- *= require_self
+= require kit_theme_bootstrap/vendor
+= require kit_theme_bootstrap_dummy/vendor
 
- *= require kit_theme_bootstrap/vendor
- *= require kit_theme_bootstrap_dummy/vendor
- */
+= require kit_theme_bootstrap/theme
 
-@import 'bootstrap/functions';
-@import 'bootstrap/mixins';
-@import 'bootstrap/variables';
+= require_self
+*/
 
-.bd-navbar {
-  background-color: #787296 !important;
-}
-
-.example-line {
-  margin-top: map-get($spacers, 3);
-
-  &:first-of-type {
-    margin-top: 0px;
-  }
-
-  &:hover {
-    background: #fafafa;
-  }
-}
-
-.base-bootstrap {
-  position: relative;
-
-  &::after {
-    position: absolute;
-    top:      10px;
-    right:    0px;
-
-    display:         inline-block;
-    padding:         $badge-padding-y $badge-padding-x;
-
-    @include border-radius($badge-border-radius);
-
-    line-height:      1;
-
-    font-family:      $font-family-code;
-    text-transform:   uppercase;
-    letter-spacing:   1px;
-    font-size:        10px;
-
-    text-align:       center;
-    white-space:      nowrap;
-    vertical-align:   baseline;
-
-    color:            black;
-    background-color: rgba(0, 0, 0, 0.03);
-
-    content: 'Base bootstrap';
-  }
-}
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');

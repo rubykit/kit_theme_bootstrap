@@ -2,7 +2,9 @@ header.navbar.navbar-expand-md.navbar-dark.bd-navbar
 
   nav.container-xxl.flex-wrap.flex-md-nowrap aria-label="Main navigation"
     a.navbar-brand.p-0.me-2 aria-label="KitThemeBootstrap" href="/"
-      img.d-block.my-1 height="32" src=image_url('kit_theme_bootstrap/logo.kit_theme_bootstrap.svg') title="KitThemeBootstrap"
+      img.d-inline-block.my-1.position-relative height="30" src=image_url('kit_theme_bootstrap/logo.kit_theme_bootstrap.svg') title="KitThemeBootstrap" style='top: -1px;'
+      span.ms-1.fw-semibold.position-relative.h5 style="letter-spacing: 1px; color: #e4e3ea;"
+        | KitThemeBootstrap
 
     button.navbar-toggler aria-controls="bdNavbar" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#bdNavbar" data-bs-toggle="collapse" type="button"
       svg.bi fill="currentColor" height="32" viewbox=("0 0 16 16") width="32" xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +12,7 @@ header.navbar.navbar-expand-md.navbar-dark.bd-navbar
 
     #bdNavbar.collapse.navbar-collapse
 
-      ul.navbar-nav.flex-row.flex-wrap.bd-navbar-nav.pt-2.py-md-0
+      ul.navbar-nav.flex-row.flex-wrap.bd-navbar-nav.pt-2.py-md-0.ms-7
         li.nav-item.col-6.col-md-auto
           = active_link_to 'Docs', '/docs', class: 'nav-link p-2'
         li.nav-item.col-6.col-md-auto
