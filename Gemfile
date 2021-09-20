@@ -22,8 +22,8 @@ gem 'kit_rubocop_style',       git: 'https://github.com/rubykit/kit_rubocop_styl
 gem 'kit-dotenv',              git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-dotenv/*.gemspec'
 gem 'kit-dotenv-rails',        git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-dotenv/*.gemspec', require: 'kit/dotenv/rails-now'
 
-gem 'kit-app-container',       git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-app-container/*.gemspec'
-gem 'kit-dummy-app-container', git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-dummy-app-container/*.gemspec'
+gem 'kit-app_container',       git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-app_container/*.gemspec'
+gem 'kit-dummy_app_container', git: 'https://github.com/rubykit/kit', glob: 'libraries/kit-dummy_app_container/*.gemspec'
 
 gem 'view_component',          require: 'view_component/engine'
 
