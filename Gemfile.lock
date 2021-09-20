@@ -8,17 +8,6 @@ GIT
 
 GIT
   remote: https://github.com/rubykit/kit
-  revision: ab6e976c359601f78a02a7da93c4f311c9cd550b
-  glob: libraries/kit-dotenv/*.gemspec
-  specs:
-    kit-dotenv (0.1.0)
-      dotenv
-    kit-dotenv-rails (0.1.0)
-      dotenv-rails
-      kit-dotenv (= 0.1.0)
-
-GIT
-  remote: https://github.com/rubykit/kit
   revision: b1d0f5dda93869e2149f5000e3e9e0830cfd2418
   glob: libraries/kit-dummy_app_container/*.gemspec
   specs:
@@ -33,6 +22,17 @@ GIT
   glob: libraries/kit-app_container/*.gemspec
   specs:
     kit-app_container (0.1.0)
+
+GIT
+  remote: https://github.com/rubykit/kit
+  revision: ab6e976c359601f78a02a7da93c4f311c9cd550b
+  glob: libraries/kit-dotenv/*.gemspec
+  specs:
+    kit-dotenv (0.1.0)
+      dotenv
+    kit-dotenv-rails (0.1.0)
+      dotenv-rails
+      kit-dotenv (= 0.1.0)
 
 GIT
   remote: https://github.com/rubykit/kit_rubocop_style
