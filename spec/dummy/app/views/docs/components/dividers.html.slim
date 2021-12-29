@@ -1,9 +1,7 @@
 = render partial: 'partials/doc-header', locals: { name: 'Dividers', description: '', link: { name: 'View Bootstrap doc', url: '' } }
 
 ruby:
-  content_for :body_class do
-    'debug'
-  end
+  content_for(:data_debug) { 'true' }
 
 .bd-content.ps-lg-4
 

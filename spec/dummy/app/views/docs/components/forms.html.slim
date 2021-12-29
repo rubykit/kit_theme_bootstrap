@@ -1,9 +1,7 @@
 = render partial: 'partials/doc-header', locals: { name: 'Forms', description: 'Extra styling for bootstrap forms.', link: { name: 'View Bootstrap doc', url: 'https://getbootstrap.com/docs/5.1/forms/overview/' } }
 
 ruby:
-  content_for :body_class do
-    'debug'
-  end
+  content_for(:data_debug) { 'true' }
 
 .bd-content.ps-lg-4
 

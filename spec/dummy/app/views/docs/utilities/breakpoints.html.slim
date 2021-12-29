@@ -2,10 +2,8 @@
 
 .bd-content.ps-lg-4
   ruby:
-    content_for :body_class do
-      'debug'
-    end
+    content_for(:data_debug) { 'true' }
 
   = render layout: 'partials/h3-example', locals: { name: 'Breakpoints debug' } do
-    <p>When adding <code>.debug</code> to the page <code>body</code>, the current breakpoint is displayed on the top right corner of the page.</p>
+    <p>When adding <code>data-debug='true'</code> to the page <code>html</code> tag, the current breakpoint is displayed on the top right corner of the page.</p>
     <p>It is currently set on this page.</p>

@@ -1,6 +1,6 @@
 // Display the current breakpoint when .debug is set on body.
 
-body.debug {
+html[data-debug='true'] body {
   &::before {
     position:         fixed;
     top:              0px;
@@ -31,7 +31,7 @@ body.debug {
     $min: if($min == null, "0px", $min);
     $max: if($max == null, "∞", $max);
 
-    body.debug {
+    html[data-debug='true'] body {
       &::before {
         content: "#{ $breakpoint } | #{ $min } to #{ $max }";
       }
