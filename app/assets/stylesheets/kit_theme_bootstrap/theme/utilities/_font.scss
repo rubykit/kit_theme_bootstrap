@@ -15,10 +15,9 @@
   font-family: $kit-font-family-serif !important;
 }
 
-.ff-mono, .ff-monospace {
+.ff-mono, .ff-ms, .ff-monospace {
   @extend .font-monospace;
 }
-
 
 $fs-percentages: 10, 20, 30, 40, 50, 60, 70, 80, 90;
 
@@ -26,4 +25,8 @@ $fs-percentages: 10, 20, 30, 40, 50, 60, 70, 80, 90;
   .fs-#{$pct}p {
     font-size: $pct * 1%;
   }
+}
+
+.fs-italic {
+  font-style: italic;
 }
