@@ -3,3 +3,19 @@
   font-weight:    $font-weight-bold;
   letter-spacing: $kit-letter-spacing;
 }
+
+// Grays -----------------------------------------------------------------------
+
+$utilities-text-grays-colors: ();
+
+@each $key, $value in $grays {
+  $utilities-text-grays-colors: map-merge($utilities-text-grays-colors, (gray- + $key: $value));
+}
+
+$utility-text-grays: (
+  property: color,
+  class: text,
+  values: $utilities-text-grays-colors,
+);
+
+@include generate-utility($utility-text-grays, '');
