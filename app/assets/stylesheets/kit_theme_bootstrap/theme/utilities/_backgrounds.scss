@@ -17,6 +17,16 @@ $utility-background-grays: (
 
 @include generate-utility($utility-background-grays, '');
 
+// Soft ------------------------------------------------------------------------
+
+@each $name, $color in $theme-colors {
+
+  .bg-soft-#{ $name } {
+    @include bg-soft($color);
+  }
+
+}
+
 // Gradients -------------------------------------------------------------------
 
 @each $key, $value in $grays {
