@@ -1,9 +1,18 @@
 $(function() {
   $('[data-input-mask]').each(function(_idx, el) {
-    let $el         = $(el);
-    let mask        = $el.attr('data-input-mask');
-    let placeholder = $el.attr('data-input-mask-placeholder');
+    let $el  = $(el);
+    let data = $el.attr('data-input-mask');
 
-    $el.mask(mask, { placeholder: placeholder });
+    if (!data)
+      return;
+
+    try {
+      data = JSON.parse(data);
+
+      if (!data.mask)
+        return;
+
+      $el.mask(data.mask, data);
+    } catch(e) {}
   });
 });
