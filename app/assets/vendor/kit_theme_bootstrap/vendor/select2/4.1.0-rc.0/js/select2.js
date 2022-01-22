@@ -709,6 +709,40 @@ S2.define('select2/utils',[
     return data;
   };
 
+  // ### References
+  // - https://github.com/select2/select2/issues/5921
+  Utils.hasScroll = function(el, index, match) {
+    var $el = $(el),
+        sX = $el.css('overflow-x'),
+        sY = $el.css('overflow-y'),
+        hidden = 'hidden', // minifiers would like this better
+        visible = 'visible',
+        scroll = 'scroll',
+        axis = match[3]; // regex for filter -> 3 == args to selector
+
+    if (!axis) { // better check than undefined
+      //Check both x and y declarations
+      if (sX === sY && (sY === hidden || sY === visible)) { //same check but shorter syntax
+        return false;
+      }
+      if (sX === scroll || sY === scroll) { return true; }
+    } else if (axis === 'x') { // don't mix ifs and switches on the same variable
+        if (sX === hidden || sX === visible) { return false; }
+        if (sX === scroll) { return true; }
+    } else if (axis === 'y') {
+        if (sY === hidden || sY === visible) { return false; }
+        if (sY === scroll) { return true };
+    }
+
+    //Compare client and scroll dimensions to see if a scrollbar is needed
+
+    return $el.innerHeight() < el.scrollHeight || //make use of potential short circuit
+        $el.innerWidth() < el.scrollWidth; //innerHeight is the one you want
+  };
+
+  $.expr[':'].hasScroll = Utils.hasScroll;
+
+/*
   Utils.hasScroll = function (index, el) {
     // Adapted from the function created by @ShadowScripter
     // and adapted by @BillBarry on the Stack Exchange Code Review website.
@@ -733,6 +767,7 @@ S2.define('select2/utils',[
     return ($el.innerHeight() < el.scrollHeight ||
       $el.innerWidth() < el.scrollWidth);
   };
+*/
 
   Utils.escapeMarkup = function (markup) {
     var replaceMap = {
@@ -4557,7 +4592,7 @@ S2.define('select2/dropdown/attachBody',[
     var resizeEvent = 'resize.select2.' + container.id;
     var orientationEvent = 'orientationchange.select2.' + container.id;
 
-    var $watchers = this.$container.parents().filter(Utils.hasScroll);
+    var $watchers = this.$container.parents().filter(':hasScroll');
     $watchers.each(function () {
       Utils.StoreData(this, 'select2-scroll-position', {
         x: $(this).scrollLeft(),
@@ -4583,7 +4618,7 @@ S2.define('select2/dropdown/attachBody',[
     var resizeEvent = 'resize.select2.' + container.id;
     var orientationEvent = 'orientationchange.select2.' + container.id;
 
-    var $watchers = this.$container.parents().filter(Utils.hasScroll);
+    var $watchers = this.$container.parents().filter(':hasScroll');
     $watchers.off(scrollEvent);
 
     $(window).off(scrollEvent + ' ' + resizeEvent + ' ' + orientationEvent);
