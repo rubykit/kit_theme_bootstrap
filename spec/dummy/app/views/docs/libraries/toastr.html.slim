@@ -1,0 +1,10 @@
+= render partial: 'partials/doc-header', locals: { name: 'Toastr', description: 'Notifications', link: [{ name: 'View Toastr doc', url: 'https://github.com/CodeSeven/toastr' }] }
+
+.bd-content.ps-lg-4
+
+  h2#usage
+    | Usage
+
+  .card.mt-4
+    .card-body
+      = render partial: 'docs/libraries/toastr/playground'

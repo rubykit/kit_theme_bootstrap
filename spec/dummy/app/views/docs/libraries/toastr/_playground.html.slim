@@ -1,0 +1,312 @@
+// Source: https://codeseven.github.io/toastr/demo.html
+
+.container
+  .row
+    .col-4
+      .fw-700.mb-2 Options
+
+      .form-check
+        input#closeButton.form-check-input type="checkbox" value="checked"
+        label.form-check-label for="closeButton"
+          | Close Button
+      .form-check
+        input#progressBar.form-check-input type="checkbox" value="checked"
+        label.form-check-label for="progressBar"
+          | Progress Bar
+      .form-check
+        input#newestOnTop.form-check-input type="checkbox" value="checked"
+        label.form-check-label for="newestOnTop"
+          | Newest on top
+      .form-check
+        input#preventDuplicates.form-check-input type="checkbox" value="checked"
+        label.form-check-label for="preventDuplicates"
+          | Prevent Duplicates
+
+      .mt-2
+
+      .form-check
+        input#addBehaviorOnToastClick.form-check-input type="checkbox" value="checked"
+        label.form-check-label for="addBehaviorOnToastClick"
+          | Add behavior on toast click
+      .form-check
+        input#addClear.form-check-input type="checkbox" value="checked"
+        label.form-check-label for="addClear"
+          | Add button to force clearing a toast, ignoring focus
+
+      .form-check
+        input#debugInfo.form-check-input type="checkbox" value="checked"
+        label.form-check-label for="debugInfo"
+          | Debug
+
+    .col-4#toastTypeGroup
+      .fw-700.mb-2 Toast Type
+
+      .form-check
+        input.form-check-input#type-success name="toasts" type="radio" value="success" checked=""
+        label.form-check-label for='type-success'
+          | Success
+      .form-check
+        input.form-check-input#type-info name="toasts" type="radio" value="info"
+        label.form-check-label for='type-info'
+          | Info
+      .form-check
+        input.form-check-input#type-warning name="toasts" type="radio" value="warning"
+        label.form-check-label for='type-warning'
+          | Warning
+      .form-check
+        input.form-check-input#type-error name="toasts" type="radio" value="error"
+        label.form-check-label for='type-error'
+          | Error
+
+    .col-4#positionGroup
+      .fw-700.mb-2 Position
+
+      .form-check
+        input.form-check-input#position-top-right name="positions" type="radio" value="toast-top-right" checked=""
+        label.form-check-label for='position-top-right'
+          | Top Right
+      .form-check
+        input.form-check-input#position-bottom-right name="positions" type="radio" value="toast-bottom-right"
+        label.form-check-label for='position-bottom-right'
+          | Bottom Right
+      .form-check
+        input.form-check-input#position-bottom-left name="positions" type="radio" value="toast-bottom-left"
+        label.form-check-label for='position-bottom-left'
+          | Bottom Left
+      .form-check
+        input.form-check-input#position-top-left name="positions" type="radio" value="toast-top-left"
+        label.form-check-label for='position-top-left'
+          | Top Left
+      .form-check
+        input.form-check-input#position-top-full-width name="positions" type="radio" value="toast-top-full-width"
+        label.form-check-label for='position-top-full-width'
+          | Top Full Width
+      .form-check
+        input.form-check-input#position-bottom-full-width name="positions" type="radio" value="toast-bottom-full-width"
+        label.form-check-label for='position-bottom-full-width'
+          | Bottom Full Width
+      .form-check
+        input.form-check-input#position-top-center name="positions" type="radio" value="toast-top-center"
+        label.form-check-label for='position-top-center'
+          | Top Center
+      .form-check
+        input.form-check-input#position-bottom-center name="positions" type="radio" value="toast-bottom-center"
+        label.form-check-label for='position-bottom-center'
+          | Bottom Center
+
+  .row.mt-4
+
+    .col-4
+      label.form-label.mb-0.fw-700 for="title"
+        | Title
+      input#title.form-control.form-control-sm placeholder="Enter a title ..." type="text"
+
+      label.form-label.mb-0.fw-700.pt-2 for="message"
+        | Message
+      textarea#message.form-control.form-control-sm placeholder="Enter a message ..." rows="3"
+
+    .col-4
+      .row.mb-2
+        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="showEasing"
+          | Show Easing
+        .col-sm-6
+          input#showEasing.form-control.form-control-sm placeholder="swing, linear" type="text" value="swing"
+      .row.mb-2
+        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="hideEasing"
+          | Hide Easing
+        .col-sm-6
+          input#hideEasing.form-control.form-control-sm placeholder="swing, linear" type="text" value="linear"
+      .row.mb-2
+        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="showMethod"
+          | Show Method
+        .col-sm-6
+          input#showMethod.form-control.form-control-sm placeholder="show, fadeIn, slideDown" type="text" value="fadeIn"
+      .row.mb-2
+        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="hideMethod"
+          | Hide Method
+        .col-sm-6
+          input#hideMethod.form-control.form-control-sm placeholder="hide, fadeOut, slideUp" type="text" value="fadeOut"
+
+    .col-4
+      .row.mb-2
+        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="showDuration"
+          | Show Duration
+        .col-sm-6
+          input#showDuration.form-control.form-control-sm placeholder="ms" type="text" value="300"
+      .row.mb-2
+        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="hideDuration"
+          | Hide Duration
+        .col-sm-6
+          input#hideDuration.form-control.form-control-sm placeholder="ms" type="text" value="1000"
+      .row.mb-2
+        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="timeOut"
+          | Time out
+        .col-sm-6
+          input#timeOut.form-control.form-control-sm placeholder="ms" type="text" value="5000"
+      .row.mb-2
+        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="extendedTimeOut"
+          | Extended time out
+        .col-sm-6
+          input#extendedTimeOut.form-control.form-control-sm placeholder="ms" type="text" value="1000"
+
+  .row.mt-3
+    .col-6.text-start
+      button#showtoast.btn.btn-success type="button"
+        | Show Toast
+
+    .col-6.text-end
+      button#cleartoasts.btn.btn-danger.me-2 type="button"
+        | Clear Toasts
+      button#clearlasttoast.btn.btn-danger type="button"
+        | Clear Last Toast
+
+  .row.mt-3
+    .col-12
+      pre#toastrOptions
+
+
+javascript:
+  $(function() {
+    var i = -1;
+    var toastCount = 0;
+    var $toastlast;
+
+    var getMessage = function() {
+      var msgs = ['My name is Inigo Montoya. You killed my father. Prepare to die!',
+        '<div><input class="input-small" value="textbox"/>&nbsp;<a href="http://johnpapa.net" target="_blank">This is a hyperlink</a></div><div><button type="button" id="okBtn" class="btn btn-primary">Close me</button><button type="button" id="surpriseBtn" class="btn" style="margin: 0 8px 0 8px">Surprise me</button></div>',
+        'Are you the six fingered man?',
+        'Inconceivable!',
+        'I do not think that means what you think it means.',
+        'Have fun storming the castle!'
+      ];
+      i++;
+      if (i === msgs.length) {
+        i = 0;
+      }
+
+      return msgs[i];
+    };
+
+    var getMessageWithClearButton = function(msg) {
+      msg = msg ? msg : 'Clear itself?';
+      msg += '<br><br><button type="button" class="btn clear">Yes</button>';
+      return msg;
+    };
+
+    $('#showtoast').click(function() {
+      var shortCutFunction = $("#toastTypeGroup input:radio:checked").val();
+      var msg = $('#message').val();
+      var title = $('#title').val() || '';
+      var $showDuration = $('#showDuration');
+      var $hideDuration = $('#hideDuration');
+      var $timeOut = $('#timeOut');
+      var $extendedTimeOut = $('#extendedTimeOut');
+      var $showEasing = $('#showEasing');
+      var $hideEasing = $('#hideEasing');
+      var $showMethod = $('#showMethod');
+      var $hideMethod = $('#hideMethod');
+      var toastIndex = toastCount++;
+      var addClear = $('#addClear').prop('checked');
+
+      toastr.options = {
+        closeButton: $('#closeButton').prop('checked'),
+        debug: $('#debugInfo').prop('checked'),
+        newestOnTop: $('#newestOnTop').prop('checked'),
+        progressBar: $('#progressBar').prop('checked'),
+        positionClass: $('#positionGroup input:radio:checked').val() || 'toast-top-right',
+        preventDuplicates: $('#preventDuplicates').prop('checked'),
+        onclick: null
+      };
+
+      if ($('#addBehaviorOnToastClick').prop('checked')) {
+        toastr.options.onclick = function() {
+          alert('You can perform some custom action after a toast goes away');
+        };
+      }
+
+      if ($showDuration.val().length) {
+        toastr.options.showDuration = $showDuration.val();
+      }
+
+      if ($hideDuration.val().length) {
+        toastr.options.hideDuration = $hideDuration.val();
+      }
+
+      if ($timeOut.val().length) {
+        toastr.options.timeOut = addClear ? 0 : $timeOut.val();
+      }
+
+      if ($extendedTimeOut.val().length) {
+        toastr.options.extendedTimeOut = addClear ? 0 : $extendedTimeOut.val();
+      }
+
+      if ($showEasing.val().length) {
+        toastr.options.showEasing = $showEasing.val();
+      }
+
+      if ($hideEasing.val().length) {
+        toastr.options.hideEasing = $hideEasing.val();
+      }
+
+      if ($showMethod.val().length) {
+        toastr.options.showMethod = $showMethod.val();
+      }
+
+      if ($hideMethod.val().length) {
+        toastr.options.hideMethod = $hideMethod.val();
+      }
+
+      if (addClear) {
+        msg = getMessageWithClearButton(msg);
+        toastr.options.tapToDismiss = false;
+      }
+      if (!msg) {
+        msg = getMessage();
+      }
+
+      $('#toastrOptions').text('Command: toastr["' +
+        shortCutFunction +
+        '"]("' +
+        msg +
+        (title ? '", "' + title : '') +
+        '")\n\ntoastr.options = ' +
+        JSON.stringify(toastr.options, null, 2)
+      );
+
+      var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+      $toastlast = $toast;
+
+      if (typeof $toast === 'undefined') {
+        return;
+      }
+
+      if ($toast.find('#okBtn').length) {
+        $toast.delegate('#okBtn', 'click', function() {
+          alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
+          $toast.remove();
+        });
+      }
+      if ($toast.find('#surpriseBtn').length) {
+        $toast.delegate('#surpriseBtn', 'click', function() {
+          alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
+        });
+      }
+      if ($toast.find('.clear').length) {
+        $toast.delegate('.clear', 'click', function() {
+          toastr.clear($toast, {
+            force: true
+          });
+        });
+      }
+    });
+
+    function getLastToast() {
+      return $toastlast;
+    }
+    $('#clearlasttoast').click(function() {
+      toastr.clear(getLastToast());
+    });
+    $('#cleartoasts').click(function() {
+      toastr.clear();
+    });
+  })
