@@ -138,14 +138,6 @@ $notification-margin: 12px;
   background-color: $primary;
 }
 
-.notification-progress {
-  position: absolute;
-  left:   0;
-  bottom: 0;
-  height: 4px;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
 // Responsive Design -----------------------------------------------------------
 
 @media all and (max-width: 240px) {
@@ -183,4 +175,33 @@ $notification-margin: 12px;
       width:   25em;
     }
   }
+}
+
+// Notification progress -------------------------------------------------------
+
+.notification-progress {
+  position: absolute;
+  left:   0;
+  bottom: 0;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  animation-name: notifications-progress-animation;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+}
+
+.notification:hover {
+  .notification-progress[data-hover-pause-animation='true'] {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes notifications-progress-animation {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
 }

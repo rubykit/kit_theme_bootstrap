@@ -124,10 +124,9 @@
 
           // Timeout
 
-          timeOut:           0, // Set timeOut and extendedTimeOut to 0 to make it sticky
+          timeOut:           0, // Set timeOut and afterHoverTimeOut to 0 to make it sticky
           pauseTimerOnHover: true,
-          resetTimerOnHover: false,
-          extendedTimeOut:   0,
+          afterHoverTimeOut: 0,
 
           // Effets
 
@@ -189,11 +188,6 @@
         var $contentElement     = $('<div/>');
         var $progressElement    = $('<div/>');
         var $closeElement       = $(options.closeHtml);
-        var progressBar = {
-          intervalId: null,
-          hideEta: null,
-          maxHideTime: null
-        };
         var response = {
           notificationId: notificationId,
           state: 'visible',
@@ -238,7 +232,7 @@
         }
 
         function handleEvents() {
-          if (options.resetTimerOnHover) {
+          if (options.afterHoverTimeOut > 0) {
             notificationElement.hover(stickAround, delayedHideToast);
           }
 
@@ -280,14 +274,9 @@
             complete: options.onShown
           });
 
-          console.log('displayToast', options.timeOut)
-
           if (options.timeOut > 0) {
-            intervalId = setTimeout(hideToast, options.timeOut);
-            progressBar.maxHideTime = parseFloat(options.timeOut);
-            progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
-            if (options.progressBar) {
-              progressBar.intervalId = setInterval(updateProgress, 10);
+            if (!options.progressBar) {
+              intervalId = setTimeout(hideToast, options.timeOut);
             }
           }
         }
@@ -321,8 +310,25 @@
         function setProgressBar() {
           if (options.progressBar) {
             $progressElement.addClass(options.progressClass);
-            notificationElement.prepend($progressElement);
+
+            if (options.pauseTimerOnHover && options.afterHoverTimeOut == 0) {
+              $progressElement.attr('data-hover-pause-animation', 'true');
+            }
+
+            insertProgressBar(options.timeOut);
           }
+        }
+
+        function insertProgressBar(duration) {
+          if (duration == 0)
+            return;
+
+          $progressElement.css('animation-duration', duration + 'ms');
+          notificationElement.prepend($progressElement);
+
+          $progressElement.on('animationend', function() {
+            hideToast(true);
+          });
         }
 
         function setRTL() {
@@ -346,10 +352,11 @@
           var method   = override && options.closeMethod   !== false ? options.closeMethod   : options.hideMethod;
           var duration = override && options.closeDuration !== false ? options.closeDuration : options.hideDuration;
           var easing   = override && options.closeEasing   !== false ? options.closeEasing   : options.hideEasing;
+
           if ($(':focus', notificationElement).length && !override) {
             return;
           }
-          clearTimeout(progressBar.intervalId);
+
           return notificationElement[method]({
             duration: duration,
             easing:   easing,
@@ -367,26 +374,29 @@
         }
 
         function delayedHideToast() {
-          if (options.timeOut > 0 || options.extendedTimeOut > 0) {
-            intervalId = setTimeout(hideToast, options.extendedTimeOut);
-            progressBar.maxHideTime = parseFloat(options.extendedTimeOut);
-            progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+          if (options.timeOut > 0 || options.afterHoverTimeOut > 0) {
+            if (options.progressBar) {
+              insertProgressBar(options.afterHoverTimeOut);
+            } else {
+              intervalId = setTimeout(hideToast, options.afterHoverTimeOut);
+            }
           }
         }
 
         function stickAround() {
           clearTimeout(intervalId);
-          progressBar.hideEta = 0;
+
+          if (options.progressBar) {
+            $progressElement.remove();
+          }
+
+
           notificationElement.stop(true, true)[options.showMethod]({
             duration: options.showDuration,
             easing: options.showEasing
           });
         }
 
-        function updateProgress() {
-          var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
-          $progressElement.width(percentage + '%');
-        }
       }
 
       function getOptions() {

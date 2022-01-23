@@ -16,5 +16,3 @@
 //= require ./vendor/select2/4.1.0-rc.0/js/i18n/en
 
 //= require ./vendor/bootstrap-toc/1.0.1/bootstrap-toc
-
-console.log("LOADED")
