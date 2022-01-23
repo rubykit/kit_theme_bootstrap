@@ -16,42 +16,23 @@
     return (function() {
       var $container;
       var listener;
-      var toastId = 0;
-      var toastType = {
-        error:   'danger',
-        info:    'info',
-        success: 'success',
-        warning: 'warning'
-      };
+      var notificationId = 0;
 
-      var toastr = {
-        clear: clear,
-        remove: remove,
-        error: error,
-        getContainer: getContainer,
-        info: info,
+      var interface = {
+        notify:  notify,
+        clear:   clear,
+        remove:  remove,
         options: {},
-        subscribe: subscribe,
-        success: success,
+
+        getContainer: getContainer,
+        subscribe:    subscribe,
+
         version: '2.1.4',
-        warning: warning
       };
 
       var previousToast;
 
-      return toastr;
-
-      ////////////////
-
-      function error(message, title, optionsOverride) {
-        return notify({
-          type: toastType.error,
-          iconClass: getOptions().iconClasses.error,
-          message: message,
-          optionsOverride: optionsOverride,
-          title: title
-        });
-      }
+      return interface;
 
       function getContainer(options, create) {
         if (!options) {
@@ -67,57 +48,27 @@
         return $container;
       }
 
-      function info(message, title, optionsOverride) {
-        return notify({
-          type: toastType.info,
-          iconClass: getOptions().iconClasses.info,
-          message: message,
-          optionsOverride: optionsOverride,
-          title: title
-        });
-      }
-
       function subscribe(callback) {
         listener = callback;
       }
 
-      function success(message, title, optionsOverride) {
-        return notify({
-          type: toastType.success,
-          iconClass: getOptions().iconClasses.success,
-          message: message,
-          optionsOverride: optionsOverride,
-          title: title
-        });
-      }
-
-      function warning(message, title, optionsOverride) {
-        return notify({
-          type: toastType.warning,
-          iconClass: getOptions().iconClasses.warning,
-          message: message,
-          optionsOverride: optionsOverride,
-          title: title
-        });
-      }
-
-      function clear($toastElement, clearOptions) {
+      function clear(notificationElement, clearOptions) {
         var options = getOptions();
         if (!$container) {
           getContainer(options);
         }
-        if (!clearToast($toastElement, options, clearOptions)) {
+        if (!clearToast(notificationElement, options, clearOptions)) {
           clearContainer(options);
         }
       }
 
-      function remove($toastElement) {
+      function remove(notificationElement) {
         var options = getOptions();
         if (!$container) {
           getContainer(options);
         }
-        if ($toastElement && $(':focus', $toastElement).length === 0) {
-          removeToast($toastElement);
+        if (notificationElement && $(':focus', notificationElement).length === 0) {
+          removeToast(notificationElement);
           return;
         }
         if ($container.children().length) {
@@ -128,20 +79,20 @@
       // internal functions
 
       function clearContainer(options) {
-        var toastsToClear = $container.children();
-        for (var i = toastsToClear.length - 1; i >= 0; i--) {
-          clearToast($(toastsToClear[i]), options);
+        var notificationsToClear = $container.children();
+        for (var i = notificationsToClear.length - 1; i >= 0; i--) {
+          clearToast($(notificationsToClear[i]), options);
         }
       }
 
-      function clearToast($toastElement, options, clearOptions) {
+      function clearToast(notificationElement, options, clearOptions) {
         var force = clearOptions && clearOptions.force ? clearOptions.force : false;
-        if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
-          $toastElement[options.hideMethod]({
+        if (notificationElement && (force || $(':focus', notificationElement).length === 0)) {
+          notificationElement[options.hideMethod]({
             duration: options.hideDuration,
             easing: options.hideEasing,
             complete: function() {
-              removeToast($toastElement);
+              removeToast(notificationElement);
             }
           });
           return true;
@@ -152,7 +103,7 @@
       function createContainer(options) {
         $container = $('<div/>')
           .attr('id', options.containerId)
-          .addClass(options.positionClass);
+          .addClass(options.containerClass);
 
         $container.appendTo($(options.target));
         return $container;
@@ -160,45 +111,54 @@
 
       function getDefaults() {
         return {
-          tapToDismiss: true,
-          toastClass: 'toast',
-          containerId: 'toast-container',
-          debug: false,
-
-          showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
-          showDuration: 300,
-          showEasing: 'swing', //swing and linear are built into jQuery
-          onShown: undefined,
-          hideMethod: 'fadeOut',
-          hideDuration: 1000,
-          hideEasing: 'swing',
-          onHidden: undefined,
-          closeMethod: false,
-          closeDuration: false,
-          closeEasing: false,
-          closeOnHover: true,
-
-          extendedTimeOut: 1000,
-          iconClasses: {
-            error:   'toast-error',
-            info:    'toast-info',
-            success: 'toast-success',
-            warning: 'toast-warning'
-          },
-          iconClass:     'toast-info',
-          positionClass: 'toast-top-right',
-          timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
-          titleClass:   'toast-title',
-          messageClass: 'toast-message',
-          escapeHtml: false,
           target: 'body',
-          closeHtml: '<button type="button">&times;</button>',
-          closeClass: 'toast-close-button',
-          newestOnTop: true,
+
+          debug:             false,
+
+          newestOnTop:       true,
           preventDuplicates: false,
-          progressBar: false,
-          progressClass: 'toast-progress',
-          rtl: false
+          progressBar:       false,
+          escapeHtml:        false,
+
+          rtl:               false,
+
+          // Timeout
+
+          timeOut:           0, // Set timeOut and extendedTimeOut to 0 to make it sticky
+          pauseTimerOnHover: true,
+          resetTimerOnHover: false,
+          extendedTimeOut:   0,
+
+          // Effets
+
+          showMethod:    'fadeIn', //fadeIn, slideDown, and show are built into jQuery
+          showDuration:  300,
+          showEasing:    'swing', //swing and linear are built into jQuery
+          onShown:       undefined,
+
+          hideMethod:    'fadeOut',
+          hideDuration:   1000,
+          hideEasing:    'swing',
+          onHidden:      undefined,
+
+          // Close / dismiss behaviour
+
+          closeOnClick:      false,
+          closeMethod:       false,
+          closeDuration:     false,
+          closeEasing:       false,
+
+          // Classes
+          containerId:       'notifications-container',
+          containerClass:    'notification-top-right',
+
+          notificationClass: 'notification',
+          contentClass:      'notification-content',
+
+          closeHtml:         '<button type="button">&times;</button>',
+          closeClass:        'notification-close-button',
+
+          progressClass:     'notification-progress',
         };
       }
 
@@ -210,35 +170,32 @@
       }
 
       function notify(map) {
-        var options = getOptions();
-        var iconClass = map.iconClass || options.iconClass;
+        var options  = getOptions();
 
         if (typeof(map.optionsOverride) !== 'undefined') {
           options = $.extend(options, map.optionsOverride);
-          iconClass = map.optionsOverride.iconClass || iconClass;
         }
 
         if (shouldExit(options, map)) {
           return;
         }
 
-        toastId++;
+        notificationId++;
 
         $container = getContainer(options, true);
 
         var intervalId = null;
-        var $toastElement = $('<div/>');
-        var $titleElement = $('<div/>');
-        var $messageElement = $('<div/>');
-        var $progressElement = $('<div/>');
-        var $closeElement = $(options.closeHtml);
+        var notificationElement = $('<div/>').addClass(options.notificationClass);
+        var $contentElement     = $('<div/>');
+        var $progressElement    = $('<div/>');
+        var $closeElement       = $(options.closeHtml);
         var progressBar = {
           intervalId: null,
           hideEta: null,
           maxHideTime: null
         };
         var response = {
-          toastId: toastId,
+          notificationId: notificationId,
           state: 'visible',
           startTime: new Date(),
           options: options,
@@ -257,7 +214,7 @@
           console.log(response);
         }
 
-        return $toastElement;
+        return notificationElement;
 
         function escapeHtml(source) {
           if (source == null) {
@@ -273,36 +230,21 @@
         }
 
         function personalizeToast() {
-          setIcon();
-          setTitle();
-          setMessage();
+          setContent();
           setCloseButton();
           setProgressBar();
           setRTL();
           setSequence();
-          setAria();
-        }
-
-        function setAria() {
-          var ariaValue = '';
-          switch (map.iconClass) {
-            case 'toast-success':
-            case 'toast-info':
-              ariaValue = 'polite';
-              break;
-            default:
-              ariaValue = 'assertive';
-          }
-          $toastElement.attr('aria-live', ariaValue);
         }
 
         function handleEvents() {
-          if (options.closeOnHover) {
-            $toastElement.hover(stickAround, delayedHideToast);
+          if (options.resetTimerOnHover) {
+            notificationElement.hover(stickAround, delayedHideToast);
           }
 
-          if (!options.onclick && options.tapToDismiss) {
-            $toastElement.click(hideToast);
+          if (!options.onclick && options.closeOnClick) {
+            notificationElement.attr('data-close-on-click', 'true');
+            notificationElement.click(hideToast);
           }
 
           if (options.closeButton && $closeElement) {
@@ -322,7 +264,7 @@
           }
 
           if (options.onclick) {
-            $toastElement.click(function(event) {
+            notificationElement.click(function(event) {
               options.onclick(event);
               hideToast();
             });
@@ -330,13 +272,15 @@
         }
 
         function displayToast() {
-          $toastElement.hide();
+          notificationElement.hide();
 
-          $toastElement[options.showMethod]({
+          notificationElement[options.showMethod]({
             duration: options.showDuration,
             easing: options.showEasing,
             complete: options.onShown
           });
+
+          console.log('displayToast', options.timeOut)
 
           if (options.timeOut > 0) {
             intervalId = setTimeout(hideToast, options.timeOut);
@@ -348,87 +292,69 @@
           }
         }
 
-        function setIcon() {
-          if (map.iconClass) {
-            $toastElement.addClass(options.toastClass).addClass(iconClass);
-          }
-        }
-
         function setSequence() {
           if (options.newestOnTop) {
-            $container.prepend($toastElement);
+            $container.prepend(notificationElement);
           } else {
-            $container.append($toastElement);
+            $container.append(notificationElement);
           }
         }
 
-        function setTitle() {
-          if (map.title) {
-            var suffix = map.title;
+        function setContent() {
+          if (map.content) {
+            var content = map.content;
             if (options.escapeHtml) {
-              suffix = escapeHtml(map.title);
+              content = escapeHtml(content);
             }
-            $titleElement.append(suffix).addClass(options.titleClass);
-            $toastElement.append($titleElement);
-          }
-        }
-
-        function setMessage() {
-          if (map.message) {
-            var suffix = map.message;
-            if (options.escapeHtml) {
-              suffix = escapeHtml(map.message);
-            }
-            $messageElement.append(suffix).addClass(options.messageClass);
-            $toastElement.append($messageElement);
+            $contentElement.append(content).addClass(options.contentClass);
+            notificationElement.append($contentElement);
           }
         }
 
         function setCloseButton() {
           if (options.closeButton) {
             $closeElement.addClass(options.closeClass).attr('role', 'button');
-            $toastElement.prepend($closeElement);
+            notificationElement.prepend($closeElement);
           }
         }
 
         function setProgressBar() {
           if (options.progressBar) {
             $progressElement.addClass(options.progressClass);
-            $toastElement.prepend($progressElement);
+            notificationElement.prepend($progressElement);
           }
         }
 
         function setRTL() {
           if (options.rtl) {
-            $toastElement.addClass('rtl');
+            notificationElement.addClass('rtl');
           }
         }
 
         function shouldExit(options, map) {
           if (options.preventDuplicates) {
-            if (map.message === previousToast) {
+            if (map.content === previousToast) {
               return true;
             } else {
-              previousToast = map.message;
+              previousToast = map.content;
             }
           }
           return false;
         }
 
         function hideToast(override) {
-          var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
-          var duration = override && options.closeDuration !== false ?
-            options.closeDuration : options.hideDuration;
-          var easing = override && options.closeEasing !== false ? options.closeEasing : options.hideEasing;
-          if ($(':focus', $toastElement).length && !override) {
+          var method   = override && options.closeMethod   !== false ? options.closeMethod   : options.hideMethod;
+          var duration = override && options.closeDuration !== false ? options.closeDuration : options.hideDuration;
+          var easing   = override && options.closeEasing   !== false ? options.closeEasing   : options.hideEasing;
+          if ($(':focus', notificationElement).length && !override) {
             return;
           }
           clearTimeout(progressBar.intervalId);
-          return $toastElement[method]({
+          return notificationElement[method]({
             duration: duration,
-            easing: easing,
+            easing:   easing,
             complete: function() {
-              removeToast($toastElement);
+              removeToast(notificationElement);
               clearTimeout(intervalId);
               if (options.onHidden && response.state !== 'hidden') {
                 options.onHidden();
@@ -451,7 +377,7 @@
         function stickAround() {
           clearTimeout(intervalId);
           progressBar.hideEta = 0;
-          $toastElement.stop(true, true)[options.showMethod]({
+          notificationElement.stop(true, true)[options.showMethod]({
             duration: options.showDuration,
             easing: options.showEasing
           });
@@ -467,15 +393,15 @@
         return $.extend({}, getDefaults(), toastr.options);
       }
 
-      function removeToast($toastElement) {
+      function removeToast(notificationElement) {
         if (!$container) {
           $container = getContainer();
         }
-        if ($toastElement.is(':visible')) {
+        if (notificationElement.is(':visible')) {
           return;
         }
-        $toastElement.remove();
-        $toastElement = null;
+        notificationElement.remove();
+        notificationElement = null;
         if ($container.children().length === 0) {
           $container.remove();
           previousToast = undefined;

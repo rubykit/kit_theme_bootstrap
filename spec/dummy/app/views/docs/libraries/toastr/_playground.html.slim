@@ -1,26 +1,92 @@
 // Source: https://codeseven.github.io/toastr/demo.html
 
 .container
+
   .row
+
+    .col-8
+      .fw-700.mb-2 Classes
+
+      ruby:
+        list = {
+          containerId:       'notifications-container',
+          containerClass:    '',
+          notificationClass: ['notification notification-primary', true],
+          contentClass:      'notification-content',
+          closeHtml:         '<button type="button">&times;</button>',
+          closeClass:        'notification-close-button',
+          progressClass:     'notification-progress',
+        }
+
+      - list.each do |k, v|
+        .row.mt-1
+          label.col-form-label.col-sm-4.fs-80p.ff-ms for=k
+            = k
+          .col-sm-8
+            input.form-control.form-control-sm id=k placeholder=(v.is_a?(Array) ? v[0] : v) type="text" value=(v.is_a?(Array) ? v[1] : nil)
+
+    .col-4#containerPositionClass
+      .fw-700.mb-2 Container position class
+
+      .fs-70p.ff-ms.pb-2.fs-italic
+        | This will be added to <b>containerClass</b>
+
+      ruby:
+        positions = [
+          'notifications-top-right',
+          'notifications-bottom-right',
+          'notifications-bottom-left',
+          'notifications-top-left',
+          'notifications-top-full-width',
+          'notifications-bottom-full-width',
+          'notifications-top-center',
+          'notifications-bottom-center',
+        ]
+      - positions.each_with_index do |class_name, idx|
+        .form-check
+          input.form-check-input id=class_name name="positions" type="radio" value=class_name checked=(idx == 0)
+          label.form-check-label.ff-ms.fs-70p for=class_name
+            | .#{ class_name }
+
+  .row.mt-2
+
+    .col-12
+      label.form-label.mb-0.fw-700.pt-2 for="content"
+        | Content
+      textarea#content.form-control.form-control-sm placeholder="Content (can be html)" rows="3"
+
+  .row.mt-4
+
     .col-4
-      .fw-700.mb-2 Options
+      .fw-700.mb-2 More Options
 
       .form-check
-        input#closeButton.form-check-input type="checkbox" value="checked"
-        label.form-check-label for="closeButton"
-          | Close Button
-      .form-check
-        input#progressBar.form-check-input type="checkbox" value="checked"
-        label.form-check-label for="progressBar"
-          | Progress Bar
-      .form-check
-        input#newestOnTop.form-check-input type="checkbox" value="checked"
+        input#newestOnTop.form-check-input type="checkbox" checked="checked"
         label.form-check-label for="newestOnTop"
           | Newest on top
       .form-check
-        input#preventDuplicates.form-check-input type="checkbox" value="checked"
+        input#preventDuplicates.form-check-input type="checkbox" checked="checked"
         label.form-check-label for="preventDuplicates"
           | Prevent Duplicates
+
+      .mt-3
+
+      .form-check
+        input#closeButton.form-check-input type="checkbox" checked="checked"
+        label.form-check-label for="closeButton"
+          | Close button
+
+      .form-check
+        input#closeOnClick.form-check-input type="checkbox"
+        label.form-check-label for="closeOnClick"
+          | Close on click / tap
+
+      .mt-3
+
+      .form-check
+        input#debugInfo.form-check-input type="checkbox" value="checked"
+        label.form-check-label for="debugInfo"
+          | Debug
 
       .mt-2
 
@@ -31,134 +97,87 @@
       .form-check
         input#addClear.form-check-input type="checkbox" value="checked"
         label.form-check-label for="addClear"
-          | Add button to force clearing a toast, ignoring focus
+          | Add inside close button
 
-      .form-check
-        input#debugInfo.form-check-input type="checkbox" value="checked"
-        label.form-check-label for="debugInfo"
-          | Debug
-
-    .col-4#toastTypeGroup
-      .fw-700.mb-2 Toast Type
-
-      .form-check
-        input.form-check-input#type-success name="toasts" type="radio" value="success" checked=""
-        label.form-check-label for='type-success'
-          | Success
-      .form-check
-        input.form-check-input#type-info name="toasts" type="radio" value="info"
-        label.form-check-label for='type-info'
-          | Info
-      .form-check
-        input.form-check-input#type-warning name="toasts" type="radio" value="warning"
-        label.form-check-label for='type-warning'
-          | Warning
-      .form-check
-        input.form-check-input#type-error name="toasts" type="radio" value="error"
-        label.form-check-label for='type-error'
-          | Error
-
-    .col-4#positionGroup
-      .fw-700.mb-2 Position
-
-      .form-check
-        input.form-check-input#position-top-right name="positions" type="radio" value="toast-top-right" checked=""
-        label.form-check-label for='position-top-right'
-          | Top Right
-      .form-check
-        input.form-check-input#position-bottom-right name="positions" type="radio" value="toast-bottom-right"
-        label.form-check-label for='position-bottom-right'
-          | Bottom Right
-      .form-check
-        input.form-check-input#position-bottom-left name="positions" type="radio" value="toast-bottom-left"
-        label.form-check-label for='position-bottom-left'
-          | Bottom Left
-      .form-check
-        input.form-check-input#position-top-left name="positions" type="radio" value="toast-top-left"
-        label.form-check-label for='position-top-left'
-          | Top Left
-      .form-check
-        input.form-check-input#position-top-full-width name="positions" type="radio" value="toast-top-full-width"
-        label.form-check-label for='position-top-full-width'
-          | Top Full Width
-      .form-check
-        input.form-check-input#position-bottom-full-width name="positions" type="radio" value="toast-bottom-full-width"
-        label.form-check-label for='position-bottom-full-width'
-          | Bottom Full Width
-      .form-check
-        input.form-check-input#position-top-center name="positions" type="radio" value="toast-top-center"
-        label.form-check-label for='position-top-center'
-          | Top Center
-      .form-check
-        input.form-check-input#position-bottom-center name="positions" type="radio" value="toast-bottom-center"
-        label.form-check-label for='position-bottom-center'
-          | Bottom Center
-
-  .row.mt-4
 
     .col-4
-      label.form-label.mb-0.fw-700 for="title"
-        | Title
-      input#title.form-control.form-control-sm placeholder="Enter a title ..." type="text"
+      .fw-700.mb-2 Timeout options
 
-      label.form-label.mb-0.fw-700.pt-2 for="message"
-        | Message
-      textarea#message.form-control.form-control-sm placeholder="Enter a message ..." rows="3"
+      .fs-70p.ff-ms.pb-2.fs-italic
+        | Set timeOut and extendedTimeOut to 0 to make it sticky
+
+      .row.mb-2
+        label.col-form-label.col-sm-6.py-1.fs-90p for="timeOut"
+          | Time out
+        .col-sm-6
+          input#timeOut.form-control.form-control-sm placeholder="ms" type="text" value="20000"
+
+      .form-check
+        input#progressBar.form-check-input type="checkbox" checked="checked"
+        label.form-check-label for="progressBar"
+          | Timeout progress bar
+
+      .form-check.py-2
+        input#pauseTimerOnHover.form-check-input type="checkbox"
+        label.form-check-label for="pauseTimerOnHover"
+          | Pause timeout on hover
+
+      .form-check.py-2
+        input#resetTimerOnHover.form-check-input type="checkbox"
+        label.form-check-label for="resetTimerOnHover"
+          | Reset timeout on hover
+
+      .row.mb-2
+        label.col-form-label.col-sm-6.py-1.fs-90p for="extendedTimeOut"
+          | Resetted time out
+        .col-sm-6
+          input#extendedTimeOut.form-control.form-control-sm placeholder="ms" type="text" value="10000"
 
     .col-4
+      .fw-700.mb-2 Effects options
+
       .row.mb-2
-        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="showEasing"
-          | Show Easing
-        .col-sm-6
-          input#showEasing.form-control.form-control-sm placeholder="swing, linear" type="text" value="swing"
-      .row.mb-2
-        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="hideEasing"
-          | Hide Easing
-        .col-sm-6
-          input#hideEasing.form-control.form-control-sm placeholder="swing, linear" type="text" value="linear"
-      .row.mb-2
-        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="showMethod"
-          | Show Method
+        label.col-form-label.col-sm-6.py-1.fs-90p for="showMethod"
+          | Show method
         .col-sm-6
           input#showMethod.form-control.form-control-sm placeholder="show, fadeIn, slideDown" type="text" value="fadeIn"
       .row.mb-2
-        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="hideMethod"
-          | Hide Method
+        label.col-form-label.col-sm-6.py-1.fs-90p for="showEasing"
+          | Show easing
         .col-sm-6
-          input#hideMethod.form-control.form-control-sm placeholder="hide, fadeOut, slideUp" type="text" value="fadeOut"
-
-    .col-4
+          input#showEasing.form-control.form-control-sm placeholder="swing, linear" type="text" value="swing"
       .row.mb-2
-        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="showDuration"
-          | Show Duration
+        label.col-form-label.col-sm-6.py-1.fs-90p for="showDuration"
+          | Show duration
         .col-sm-6
           input#showDuration.form-control.form-control-sm placeholder="ms" type="text" value="300"
+
+      .row.mb-2.mt-3
+        label.col-form-label.col-sm-6.py-1.fs-90p for="hideMethod"
+          | Hide method
+        .col-sm-6
+          input#hideMethod.form-control.form-control-sm placeholder="hide, fadeOut, slideUp" type="text" value="fadeOut"
       .row.mb-2
-        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="hideDuration"
-          | Hide Duration
+        label.col-form-label.col-sm-6.py-1.fs-90p for="hideEasing"
+          | Hide easing
+        .col-sm-6
+          input#hideEasing.form-control.form-control-sm placeholder="swing, linear" type="text" value="linear"
+      .row.mb-2
+        label.col-form-label.col-sm-6.py-1.fs-90p for="hideDuration"
+          | Hide duration
         .col-sm-6
           input#hideDuration.form-control.form-control-sm placeholder="ms" type="text" value="1000"
-      .row.mb-2
-        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="timeOut"
-          | Time out
-        .col-sm-6
-          input#timeOut.form-control.form-control-sm placeholder="ms" type="text" value="5000"
-      .row.mb-2
-        label.col-form-label.col-sm-6.py-1.fw-700.fs-90p for="extendedTimeOut"
-          | Extended time out
-        .col-sm-6
-          input#extendedTimeOut.form-control.form-control-sm placeholder="ms" type="text" value="1000"
 
-  .row.mt-3
+  .row.mt-4
     .col-6.text-start
       button#showtoast.btn.btn-success type="button"
-        | Show Toast
+        | Show toast
 
     .col-6.text-end
       button#cleartoasts.btn.btn-danger.me-2 type="button"
-        | Clear Toasts
+        | Clear toasts
       button#clearlasttoast.btn.btn-danger type="button"
-        | Clear Last Toast
+        | Clear last toast
 
   .row.mt-3
     .col-12
@@ -171,13 +190,14 @@ javascript:
     var toastCount = 0;
     var $toastlast;
 
-    var getMessage = function() {
-      var msgs = ['My name is Inigo Montoya. You killed my father. Prepare to die!',
+    var getContent = function() {
+      var msgs = [
+        'My name is Inigo Montoya. You killed my father. Prepare to die!',
         '<div><input class="input-small" value="textbox"/>&nbsp;<a href="http://johnpapa.net" target="_blank">This is a hyperlink</a></div><div><button type="button" id="okBtn" class="btn btn-primary">Close me</button><button type="button" id="surpriseBtn" class="btn" style="margin: 0 8px 0 8px">Surprise me</button></div>',
         'Are you the six fingered man?',
         'Inconceivable!',
         'I do not think that means what you think it means.',
-        'Have fun storming the castle!'
+        'Have fun storming the castle!',
       ];
       i++;
       if (i === msgs.length) {
@@ -195,27 +215,32 @@ javascript:
 
     $('#showtoast').click(function() {
       var shortCutFunction = $("#toastTypeGroup input:radio:checked").val();
-      var msg = $('#message').val();
-      var title = $('#title').val() || '';
-      var $showDuration = $('#showDuration');
-      var $hideDuration = $('#hideDuration');
-      var $timeOut = $('#timeOut');
+      var content          = $('#content').val();
+      var $showDuration    = $('#showDuration');
+      var $hideDuration    = $('#hideDuration');
+      var $timeOut         = $('#timeOut');
       var $extendedTimeOut = $('#extendedTimeOut');
-      var $showEasing = $('#showEasing');
-      var $hideEasing = $('#hideEasing');
-      var $showMethod = $('#showMethod');
-      var $hideMethod = $('#hideMethod');
-      var toastIndex = toastCount++;
-      var addClear = $('#addClear').prop('checked');
+      var $showEasing      = $('#showEasing');
+      var $hideEasing      = $('#hideEasing');
+      var $showMethod      = $('#showMethod');
+      var $hideMethod      = $('#hideMethod');
+      var toastIndex       = toastCount++;
+      var addClear         = $('#addClear').prop('checked');
+
+      var containerClass   = $('#containerClass').val();
+
+      var optionsOverride  = {};
 
       toastr.options = {
-        closeButton: $('#closeButton').prop('checked'),
-        debug: $('#debugInfo').prop('checked'),
-        newestOnTop: $('#newestOnTop').prop('checked'),
-        progressBar: $('#progressBar').prop('checked'),
-        positionClass: $('#positionGroup input:radio:checked').val() || 'toast-top-right',
+        closeButton:       $('#closeButton').prop('checked'),
+        resetTimerOnHover: $('#resetTimerOnHover').prop('checked'),
+        closeOnClick:      $('#closeOnClick').prop('checked'),
+        debug:             $('#debugInfo').prop('checked'),
+        newestOnTop:       $('#newestOnTop').prop('checked'),
+        progressBar:       $('#progressBar').prop('checked'),
+        containerClass:    containerClass + ' ' + ($('#containerPositionClass input:radio:checked').val() || 'notifications-top-right'),
         preventDuplicates: $('#preventDuplicates').prop('checked'),
-        onclick: null
+        onclick:           null,
       };
 
       if ($('#addBehaviorOnToastClick').prop('checked')) {
@@ -257,23 +282,22 @@ javascript:
       }
 
       if (addClear) {
-        msg = getMessageWithClearButton(msg);
-        toastr.options.tapToDismiss = false;
+        content = getContentWithClearButton(content);
+        toastr.options.closeOnClick = false;
       }
-      if (!msg) {
-        msg = getMessage();
+      if (!content) {
+        content = getContent();
       }
 
-      $('#toastrOptions').text('Command: toastr["' +
-        shortCutFunction +
-        '"]("' +
-        msg +
-        (title ? '", "' + title : '') +
-        '")\n\ntoastr.options = ' +
-        JSON.stringify(toastr.options, null, 2)
+      optionsOverride.content = content;
+
+      $('#toastrOptions').text(
+        'Command: toastr.notify('+ JSON.stringify(optionsOverride, null, 2) + ')' +
+        '\n\n' +
+        'toastr.options = ' + JSON.stringify(toastr.options, null, 2)
       );
 
-      var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+      var $toast = toastr.notify(optionsOverride); // Wire up an event handler to a button in the toast, if it exists
       $toastlast = $toast;
 
       if (typeof $toast === 'undefined') {
