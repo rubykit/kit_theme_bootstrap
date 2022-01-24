@@ -1,4 +1,4 @@
-// Source: https://codeseven.github.io/toastr/demo.html
+// Source: https://codeseven.github.io/notifier/demo.html
 
 .container
 
@@ -13,8 +13,8 @@
           containerClass:    '',
           notificationClass: ['notification notification-primary', true],
           contentClass:      'notification-content',
-          closeHtml:         '<button type="button">&times;</button>',
-          closeClass:        'notification-close-button',
+          closeHtml:         '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
+          closeClass:        'notification-dismissible',
           progressClass:     'notification-progress',
         }
 
@@ -33,14 +33,13 @@
 
       ruby:
         positions = [
-          'notifications-top-right',
-          'notifications-bottom-right',
-          'notifications-bottom-left',
           'notifications-top-left',
-          'notifications-top-full-width',
-          'notifications-bottom-full-width',
           'notifications-top-center',
+          'notifications-top-right',
+
+          'notifications-bottom-right',
           'notifications-bottom-center',
+          'notifications-bottom-left',
         ]
       - positions.each_with_index do |class_name, idx|
         .form-check
@@ -51,7 +50,7 @@
   .row.mt-2
 
     .col-12
-      label.form-label.mb-0.fw-700.pt-2 for="content"
+      label.form-label.mb-0.fw-700.py-2 for="content"
         | Content
       textarea#content.form-control.form-control-sm placeholder="Content (can be html)" rows="3"
 
@@ -91,14 +90,9 @@
       .mt-2
 
       .form-check
-        input#addBehaviorOnToastClick.form-check-input type="checkbox" value="checked"
-        label.form-check-label for="addBehaviorOnToastClick"
-          | Add behavior on toast click
-      .form-check
-        input#addClear.form-check-input type="checkbox" value="checked"
-        label.form-check-label for="addClear"
-          | Add inside close button
-
+        input#addBehaviorOnClick.form-check-input type="checkbox" value="checked"
+        label.form-check-label for="addBehaviorOnClick"
+          | Add behavior on click
 
     .col-4
       .fw-700.mb-2 Timeout options
@@ -167,35 +161,33 @@
           input#hideDuration.form-control.form-control-sm placeholder="ms" type="text" value="1000"
 
   .row.mt-4
-    .col-6.text-start
-      button#showtoast.btn.btn-success type="button"
-        | Show toast
+    .col-4.text-start
+      button#showNotification.btn.btn-success type="button"
+        | Show notification
 
-    .col-6.text-end
-      button#cleartoasts.btn.btn-danger.me-2 type="button"
-        | Clear toasts
-      button#clearlasttoast.btn.btn-danger type="button"
-        | Clear last toast
+    .col-8.text-end
+      button#clearAllNotifications.btn.btn-danger.me-2 type="button"
+        | Clear all notifications
+      button#clearLastNotification.btn.btn-danger type="button"
+        | Clear last notification
 
   .row.mt-3
     .col-12
-      pre#toastrOptions
+      pre#notifierOptions
 
 
 javascript:
   $(function() {
     var i = -1;
-    var toastCount = 0;
-    var $toastlast;
+    var notificationsCount = 0;
+    var $lastNotification;
 
     var getContent = function() {
       var msgs = [
         'My name is Inigo Montoya. You killed my father. Prepare to die!',
-        '<div><input class="input-small" value="textbox"/>&nbsp;<a href="http://johnpapa.net" target="_blank">This is a hyperlink</a></div><div><button type="button" id="okBtn" class="btn btn-primary">Close me</button><button type="button" id="surpriseBtn" class="btn" style="margin: 0 8px 0 8px">Surprise me</button></div>',
-        'Are you the six fingered man?',
+        '<div><input class="form-control form-control-sm" value="textbox"/></div><div class="pt-2"><a href="https://google.com" target="_blank">This is a hyperlink</a></div><div class="text-end"><button type="button" id="surpriseBtn" class="btn btn-info" style="margin: 0 8px 0 8px">Some other action</button><button type="button" id="okBtn" class="btn btn-warning">Close me</button></div>',
         'Inconceivable!',
         'I do not think that means what you think it means.',
-        'Have fun storming the castle!',
       ];
       i++;
       if (i === msgs.length) {
@@ -205,130 +197,110 @@ javascript:
       return msgs[i];
     };
 
-    var getMessageWithClearButton = function(msg) {
-      msg = msg ? msg : 'Clear itself?';
-      msg += '<br><br><button type="button" class="btn clear">Yes</button>';
-      return msg;
-    };
+    $('#showNotification').click(function() {
+      var content           = $('#content').val();
+      var notificationIndex = notificationsCount++;
 
-    $('#showtoast').click(function() {
-      var shortCutFunction = $("#toastTypeGroup input:radio:checked").val();
-      var content          = $('#content').val();
-      var $showDuration    = $('#showDuration');
-      var $hideDuration    = $('#hideDuration');
-      var $timeOut         = $('#timeOut');
-      var $afterHoverTimeOut = $('#afterHoverTimeOut');
-      var $showEasing      = $('#showEasing');
-      var $hideEasing      = $('#hideEasing');
-      var $showMethod      = $('#showMethod');
-      var $hideMethod      = $('#hideMethod');
-      var toastIndex       = toastCount++;
-      var addClear         = $('#addClear').prop('checked');
-
-      var containerClass   = $('#containerClass').val();
-
-      var optionsOverride  = {};
-
-      toastr.options = {
-        closeButton:       $('#closeButton').prop('checked'),
-        pauseTimerOnHover: $('#pauseTimerOnHover').prop('checked'),
-        closeOnClick:      $('#closeOnClick').prop('checked'),
-        debug:             $('#debugInfo').prop('checked'),
-        newestOnTop:       $('#newestOnTop').prop('checked'),
-        progressBar:       $('#progressBar').prop('checked'),
-        containerClass:    containerClass + ' ' + ($('#containerPositionClass input:radio:checked').val() || 'notifications-top-right'),
-        preventDuplicates: $('#preventDuplicates').prop('checked'),
-        onclick:           null,
+      var optionsOverride   = {};
+      notifier.options      = {
+        containerClass: $('#containerClass').val() + ' ' + ($('#containerPositionClass input:radio:checked').val() || 'notifications-top-right'),
+        onclick:        null,
       };
 
-      if ($('#addBehaviorOnToastClick').prop('checked')) {
-        toastr.options.onclick = function() {
-          alert('You can perform some custom action after a toast goes away');
+      let listChecxboxVal = [
+        'closeButton',
+        'pauseTimerOnHover',
+        'closeOnClick',
+        'debug',
+        'newestOnTop',
+        'progressBar',
+        'preventDuplicates',
+      ];
+
+      for (const key of listChecxboxVal) {
+        notifier.options[key] = $(`#${ key }`).prop('checked');
+      }
+
+      let listInputVal = [
+        'timeOut',
+        'afterHoverTimeOut',
+
+        'showMethod',
+        'showEasing',
+        'showDuration',
+
+        'hideMethod',
+        'hideDuration',
+        'hideEasing',
+
+        'containerId',
+        'notificationClass',
+        'contentClass',
+        'closeHtml',
+        'closeClass',
+        'progressClass',
+      ];
+
+      for (const key of listInputVal) {
+        let $el = $(`#${ key }`);
+        let val = $el.val()
+        if (val.length) {
+          notifier.options[key] = val;
+        }
+      }
+
+      if ($('#addBehaviorOnClick').prop('checked')) {
+        notifier.options.onclick = function() {
+          alert('You can perform some custom action after a notification goes away');
         };
       }
 
-      if ($showDuration.val().length) {
-        toastr.options.showDuration = $showDuration.val();
-      }
-
-      if ($hideDuration.val().length) {
-        toastr.options.hideDuration = $hideDuration.val();
-      }
-
-      if ($timeOut.val().length) {
-        toastr.options.timeOut = addClear ? 0 : $timeOut.val();
-      }
-
-      if ($afterHoverTimeOut.val().length) {
-        toastr.options.afterHoverTimeOut = addClear ? 0 : $afterHoverTimeOut.val();
-      }
-
-      if ($showEasing.val().length) {
-        toastr.options.showEasing = $showEasing.val();
-      }
-
-      if ($hideEasing.val().length) {
-        toastr.options.hideEasing = $hideEasing.val();
-      }
-
-      if ($showMethod.val().length) {
-        toastr.options.showMethod = $showMethod.val();
-      }
-
-      if ($hideMethod.val().length) {
-        toastr.options.hideMethod = $hideMethod.val();
-      }
-
-      if (addClear) {
-        content = getContentWithClearButton(content);
-        toastr.options.closeOnClick = false;
-      }
       if (!content) {
         content = getContent();
       }
 
       optionsOverride.content = content;
 
-      $('#toastrOptions').text(
-        'Command: toastr.notify('+ JSON.stringify(optionsOverride, null, 2) + ')' +
+      $('#notifierOptions').text(
+        'Command: notifier.notify('+ JSON.stringify(optionsOverride, null, 2) + ')' +
         '\n\n' +
-        'toastr.options = ' + JSON.stringify(toastr.options, null, 2)
+        'notifier.options = ' + JSON.stringify(notifier.options, null, 2)
       );
 
-      var $toast = toastr.notify(optionsOverride); // Wire up an event handler to a button in the toast, if it exists
-      $toastlast = $toast;
+      var $notification = notifier.notify(optionsOverride); // Wire up an event handler to a button in the notification, if it exists
+      $lastNotification = $notification;
 
-      if (typeof $toast === 'undefined') {
+      if (typeof $notification === 'undefined') {
         return;
       }
 
-      if ($toast.find('#okBtn').length) {
-        $toast.delegate('#okBtn', 'click', function() {
-          alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
-          $toast.remove();
+      if ($notification.find('#okBtn').length) {
+        $notification.delegate('#okBtn', 'click', function() {
+          alert('You clicked me. I was notification #' + notificationIndex + ', goodbye!');
+          $notification.remove();
         });
       }
-      if ($toast.find('#surpriseBtn').length) {
-        $toast.delegate('#surpriseBtn', 'click', function() {
-          alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
+      if ($notification.find('#surpriseBtn').length) {
+        $notification.delegate('#surpriseBtn', 'click', function() {
+          alert('Surprise! you clicked me. I was notification #' + notificationIndex + '. You could perform an action here.');
         });
       }
-      if ($toast.find('.clear').length) {
-        $toast.delegate('.clear', 'click', function() {
-          toastr.clear($toast, {
+      if ($notification.find('.clear').length) {
+        $notification.delegate('.clear', 'click', function() {
+          notifier.clear($notification, {
             force: true
           });
         });
       }
     });
 
-    function getLastToast() {
-      return $toastlast;
+    function getLastNotification() {
+      return $lastNotification;
     }
-    $('#clearlasttoast').click(function() {
-      toastr.clear(getLastToast());
+    $('#clearLastNotification').click(function() {
+      notifier.clear(getLastNotification());
     });
-    $('#cleartoasts').click(function() {
-      toastr.clear();
+    $('#clearAllNotifications').click(function() {
+      notifier.clear();
     });
   })

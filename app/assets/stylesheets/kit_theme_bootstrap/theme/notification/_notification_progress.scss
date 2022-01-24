@@ -1,0 +1,23 @@
+.notification {
+  .notification-progress {
+    position: absolute;
+    left:   0;
+    bottom: 0;
+    height: 4px;
+
+    animation-name: notifications-progress-animation;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+  }
+
+  &:hover {
+    .notification-progress[data-hover-pause-animation='true'] {
+      animation-play-state: paused;
+    }
+  }
+}
+
+@keyframes notifications-progress-animation {
+    0% { width: 0;    }
+  100% { width: 100%; }
+}

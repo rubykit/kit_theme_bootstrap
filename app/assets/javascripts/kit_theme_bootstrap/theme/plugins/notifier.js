@@ -1,15 +1,13 @@
 /*
- * Toastr
- * Copyright 2012-2015
- * Authors: John Papa, Hans Fjällemark, and Tim Ferrell.
- * All Rights Reserved.
- * Use, reproduction, distribution, and modification of this code is subject to the terms and
- * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
- *
- * ARIA Support: Greta Krafsig
- *
- * Project: https://github.com/CodeSeven/toastr
- */
+Based on Notificationr (v2.1.4):
+  - Copyright 2012-2015
+  - Authors: John Papa, Hans Fjällemark, and Tim Ferrell.
+  - Project: https://github.com/CodeSeven/toastr
+  - License: MIT license, available at http://www.opensource.org/licenses/mit-license.php
+
+KitThemeBootstrap Notifier:
+  - Tweaked to make it Bootstrap compatible as this remains a comprehensive / simple notification system.
+*/
 
 (function(define) {
   define(['jquery'], function($) {
@@ -27,10 +25,10 @@
         getContainer: getContainer,
         subscribe:    subscribe,
 
-        version: '2.1.4',
+        version: '1.0.0',
       };
 
-      var previousToast;
+      var previousNotification;
 
       return interface;
 
@@ -57,7 +55,7 @@
         if (!$container) {
           getContainer(options);
         }
-        if (!clearToast(notificationElement, options, clearOptions)) {
+        if (!clearNotification(notificationElement, options, clearOptions)) {
           clearContainer(options);
         }
       }
@@ -68,7 +66,7 @@
           getContainer(options);
         }
         if (notificationElement && $(':focus', notificationElement).length === 0) {
-          removeToast(notificationElement);
+          removeNotification(notificationElement);
           return;
         }
         if ($container.children().length) {
@@ -81,18 +79,18 @@
       function clearContainer(options) {
         var notificationsToClear = $container.children();
         for (var i = notificationsToClear.length - 1; i >= 0; i--) {
-          clearToast($(notificationsToClear[i]), options);
+          clearNotification($(notificationsToClear[i]), options);
         }
       }
 
-      function clearToast(notificationElement, options, clearOptions) {
+      function clearNotification(notificationElement, options, clearOptions) {
         var force = clearOptions && clearOptions.force ? clearOptions.force : false;
         if (notificationElement && (force || $(':focus', notificationElement).length === 0)) {
           notificationElement[options.hideMethod]({
             duration: options.hideDuration,
             easing: options.hideEasing,
             complete: function() {
-              removeToast(notificationElement);
+              removeNotification(notificationElement);
             }
           });
           return true;
@@ -151,11 +149,11 @@
           containerId:       'notifications-container',
           containerClass:    'notification-top-right',
 
-          notificationClass: 'notification',
+          notificationClass: 'notification notification-primary',
           contentClass:      'notification-content',
 
-          closeHtml:         '<button type="button">&times;</button>',
-          closeClass:        'notification-close-button',
+          closeHtml:         '<button type="button" class="btn-close" data-bs-dismiss="notification" aria-label="Close"></button>',
+          closeClass:        'notification-dismissible',
 
           progressClass:     'notification-progress',
         };
@@ -184,7 +182,7 @@
         $container = getContainer(options, true);
 
         var intervalId = null;
-        var notificationElement = $('<div/>').addClass(options.notificationClass);
+        var notificationElement = $('<div/>').addClass(options.notificationClass).attr('role', 'alert');
         var $contentElement     = $('<div/>');
         var $progressElement    = $('<div/>');
         var $closeElement       = $(options.closeHtml);
@@ -196,9 +194,9 @@
           map: map
         };
 
-        personalizeToast();
+        personalizeNotification();
 
-        displayToast();
+        displayNotification();
 
         handleEvents();
 
@@ -223,7 +221,7 @@
             .replace(/>/g, '&gt;');
         }
 
-        function personalizeToast() {
+        function personalizeNotification() {
           setContent();
           setCloseButton();
           setProgressBar();
@@ -233,12 +231,12 @@
 
         function handleEvents() {
           if (options.afterHoverTimeOut > 0) {
-            notificationElement.hover(stickAround, delayedHideToast);
+            notificationElement.hover(stickAround, delayedHideNotification);
           }
 
           if (!options.onclick && options.closeOnClick) {
             notificationElement.attr('data-close-on-click', 'true');
-            notificationElement.click(hideToast);
+            notificationElement.click(hideNotification);
           }
 
           if (options.closeButton && $closeElement) {
@@ -253,19 +251,19 @@
                 options.onCloseClick(event);
               }
 
-              hideToast(true);
+              hideNotification(true);
             });
           }
 
           if (options.onclick) {
             notificationElement.click(function(event) {
               options.onclick(event);
-              hideToast();
+              hideNotification();
             });
           }
         }
 
-        function displayToast() {
+        function displayNotification() {
           notificationElement.hide();
 
           notificationElement[options.showMethod]({
@@ -276,7 +274,7 @@
 
           if (options.timeOut > 0) {
             if (!options.progressBar) {
-              intervalId = setTimeout(hideToast, options.timeOut);
+              intervalId = setTimeout(hideNotification, options.timeOut);
             }
           }
         }
@@ -302,7 +300,7 @@
 
         function setCloseButton() {
           if (options.closeButton) {
-            $closeElement.addClass(options.closeClass).attr('role', 'button');
+            notificationElement.addClass(options.closeClass);
             notificationElement.prepend($closeElement);
           }
         }
@@ -327,7 +325,7 @@
           notificationElement.prepend($progressElement);
 
           $progressElement.on('animationend', function() {
-            hideToast(true);
+            hideNotification(true);
           });
         }
 
@@ -339,16 +337,16 @@
 
         function shouldExit(options, map) {
           if (options.preventDuplicates) {
-            if (map.content === previousToast) {
+            if (map.content === previousNotification) {
               return true;
             } else {
-              previousToast = map.content;
+              previousNotification = map.content;
             }
           }
           return false;
         }
 
-        function hideToast(override) {
+        function hideNotification(override) {
           var method   = override && options.closeMethod   !== false ? options.closeMethod   : options.hideMethod;
           var duration = override && options.closeDuration !== false ? options.closeDuration : options.hideDuration;
           var easing   = override && options.closeEasing   !== false ? options.closeEasing   : options.hideEasing;
@@ -361,7 +359,7 @@
             duration: duration,
             easing:   easing,
             complete: function() {
-              removeToast(notificationElement);
+              removeNotification(notificationElement);
               clearTimeout(intervalId);
               if (options.onHidden && response.state !== 'hidden') {
                 options.onHidden();
@@ -373,12 +371,12 @@
           });
         }
 
-        function delayedHideToast() {
+        function delayedHideNotification() {
           if (options.timeOut > 0 || options.afterHoverTimeOut > 0) {
             if (options.progressBar) {
               insertProgressBar(options.afterHoverTimeOut);
             } else {
-              intervalId = setTimeout(hideToast, options.afterHoverTimeOut);
+              intervalId = setTimeout(hideNotification, options.afterHoverTimeOut);
             }
           }
         }
@@ -390,20 +388,18 @@
             $progressElement.remove();
           }
 
-
           notificationElement.stop(true, true)[options.showMethod]({
             duration: options.showDuration,
             easing: options.showEasing
           });
         }
-
       }
 
       function getOptions() {
-        return $.extend({}, getDefaults(), toastr.options);
+        return $.extend({}, getDefaults(), notifier.options);
       }
 
-      function removeToast(notificationElement) {
+      function removeNotification(notificationElement) {
         if (!$container) {
           $container = getContainer();
         }
@@ -414,7 +410,7 @@
         notificationElement = null;
         if ($container.children().length === 0) {
           $container.remove();
-          previousToast = undefined;
+          previousNotification = undefined;
         }
       }
 
@@ -424,6 +420,6 @@
   if (typeof module !== 'undefined' && module.exports) { //Node
     module.exports = factory(require('jquery'));
   } else {
-    window.toastr = factory(window.jQuery);
+    window.notifier = factory(window.jQuery);
   }
 }));

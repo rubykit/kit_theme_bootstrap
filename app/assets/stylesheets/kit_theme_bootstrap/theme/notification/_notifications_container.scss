@@ -1,0 +1,52 @@
+$notification-margin: 12px !default;
+
+#notifications-container {
+  position: fixed;
+  z-index:  999999;
+
+  * {
+    box-sizing:         border-box;
+  }
+
+  // Positioning ---------------------------------------------------------------
+
+  &.notifications-top-left {
+    top:  $notification-margin;
+    left: $notification-margin;
+  }
+
+  &.notifications-top-right {
+    top:   $notification-margin;
+    right: $notification-margin;
+  }
+
+  &.notifications-bottom-right {
+    right:  $notification-margin;
+    bottom: $notification-margin;
+  }
+
+  &.notifications-bottom-left {
+    bottom: $notification-margin;
+    left:   $notification-margin;
+  }
+
+  &.notifications-top-center {
+    top:   $notification-margin;
+    right: 0;
+    width: 100%;
+  }
+
+  &.notifications-bottom-center {
+    bottom: $notification-margin;
+    right:  0;
+    width:  100%;
+  }
+
+  &.notifications-top-center, &.notifications-bottom-center {
+    .notification {
+      margin-left:  auto;
+      margin-right: auto;
+    }
+  }
+
+}

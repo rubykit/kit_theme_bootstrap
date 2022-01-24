@@ -1,0 +1,18 @@
+.notification-dismissible {
+  padding-right: $alert-dismissible-padding-r;
+
+  // Adjust close link position
+  .btn-close {
+    position: absolute;
+    top:      0;
+    right:    0;
+    z-index:  $stretched-link-z-index + 1;
+    margin:   $alert-padding-x;
+  }
+}
+
+.notification {
+  &[data-close-on-click=true]:hover {
+    cursor: pointer;
+  }
+}

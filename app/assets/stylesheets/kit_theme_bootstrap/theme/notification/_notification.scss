@@ -1,0 +1,11 @@
+.notification {
+  position:      relative;
+  padding:       $alert-padding-y $alert-padding-x;
+  margin-bottom: $alert-margin-bottom;
+  border:        $alert-border-width solid transparent;
+  overflow:      hidden;
+
+  word-wrap:     break-word;
+
+  @include border-radius($alert-border-radius);
+}
