@@ -4,6 +4,13 @@ $notification-margin: 12px !default;
   position: fixed;
   z-index:  999999;
 
+  width: 100%;
+  // Forward clicks on empty space to elements behind.
+  pointer-events: none;
+
+  padding-left:  $notification-margin;
+  padding-right: $notification-margin;
+
   * {
     box-sizing:         border-box;
   }
@@ -11,38 +18,49 @@ $notification-margin: 12px !default;
   // Positioning ---------------------------------------------------------------
 
   &.notifications-top-left {
-    top:  $notification-margin;
-    left: $notification-margin;
+    top: $notification-margin;
+
+    .notification {
+      margin-right: auto;
+    }
   }
 
   &.notifications-top-right {
-    top:   $notification-margin;
-    right: $notification-margin;
-  }
+    top: $notification-margin;
 
-  &.notifications-bottom-right {
-    right:  $notification-margin;
-    bottom: $notification-margin;
+    .notification {
+      margin-left: auto;
+    }
   }
 
   &.notifications-bottom-left {
     bottom: $notification-margin;
-    left:   $notification-margin;
+
+    .notification {
+      margin-right: auto;
+    }
+  }
+
+  &.notifications-bottom-right {
+    bottom: $notification-margin;
+
+    .notification {
+      margin-left: auto;
+    }
   }
 
   &.notifications-top-center {
-    top:   $notification-margin;
-    right: 0;
-    width: 100%;
+    top:           $notification-margin;
+
+    .notification {
+      margin-left:  auto;
+      margin-right: auto;
+    }
   }
 
   &.notifications-bottom-center {
-    bottom: $notification-margin;
-    right:  0;
-    width:  100%;
-  }
+    bottom:        $notification-margin;
 
-  &.notifications-top-center, &.notifications-bottom-center {
     .notification {
       margin-left:  auto;
       margin-right: auto;
