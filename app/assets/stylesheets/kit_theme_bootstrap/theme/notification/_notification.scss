@@ -1,7 +1,6 @@
 .notification {
   position:       relative;
   padding:        $alert-padding-y $alert-padding-x;
-  margin-bottom:  $alert-margin-bottom;
   border:         $alert-border-width solid transparent;
   overflow:       hidden;
 
@@ -10,4 +9,20 @@
   word-wrap:      break-word;
 
   @include border-radius($alert-border-radius);
+}
+
+.notifications-top-left,
+.notifications-top-right,
+.notifications-top-center {
+  .notification {
+    margin-bottom: $alert-margin-bottom;
+  }
+}
+
+.notifications-bottom-left,
+.notifications-bottom-right,
+.notifications-bottom-center {
+  .notification {
+    margin-top: $alert-margin-bottom;
+  }
 }

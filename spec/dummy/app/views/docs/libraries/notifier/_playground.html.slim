@@ -11,7 +11,7 @@
         list = {
           containerId:       'notifications-container',
           containerClass:    '',
-          notificationClass: ['notification notification-primary', true],
+          notificationClass: ['notification notification-info', true],
           contentClass:      'notification-content',
           closeHtml:         '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
           closeClass:        'notification-dismissible',
@@ -153,12 +153,12 @@
         label.col-form-label.col-sm-6.py-1.fs-90p for="hideEasing"
           | Hide easing
         .col-sm-6
-          input#hideEasing.form-control.form-control-sm placeholder="swing, linear" type="text" value="linear"
+          input#hideEasing.form-control.form-control-sm placeholder="swing, linear" type="text" value="swing"
       .row.mb-2
         label.col-form-label.col-sm-6.py-1.fs-90p for="hideDuration"
           | Hide duration
         .col-sm-6
-          input#hideDuration.form-control.form-control-sm placeholder="ms" type="text" value="1000"
+          input#hideDuration.form-control.form-control-sm placeholder="ms" type="text" value="300"
 
   .row.mt-4
     .col-4.text-start

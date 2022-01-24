@@ -87,8 +87,8 @@ KitThemeBootstrap Notifier:
         var force = clearOptions && clearOptions.force ? clearOptions.force : false;
         if (notificationElement && (force || $(':focus', notificationElement).length === 0)) {
           notificationElement[options.hideMethod]({
-            duration: options.hideDuration,
-            easing: options.hideEasing,
+            duration: parseInt(options.hideDuration),
+            easing:   options.hideEasing,
             complete: function() {
               removeNotification(notificationElement);
             }
@@ -134,7 +134,7 @@ KitThemeBootstrap Notifier:
           onShown:       undefined,
 
           hideMethod:    'fadeOut',
-          hideDuration:   1000,
+          hideDuration:   300,
           hideEasing:    'swing',
           onHidden:      undefined,
 
@@ -147,9 +147,9 @@ KitThemeBootstrap Notifier:
 
           // Classes
           containerId:       'notifications-container',
-          containerClass:    'notification-top-right',
+          containerClass:    'notifications-top-right',
 
-          notificationClass: 'notification notification-primary',
+          notificationClass: 'notification notification-info',
           contentClass:      'notification-content',
 
           closeHtml:         '<button type="button" class="btn-close" data-bs-dismiss="notification" aria-label="Close"></button>',
@@ -169,9 +169,7 @@ KitThemeBootstrap Notifier:
       function notify(map) {
         var options  = getOptions();
 
-        if (typeof(map.optionsOverride) !== 'undefined') {
-          options = $.extend(options, map.optionsOverride);
-        }
+        options = $.extend(options, map);
 
         if (shouldExit(options, map)) {
           return;
@@ -267,9 +265,9 @@ KitThemeBootstrap Notifier:
           notificationElement.hide();
 
           notificationElement[options.showMethod]({
-            duration: options.showDuration,
-            easing: options.showEasing,
-            complete: options.onShown
+            duration: parseInt(options.showDuration),
+            easing:   options.showEasing,
+            complete: options.onShown,
           });
 
           if (options.timeOut > 0) {
@@ -356,7 +354,7 @@ KitThemeBootstrap Notifier:
           }
 
           return notificationElement[method]({
-            duration: duration,
+            duration: parseInt(duration),
             easing:   easing,
             complete: function() {
               removeNotification(notificationElement);

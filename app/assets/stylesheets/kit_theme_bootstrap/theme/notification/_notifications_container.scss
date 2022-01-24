@@ -1,66 +1,48 @@
-$notification-margin: 12px !default;
+$notification-margin: 1rem !default;
 
 #notifications-container {
   position: fixed;
   z-index:  999999;
+  width:    100%;
+  padding:  $notification-margin;
 
-  width: 100%;
   // Forward clicks on empty space to elements behind.
   pointer-events: none;
 
-  padding-left:  $notification-margin;
-  padding-right: $notification-margin;
-
   * {
-    box-sizing:         border-box;
+    box-sizing: border-box;
   }
 
   // Positioning ---------------------------------------------------------------
 
-  &.notifications-top-left {
-    top: $notification-margin;
-
-    .notification {
-      margin-right: auto;
-    }
-  }
-
-  &.notifications-top-right {
-    top: $notification-margin;
-
-    .notification {
-      margin-left: auto;
-    }
-  }
-
-  &.notifications-bottom-left {
-    bottom: $notification-margin;
-
-    .notification {
-      margin-right: auto;
-    }
-  }
-
-  &.notifications-bottom-right {
-    bottom: $notification-margin;
-
-    .notification {
-      margin-left: auto;
-    }
-  }
-
+  &.notifications-top-left,
+  &.notifications-top-right,
   &.notifications-top-center {
-    top:           $notification-margin;
+    top: 0;
+  }
 
+  &.notifications-bottom-left,
+  &.notifications-bottom-right,
+  &.notifications-bottom-center {
+    bottom: 0
+  }
+
+  &.notifications-top-left,
+  &.notifications-bottom-left {
     .notification {
-      margin-left:  auto;
       margin-right: auto;
     }
   }
 
-  &.notifications-bottom-center {
-    bottom:        $notification-margin;
+  &.notifications-top-right,
+  &.notifications-bottom-right {
+    .notification {
+      margin-left: auto;
+    }
+  }
 
+  &.notifications-top-center,
+  &.notifications-bottom-center {
     .notification {
       margin-left:  auto;
       margin-right: auto;
