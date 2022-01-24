@@ -4,7 +4,7 @@
   font-weight: $kit-font-weight-semibold;
 }
 
-$font-weights-helpers: 200, 300, 400, 500, 600, 700;
+$font-weights-helpers: 200, 300, 400, 500, 600, 700, 800, 900;
 @each $weight in $font-weights-helpers {
   .fw-#{$weight} {
     font-weight: $weight !important;
