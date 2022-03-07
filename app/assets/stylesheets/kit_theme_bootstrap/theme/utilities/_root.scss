@@ -1,0 +1,9 @@
+:root {
+
+  @each $color, $value in $theme-colors {
+    $light-color: rgba-to-rgb($value, 0.1);
+    --#{ $variable-prefix }#{ $color }-light: #{ $light-color };
+    --#{ $variable-prefix }#{ $color }-light-rgb: #{ red($light-color) }, #{ green($light-color) }, #{ blue($light-color) };
+  }
+
+}

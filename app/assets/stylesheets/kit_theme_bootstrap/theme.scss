@@ -1,14 +1,14 @@
 @import 'bootstrap/functions';
-@import 'theme/functions';
+@import './theme/functions';
 
 // Note: user variables would go here
-@import 'theme/variables/bootstrap';
+@import './theme/variables/bootstrap';
 @import 'bootstrap/variables';
-@import 'theme/variables/kit';
+@import './theme/variables/kit';
 
 @import 'bootstrap';
 
-@import 'theme/mixins';
-@import 'theme/components';
-@import 'theme/utilities';
-@import 'theme/vendor';
+@import './theme/mixins';
+@import './theme/components';
+@import './theme/utilities';
+@import './theme/vendor';
