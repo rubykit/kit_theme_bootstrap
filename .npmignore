@@ -1,9 +1,10 @@
 bin
 config
+lib
 public
-specs
+spec
+.env*
 .rubocop.yml
-Gemfile
-Gemfile.lock
+Gemfile*
 kit_theme_bootstrap.gemspec
 Rakefile
