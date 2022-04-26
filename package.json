@@ -1,0 +1,22 @@
+{
+  "name": "@rubykit/kit_theme_bootstrap",
+  "version": "1.0.0",
+  "description": "Kit default bootstrap theme.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubykit/kit_theme_bootstrap.git"
+  },
+  "author": "Nathan Appere",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rubykit/kit_theme_bootstrap/issues"
+  },
+  "homepage": "https://github.com/rubykit/kit_theme_bootstrap#readme"
+}
