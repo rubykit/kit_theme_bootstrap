@@ -1,0 +1,9 @@
+bin
+config
+public
+specs
+.rubocop.yml
+Gemfile
+Gemfile.lock
+kit_theme_bootstrap.gemspec
+Rakefile
