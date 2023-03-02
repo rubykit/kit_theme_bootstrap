@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib,public}/**/*', 'MIT-LICENSE.md', 'Rakefile', 'README.md']
 
-  s.add_dependency 'rails', '~> 6.1.4'
+  s.add_dependency 'rails', '>= 6.1.4'
 
   s.add_dependency 'sass-rails', '>= 6'
   s.add_dependency 'slim-rails'
